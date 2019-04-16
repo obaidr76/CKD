@@ -53,21 +53,20 @@ body{
   <div style="background: transparent" class="panel_1">
     <div class="log-form">
     <h2>PLEASE ENTER FOLLOWING DETAILS</h2>
-  <form>
-    <input type="text" title="age" placeholder="AGE" />
-    <input type="text" title="username" placeholder="ALBUMIN" />
-    <input type="text" title="username" placeholder="RED BLOOD CELLS" />
-    <input type="text" title="username" placeholder="BLOOD GLUCOSE RANDOM" />
-    <input type="text" title="username" placeholder="BLOOD UREA" />
-    <input type="text" title="username" placeholder="CREATININE" />
-    <input type="text" title="username" placeholder="SODIUM LEVEL" />
-    <input type="text" title="username" placeholder="POTTASSIUM LEVEL" />
-    <input type="text" title="username" placeholder="HAEMOGLOBIN" />
-
-    <input type="text" title="username" placeholder="HYPERTENSION" />
-    <input type="text" title="username" placeholder="DIABETES MELLITIUS" />
-    <input type="text" title="username" placeholder="WHITE BLOOD CELL COUNT" />
-    <input type="text" title="username" placeholder="RED BLOOD CELL COUNT" />
+  <form action="/webapp1/input/" method="POST">
+    <input type="text" name="age" placeholder="AGE" required/>
+    <input type="text" name="albumin" placeholder="ALBUMIN" required/>
+    <input type="text" name="rbc" placeholder="RED BLOOD CELLS" required/>
+    <input type="text" name="bgr" placeholder="BLOOD GLUCOSE RANDOM" required/>
+    <input type="text" name="urea" placeholder="BLOOD UREA" required/>
+    <input type="text" name="creatinine" placeholder="CREATININE" required/>
+    <input type="text" name="sodium" placeholder="SODIUM LEVEL" required/>
+    <input type="text" name="potassium" placeholder="POTASSIUM LEVEL" required/>
+    <input type="text" name="haemoglobin" placeholder="HAEMOGLOBIN" required/>
+    <input type="text" name="wbcc" placeholder="WHITE BLOOD CELL COUNT" required/>
+    <input type="text" name="rbcc" placeholder="RED BLOOD CELL COUNT" required/>
+      <input type="text" name="hypertension" placeholder="HYPERTENSION" required/>
+    <input type="text" name="diabetes" placeholder="DIABETES MELLITIUS" required/>
     <button type="submit" class="btn">Login</button>
   </form>
 </div><!--end log form -->
