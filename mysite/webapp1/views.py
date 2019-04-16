@@ -10,6 +10,11 @@ import sklearn
 def index(request):
     pass
 
+def dashboard(request):
+    template=loader.get_template('dashboard.html')
+    context=dict()
+    return HttpResponse(template.render(context,request))
+
 def login(request):
 
     username = request.POST.get('username',False)
