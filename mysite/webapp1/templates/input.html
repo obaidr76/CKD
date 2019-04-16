@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load staticfiles %}
+  <link rel="stylesheet" href="{%static '/style.css'%}">
+</head>
+<style>
+body{
+    background-image: url("{%static 'images/img1.png'%}");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+</style>
+<body>
+
+<div>
+
+    <div class="navbar">
+    <div class="navbar-ele">
+      <ul>
+        <li style="float: left"><a href="#home">HOME</a></li>
+        <li style="float: right"><a href="#home">SIGN OUT</a></li>
+        <li style="float: right"><a href="#home">DASHBOARD</a></li>
+      </ul>
+    </div>
+  </div>
+
+   <div STYLE="margin-top: 60px;" class="panel_2">
+    <h2>ALBUMIN</h2>
+       <p> Albumin is a protein found in the blood. A healthy kidney doesn't let albumin pass from the blood into the urine. A damaged kidney lets some albumin pass into the urine</p>
+    <h2>RED BLOOD CELLS</h2>
+       <p> Healthy kidneys produce a hormone called EPO. EPO prompts the bone marrow to make red blood cells, which then carry oxygen throughout the body. When the kidneys are diseased or damaged, they do not make enough EPO. As a result, the bone marrow makes fewer red blood cells, causing anemia.</p>
+    <h2>BLOOD GLUCOSE RANDOM</h2>
+       <p> Blood glucose targets for hospitalized patients with diabetes or stress hyperglycemia should be less than 140 mg/dL before meals, and random values should be less than 180 mg/dL. ... Many insulin-treated patients with type 2 diabetes and CKD stop needing insulin as kidney disease progresses.</p>
+    <h2>BLOOD UREA</h2>
+       <p> The blood urea nitrogen (BUN) and serum creatinine levels will be elevated in patients with CKD. Hyperkalemia or low bicarbonate levels may be present. Serum albumin levels may also be measured, as patients may have hypoalbuminemia as a result of urinary protein loss or malnutrition</p>
+    <h2>CREATININE</h2>
+       <p>The blood urea nitrogen (BUN) and serum creatinine levels will be elevated in patients with CKD. Hyperkalemia or low bicarbonate levels may be present. Serum albumin levels may also be measured, as patients may have hypoalbuminemia as a result of urinary protein loss or malnutrition<p/>
+    <h2>SODIUM LEVEL</h2>
+       <p>If you're in the early stages of CKD, your doctor and dietitian will monitor your blood pressure. Sodium restriction is recommended if blood pressure is high or if you are retaining fluid. ... Controlling sodium intake will help avoid cramping and blood pressure drops during dialysis.</p>
+    <h2>POTASSIUM LEVEL</h2>
+       <p>Some of the effects of low potassium include muscle weakness, cramping and fatigue. When kidneys fail they can no longer remove excess potassium, so the level builds up in the body. High potassium in the blood is called hyperkalemia, which may occur in people with advanced stages of chronic kidney disease (CKD).</p>
+
+   </div>
+
+
+  <div style="background: transparent" class="panel_1">
+    <div class="log-form">
+    <h2>PLEASE ENTER FOLLOWING DETAILS</h2>
+  <form>
+    <input type="text" title="age" placeholder="AGE" />
+    <input type="text" title="username" placeholder="ALBUMIN" />
+    <input type="text" title="username" placeholder="RED BLOOD CELLS" />
+    <input type="text" title="username" placeholder="BLOOD GLUCOSE RANDOM" />
+    <input type="text" title="username" placeholder="BLOOD UREA" />
+    <input type="text" title="username" placeholder="CREATININE" />
+    <input type="text" title="username" placeholder="SODIUM LEVEL" />
+    <input type="text" title="username" placeholder="POTTASSIUM LEVEL" />
+    <input type="text" title="username" placeholder="HAEMOGLOBIN" />
+
+    <input type="text" title="username" placeholder="HYPERTENSION" />
+    <input type="text" title="username" placeholder="DIABETES MELLITIUS" />
+    <input type="text" title="username" placeholder="WHITE BLOOD CELL COUNT" />
+    <input type="text" title="username" placeholder="RED BLOOD CELL COUNT" />
+    <button type="submit" class="btn">Login</button>
+  </form>
+</div><!--end log form -->
+  </div>
+
+
+</div>
+
+</body>
+</html>
