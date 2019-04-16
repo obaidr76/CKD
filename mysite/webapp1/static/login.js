@@ -90,10 +90,12 @@ $(function() {
 });
 
 // DISABLE SUBMIT FOR DEMO
+/*
 $(function() {
 	$('.button').on('click', function(event) {
-		$(this).stop();
+		/*$(this).stop();
 		event.preventDefault();
-		return false;
+		return True;
 	});
 });
+*/

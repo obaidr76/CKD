@@ -15,6 +15,21 @@
 </style>
 
 <body>
+{% if logged == 0%}
+<script>
+  alert('Login Failed! Username Password do not match');
+</script>
+{%endif%}
+
+{% if exist == 1%}
+<script>
+  alert('Username already exist! Try with some different Username');
+</script>
+{%elif exist == 0%}
+<script>
+  alert('SignUp Successful. Login to continue ');
+</script>
+{%endif%}
 
 <div class="navbar">
 <div class="navbar-ele">
@@ -92,20 +107,20 @@
             <!-- SLIDESHOW -->
             <div id="slideshow">
                 <div class="one">
-                    <h2><span>EVENTS</span></h2>
-                    <p>Sign up to attend any of hundreds of events nationwide</p>
+                    <h2><span>REPORTS</span></h2>
+                    <p>Sign up and check your kidney's Health</p>
                 </div>
                 <div class="two">
                     <h2><span>LEARNING</span></h2>
-                    <p>Thousands of instant online classes/tutorials included</p>
+                    <p>Our System is continuously learning</p>
                 </div>
                 <div class="three">
-                    <h2><span>GROUPS</span></h2>
-                    <p>Create your own groups and connect with others that share your interests</p>
+                    <h2><span>RESEARCH</span></h2>
+                    <p>We are working hard to connect to doctors to give best services.</p>
                 </div>
                 <div class="four">
-                    <h2><span>SHARING</span></h2>
-                    <p>Share your works and knowledge with the community on the public showcase section</p>
+                    <h2><span>DASHBOARD</span></h2>
+                    <p>Manage all your Medical health reports in one place.</p>
                 </div>
             </div>
         </div>
@@ -126,10 +141,10 @@
               <div class="tabs-content">
                     <!-- TABS CONTENT LOGIN -->
                 <div id="login-tab-content" class="active">
-                  <form class="login-form" action="" method="post">
-                    <input type="text" class="input" id="user_login" autocomplete="off" placeholder="Email or Username">
-                    <input type="password" class="input" id="user_pass" autocomplete="off" placeholder="Password">
-                    <input type="checkbox" class="checkbox" checked id="remember_me">
+                  <form class="login-form" action="/webapp1/login/" method="post">
+                    <input type="text" class="input" name="username" id="user_login" autocomplete="off" placeholder="Email or Username" required>
+                    <input type="password" class="input" name="password" id="user_pass" autocomplete="off" placeholder="Password" required>
+                    <input type="checkbox" class="checkbox" checked id="remember_me" >
                     <label for="remember_me">Remember me</label>
                     <input type="submit" class="button" value="Login">
                   </form>
@@ -139,10 +154,10 @@
                 </div>
                     <!-- TABS CONTENT SIGNUP -->
                 <div id="signup-tab-content">
-                  <form class="signup-form" action="" method="post">
-                    <input type="email" class="input" id="user_email" autocomplete="off" placeholder="Email">
-                    <input type="text" class="input" id="user_name" autocomplete="off" placeholder="Username">
-                    <input type="password" class="input" id="user_pass" autocomplete="off" placeholder="Password">
+                  <form class="signup-form" action="/webapp1/signup/" method="post">
+                    <input type="email" class="input" name = "email" id="user_email" autocomplete="off" placeholder="Email" required>
+                    <input type="text" class="input" name = "username" id="user_name" autocomplete="off" placeholder="Username" required>
+                    <input type="password" class="input" name = "password" id="user_pass" autocomplete="off" placeholder="Password" required>
                     <input type="submit" class="button" value="Sign Up">
                   </form>
                   <div class="help-action">
