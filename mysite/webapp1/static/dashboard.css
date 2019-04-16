@@ -1,13 +1,157 @@
-.body {
+body {
     background-image: url("images/img1.png");
+    background-attachment: fixed;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
 
-html, body {
+html, body 
+{
     margin: 0px !important;
     padding: 0px !important;
 }
 
-.html, .body
-{
+.wrapper {
+    background-color: rgb(0,0,0,0.6);
+    width: 90%;
+    height: 90%;
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    bottom: 20%;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    box-shadow: 14px 14px 14px 14px rgba(0,0,0,0.22), 10px 10px 10px rgba(0,0,0,0.22);
+}
+.sidenav, .sidenav-img {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+ 
 
 }
+
+.content
+{
+    width: 80%;
+    float:right;
+}
+
+.sidenav {
+    background-color: rgba(12,12,12,0.8);
+    text-align: center;
+}
+
+
+.sidenav-img {
+    background-image: url("images/img3.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    width: 20%;
+}
+.sidenav ul {
+    list-style-type: none;
+    padding: 0px;
+    background-color: transparent;
+    margin: 0 auto;
+    text-align: left;
+    width: 100%;       
+}
+
+.sidenav li {
+    width: 300px;
+    margin-top: 15px;
+
+}
+
+.sidenav li a {
+    display: block;
+    width: 95%;
+    height: 100%;
+    color: white;
+    padding: 13px 0px 10px 10px;
+    text-decoration: none;
+    border-radius:3px;
+
+}
+
+.sidenav li a:hover {
+
+    color: white;
+    background-color: rgb(5,61,165,0.5);
+    transition-duration:0.3s;
+    margin-right:10px;
+}
+
+.sidenav li a:active {
+
+    color: white;
+    background-color: rgb(5,61,165,0.5);
+    transition-duration:0.3s;
+}
+
+.sidenav img
+{
+    margin-top:10px;
+    margin-bottom:10px;
+    width:160px;
+    height:160px;
+    border-radius:50%;
+}
+.table
+{
+    display: table;
+    margin: 0 auto;
+}
+
+.sidenav i
+{
+    font-size:0.5em;
+}
+
+i.heart
+{
+    color:red;
+}
+.navbar-ele {
+    padding: 10px 10px 10px 10px;
+    mar
+}
+
+.navbar {
+    display: inline-block;
+
+    height: 50px;
+    font-family: "Proxima Nova", sans-serif;
+    background: rgb(167,167,167);
+    width: 100%;
+    margin: 0 auto;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: none;
+}
+
+.navbar li a {
+    display: block;
+    color: #ededed;
+    text-align: center;
+    padding: 4px 14px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.navbar li a:hover {
+        background-color: #b9b9b9;
+        padding: 4px 14px;
+    }
