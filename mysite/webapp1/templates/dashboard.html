@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-
+    <link rel="stylesheet" href="{%static '/style.css'%}">
     <link rel="stylesheet" href="{%static '/dashboard.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
@@ -22,8 +22,8 @@
 {% load staticfiles %}
 
 <body>
-    <div class="wrapper">
-        <div class="sidenav-img">
+    <div class="wrapper">                                                            <!--  wrapper class -->
+        <div class="sidenav-img">                                                       <!--  side navigation panel -->
             <div class="sidenav">
                 <div style="text-align:center" class="nav-name table">
                     <ul class="navul">
@@ -47,20 +47,65 @@
             </div>
         </div>
 
-        <div class="content">
+        <div class="content">                                <!--  main content for container and nav -->
             <div class="navbar">
                 <div class="navbar-ele">
                     <ul>
                         <li style="float: left"><a href="#home">HOME</a></li>
-                        <li style="float: right"><a href="#home">DASHBOARD</a></li>
+                        <li style="float: right"><a href="#home">LOG OUT</a></li>
                     </ul>
                 </div>
             </div>
+            <div class="content-container">
+                <!--  main content for probile ckd test/check/report goes here -->
+                {% if id == '2' %}                   <!--CKD TEST-->
+
+                <div style="background: transparent" class="panel_1">
+                    <div class="log-form">
+                        <h2>PLEASE ENTER FOLLOWING DETAILS</h2>
+                        <form action="/webapp1/input/" method="POST">
+                            <input type="text" name="age" placeholder="AGE" required />
+                            <input type="text" name="albumin" placeholder="ALBUMIN" required />
+                            <input type="text" name="rbc" placeholder="RED BLOOD CELLS" required />
+                            <input type="text" name="bgr" placeholder="BLOOD GLUCOSE RANDOM" required />
+                            <input type="text" name="urea" placeholder="BLOOD UREA" required />
+                            <input type="text" name="creatinine" placeholder="CREATININE" required />
+                            <input type="text" name="sodium" placeholder="SODIUM LEVEL" required />
+                            <input type="text" name="potassium" placeholder="POTASSIUM LEVEL" required />
+                            <input type="text" name="haemoglobin" placeholder="HAEMOGLOBIN" required />
+                            <input type="text" name="wbcc" placeholder="WHITE BLOOD CELL COUNT" required />
+                            <input type="text" name="rbcc" placeholder="RED BLOOD CELL COUNT" required />
+                            <input type="text" name="hypertension" placeholder="HYPERTENSION" required />
+                            <input type="text" name="diabetes" placeholder="DIABETES MELLITIUS" required />
+                            <button type="submit" class="btn">SUBMIT DETAILS</button>
+                        </form>
+                    </div><!--end log form -->
+                </div>
+                <div  class="panel_2">
+                    <h2>ALBUMIN</h2>
+                    <p> Albumin is a protein found in the blood. A healthy kidney doesn't let albumin pass from the blood into the urine. A damaged kidney lets some albumin pass into the urine</p>
+                    <h2>RED BLOOD CELLS</h2>
+                    <p> Healthy kidneys produce a hormone called EPO. EPO prompts the bone marrow to make red blood cells, which then carry oxygen throughout the body. When the kidneys are diseased or damaged, they do not make enough EPO. As a result, the bone marrow makes fewer red blood cells, causing anemia.</p>
+                    <h2>BLOOD GLUCOSE RANDOM</h2>
+                    <p> Blood glucose targets for hospitalized patients with diabetes or stress hyperglycemia should be less than 140 mg/dL before meals, and random values should be less than 180 mg/dL. ... Many insulin-treated patients with type 2 diabetes and CKD stop needing insulin as kidney disease progresses.</p>
+                    <h2>BLOOD UREA</h2>
+                    <p> The blood urea nitrogen (BUN) and serum creatinine levels will be elevated in patients with CKD. Hyperkalemia or low bicarbonate levels may be present. Serum albumin levels may also be measured, as patients may have hypoalbuminemia as a result of urinary protein loss or malnutrition</p>
+                    <h2>CREATININE</h2>
+                    <p> The blood urea nitrogen (BUN) and serum creatinine levels will be elevated in patients with CKD. Hyperkalemia or low bicarbonate levels may be present. Serum albumin levels may also be measured, as patients may have hypoalbuminemia as a result of urinary protein loss or malnutrition</p>
+                    <h2>SODIUM LEVEL</h2>
+                    <p> If you're in the early stages of CKD, your doctor and dietitian will monitor your blood pressure. Sodium restriction is recommended if blood pressure is high or if you are retaining fluid. ... Controlling sodium intake will help avoid cramping and blood pressure drops during dialysis.</p>
+                    <h2>POTASSIUM LEVEL</h2>
+                    <p> Some of the effects of low potassium include muscle weakness, cramping and fatigue. When kidneys fail they can no longer remove excess potassium, so the level builds up in the body. High potassium in the blood is called hyperkalemia, which may occur in people with advanced stages of chronic kidney disease (CKD).</p>
+
+                </div>
+
+                {% endif%}
+            </div>
+
         </div>
     </div>
 </body>
 </html>
-
 
 <script>
     $(document).ready(function(){

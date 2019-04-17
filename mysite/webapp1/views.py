@@ -10,9 +10,9 @@ import sklearn
 def index(request):
     pass
 
-def dashboard(request):
+def dashboard(request,id):
     template=loader.get_template('dashboard.html')
-    context=dict()
+    context={'id':id}
     return HttpResponse(template.render(context,request))
 
 def login(request):
