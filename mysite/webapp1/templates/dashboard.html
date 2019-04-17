@@ -6,14 +6,67 @@
     <title></title>
 
     <link rel="stylesheet" href="{%static '/dashboard.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
+
     <script type="text/javascript" src="{%static '/login.js'%}"></script>
 </head>
+<style>
+    body {
+        background-image: url("{%static 'images/img1.png'%}");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+{% load staticfiles %}
+
 <body>
     <div class="wrapper">
-        <div class="sidenav">
+        <div class="sidenav-img">
+            <div class="sidenav">
+                <div style="text-align:center" class="nav-name table">
+                    <ul class="navul">
+                        <li class="nav-item active" style="text-align:center"><a href="#" class="nav-link">Obaid Ur Rehman</a></li>
+                    </ul>
+                </div>
+                <div class="nav-pic">
+                    <img src="{%static '/images/img4.jpg'%}" alt="Flowers in Chania">
+                </div>
+                <hr style="width: 90%; "></hr>
+                <div class="nav-options table">
+                    <ul class="navul">
+                        <li class="nav-item active"><a href="#" class="nav-link"><i class="icono-user"></i> &nbsp&nbsp&nbspPROFILE</a></li>
+                        <li class="nav-item "><a href="#"><i class="icono-file"></i> &nbsp&nbsp&nbspCKD TEST</a></li>
+                        <li class="nav-item "><a href="#"><i href="#" class="icono-file"></i> &nbsp&nbsp&nbspCHECK RANGE</a></li>
+                        <li class="nav-item "><a href="#"><i href="#" class="icono-barChart"></i> &nbsp&nbsp&nbspREPORTS</a></li>
+                    </ul>
 
+
+                </div>
+            </div>
         </div>
 
+        <div class="content">
+            <div class="navbar">
+                <div class="navbar-ele">
+                    <ul>
+                        <li style="float: left"><a href="#home">HOME</a></li>
+                        <li style="float: right"><a href="#home">DASHBOARD</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
+
+
+<script>
+    $(document).ready(function(){
+  $('ul li a').click(function(){
+    $('li a').removeClass("active");
+    $(this).addClass("active");
+});
+});
+</script>
