@@ -105,7 +105,13 @@ html, body
     width:160px;
     height:160px;
     border-radius:50%;
+    z-index:1;
 }
+.nav-pic
+{
+    opacity:0.8;
+}
+
 .table
 {
     display: table;
