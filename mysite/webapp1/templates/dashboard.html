@@ -13,7 +13,7 @@
 </head>
 <style>
     body {
-        background-image: url("{%static 'images/img1.png'%}");
+        background-image: url("{%static 'images/img1.jpg'%}");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
@@ -23,31 +23,32 @@
 
 <body>
     <div class="wrapper">                                                            <!--  wrapper class -->
-        <div class="sidenav-img">                                                       <!--  side navigation panel -->
-            <div class="sidenav">
-                <div style="text-align:center" class="nav-name table">
-                    <ul class="navul">
-                        <li class="nav-item active" style="text-align:center"><a href="#" class="nav-link">Obaid Ur Rehman</a></li>
+                                                          <!--  side navigation panel -->
+        <div class="sidenav">
+            <div class="sidenav-container">
+                <div class="nav-opt" style="text-align:center;">
+                    <ul class="navul xx" style="text-align:center;">
+                        
+                        <li style="margin-top:0px;"class="nav-item "><a href="#"> &nbsp&nbsp&nbspREPORTS</a></li>
                     </ul>
                 </div>
-                <div class="nav-pic">
+                <div style="text-align:center" class="nav-pic">
                     <img src="{%static '/images/img4.jpg'%}" alt="Flowers in Chania">
                 </div>
                 <hr style="width: 90%; "></hr>
-                <div class="nav-options table">
+                <div class="nav-options table" style="text-align: left;">
                     <ul class="navul">
                         <li class="nav-item active"><a href="#" class="nav-link"><i class="icono-user"></i> &nbsp&nbsp&nbspPROFILE</a></li>
                         <li class="nav-item "><a href="#"><i class="icono-file"></i> &nbsp&nbsp&nbspCKD TEST</a></li>
                         <li class="nav-item "><a href="#"><i href="#" class="icono-file"></i> &nbsp&nbsp&nbspCHECK RANGE</a></li>
                         <li class="nav-item "><a href="#"><i href="#" class="icono-barChart"></i> &nbsp&nbsp&nbspREPORTS</a></li>
                     </ul>
-
-
                 </div>
             </div>
         </div>
 
-        <div class="content">                                <!--  main content for container and nav -->
+        <div class="content">
+            <!--  main content for container and nav -->
             <div class="navbar">
                 <div class="navbar-ele">
                     <ul>
@@ -56,30 +57,76 @@
                     </ul>
                 </div>
             </div>
+            
             <div class="content-container">
-                <!--  main content for probile ckd test/check/report goes here -->
-                {% if id == '1' %}
+                {% if id == '1' %}    <!--  main content for probile ckd test/check/report goes here -->
 
                 <div class="panel_3">
-
                     <div class="panel_img">
+                        <div class="panel_profile_icon">
+                            <img src="{%static '/images/img7.jpg'%}" alt="Flowers in Chania">
+                        </div>
+                    </div>
                    
-                    </div>
-                    <div class="panel_profile_icon">
-                        <img src="{%static '/images/img6.jpg'%}" alt="Flowers in Chania">
-                    </div>
                     <div class="panel_profile">
+                        
                         <div class="profile_card1">
 
+                            <h2>PERSONAL DETAILS</h2>
+                            </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
                         </div>
                         <div class="profile_card2">
+                            <div id="personal_tab1">
+                                <input id="personal_button" class="btn" type="button" style="float: right" value="EDIT" />
+                                <table>
+                                    <tr><td>Name: </td><td>Name:Name:Name:Name </td></tr>
+                                    <tr><td>Gender: </td><td>Name: </td></tr>
+                                    <tr><td>Date Of Birth: </td><td>Name: </td></tr>
+                                    <tr><td>Mobile: </td><td>Name: </td></tr>
+                                    <tr><td>Email ID: </td><td>Name: </td></tr>
+                                    <tr><td>C/O: </td><td>Name: </td></tr>
+                                </table></br></br></br></br></br></br></br></br>
+                            </div>
+                            <div class="log-form2" id="personal_tab2">
+                               
+                                <form action="/webapp1/input/" method="POST">
+                                    <button id="personal_button" class="btn" type="submit" style="float: right; padding:10px 10px 10PX 10px;">SAVE CHANGES</button>
+                                    <table>
+                                        <tr><td>Name: </td><td><input type="text" name="age" placeholder="AGE" required /></td></tr>
+                                        <tr><td>Gender: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
+                                        <tr><td>Date Of Birth: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
+                                        <tr><td>Mobile: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
+                                        <tr><td>Email ID: </td><td><input type="text" name="age" placeholder="AGE" required /></td></tr>
+                                        <tr><td>C/O: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
+                                        <tr><td>C/O: </td><td><input type="file" name="age" placeholder="AGE" required /> </td></tr>
+                                    </table>
+                                </form>
 
-
+                                <!--
+    <div class="log-form2">
+        <form action="/webapp1/input/" method="POST">
+            <input type="text" name="age" placeholder="AGE" required />
+            <input type="text" name="albumin" placeholder="ALBUMIN" required />
+            <input type="text" name="rbc" placeholder="RED BLOOD CELLS" required />
+            <input type="text" name="bgr" placeholder="BLOOD GLUCOSE RANDOM" required />
+            <input type="text" name="urea" placeholder="BLOOD UREA" required />
+            <input type="text" name="creatinine" placeholder="CREATININE" required />
+            <button type="submit" class="btn">SUBMIT DETAILS</button>
+        </form>
+    </div>   -->
+                            </div>                          
                         </div>
                     </div>
+                    <div class="panel_profile">
+                        xxx
+                    </div>
+                    <div style="height:50px;"class="padding-div">
+
+                    </div>
+
                 </div>
 
-                {% elif id == '2' %}                   <!--CKD TEST-->
+                {% elif id == '2' %}                                <!--CKD TEST-->
 
                 <div style="background: transparent" class="panel_1">
                     <div class="log-form">
@@ -119,13 +166,8 @@
                     <p> Some of the effects of low potassium include muscle weakness, cramping and fatigue. When kidneys fail they can no longer remove excess potassium, so the level builds up in the body. High potassium in the blood is called hyperkalemia, which may occur in people with advanced stages of chronic kidney disease (CKD).</p>
 
                 </div>
-
-                {% endif%}
-
-
-
-
             </div>
+                {% endif%}
 
         </div>
     </div>
@@ -139,4 +181,20 @@
     $(this).addClass("active");
 });
 });
+</script>
+
+<script>
+    var div1 = document.getElementById('personal_tab1'),
+    div2 = document.getElementById('personal_tab2');
+    function switchVisible() {
+        if(!div1) return;
+            if (getComputedStyle(div1).display == 'block') {
+            div1.style.display = 'none';
+            div2.style.display = 'block';
+        } else {
+             div1.style.display = 'block';
+            div2.style.display = 'none';
+        }
+    }
+    document.getElementById('personal_button').addEventListener('click', switchVisible);
 </script>
