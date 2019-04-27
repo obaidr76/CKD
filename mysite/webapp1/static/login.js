@@ -1,5 +1,3 @@
-/* LOGIN - MAIN.JS - dp 2017 */
-
 // LOGIN TABS
 $(function() {
 	var tab = $('.tabs h3 a');
@@ -99,3 +97,15 @@ $(function() {
 	});
 });
 */
+
+
+
+
+    $(document).ready(function(){
+  $('ul li a').click(function(){
+    $('li a').removeClass("active");
+    $(this).addClass("active");
+});
+});
+
+
