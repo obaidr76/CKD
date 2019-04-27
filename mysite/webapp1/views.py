@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.template import loader
 from django.http import HttpResponse
 from .models import Login
@@ -10,33 +10,57 @@ import sklearn
 def index(request):
     pass
 
-def dashboard(request,id):
-    template=loader.get_template('dashboard.html')
+def dashboard(request,id=1):
     context={'id':id}
-    return HttpResponse(template.render(context,request))
+    if request.session.get('username',False)!=False:
+        template=loader.get_template('dashboard.html')
+        response  =  HttpResponse(template.render(context,request))
+        response['Cache-Control']='no-store'
+        return response
+    else:
+        context['notlogged']=1
+        request.session['notlogged']=1
+        return redirect('login')
 
 def login(request):
-
+    context=dict()
+    if request.session.get('notlogged',False)!=False:
+        context['notlogged']=request.session.get('notlogged',False)
+        del request.session['notlogged']
+        template=loader.get_template('login.html')
+        response = HttpResponse(template.render(context,request))
+        response['Cache-Control']='no-cache'
+        return response
+    if request.session.get('username',False) != False:
+        return redirect('dashboard1')
     username = request.POST.get('username',False)
     password = request.POST.get('password',False)
     if username == False:
         template=loader.get_template('login.html')
-        context=dict()
-        return HttpResponse(template.render(context,request))
+        response= HttpResponse(template.render(context,request))
+        response['Cache-Control']='no-cache'
+        return response
     else:
         logged = 0
+        request.session['username']=False
         try:
             pas = Login.objects.get(pk=username)
             if pas.password == password:
                 logged = 1
+                request.session['username']=False
         except Login.DoesNotExist:
-            logged = 0
-        finally:
-            context = {'logged': logged}
+            pass
+        #finally:
+        context['logged']=logged
         if logged == 0:
-            return render(request, 'login.html', context)
+            template=loader.get_template('login.html')
+            response= HttpResponse(template.render(context,request))
+            response['Cache-Control']='no-cache'
+            return response
         else:
-            return render(request, 'input.html', context)
+            id=2
+            request.session['username']=username
+            return redirect('dashboard',id)
 
 def signup(request):
     username = request.POST.get('username', False)
@@ -54,7 +78,10 @@ def signup(request):
             l = Login(username,password,email)
             l.save()
 
-        return render(request, 'login.html', context)
+        template=loader.get_template('login.html')
+        response= HttpResponse(template.render(context,request))
+        response['Cache-Control']='no-cache'
+        return response
 
 
 def input(request):
@@ -95,5 +122,11 @@ def Classification(values,choice=1):
         return 'NoCKD'
     else:
         return 'CKD'
+
+
+def logout(request):
+    if request.session.get('username',False)!=False:
+        del request.session['username']
+    return redirect('login')
 
 

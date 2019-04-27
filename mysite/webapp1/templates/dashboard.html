@@ -18,7 +18,6 @@
     }
 </style>
 {% load staticfiles %}
-
 <body>
     <div class="wrapper">                                                            <!--  wrapper class -->
                                                           <!--  side navigation panel -->
@@ -37,7 +36,7 @@
                 <div class="nav-options table" style="text-align: left;">
                     <ul class="navul">
                         <li class="nav-item active"><a href="#" class="nav-link"><i class="icono-user"></i> &nbsp&nbsp&nbspPROFILE</a></li>
-                        <li class="nav-item "><a href="#"><i class="icono-file"></i> &nbsp&nbsp&nbspCKD TEST</a></li>
+                        <li class="nav-item "><a href="/webapp1/dashboard/2/"><i class="icono-file"></i> &nbsp&nbsp&nbspCKD TEST</a></li>
                         <li class="nav-item "><a href="#"><i href="#" class="icono-file"></i> &nbsp&nbsp&nbspCHECK RANGE</a></li>
                         <li class="nav-item "><a href="#"><i href="#" class="icono-barChart"></i> &nbsp&nbsp&nbspREPORTS</a></li>
                     </ul>
@@ -51,7 +50,7 @@
                 <div class="navbar-ele">
                     <ul>
                         <li style="float: left"><a href="#home">HOME</a></li>
-                        <li style="float: right"><a href="#home">LOG OUT</a></li>
+                        <li style="float: right"><a href="/webapp1/logout/">LOG OUT</a></li>
                     </ul>
                 </div>
             </div>
@@ -229,8 +228,6 @@
 </body>
 
 <head>
-
-</head>
-    <script type="text/javascript" src="{%static '/dashboard.js'%}"></script>
-
+<script type="text/javascript" src="{%static '/dashboard.js'%}"></script>
+ </head> 
 </html>

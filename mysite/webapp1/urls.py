@@ -7,5 +7,7 @@ urlpatterns = [
     url(r'login/$', views.login,name='login'),
     url(r'signup/$',views.signup,name='signup'),
     url(r'input/$',views.input,name='input'),
-    url(r'dashboard/(?P<id>[0-4])/$',views.dashboard,name='dashboard')
+    url(r'dashboard/$',views.dashboard,name='dashboard1'),
+    url(r'dashboard/(?P<id>[0-4])/$',views.dashboard,name='dashboard'),
+    url(r'logout/',views.logout,name='logout')
 ]
