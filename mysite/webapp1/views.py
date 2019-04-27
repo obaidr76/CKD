@@ -24,21 +24,24 @@ def dashboard(request,id=1):
 
 def login(request):
     context=dict()
-    if request.session.get('notlogged',False)!=False:
-        context['notlogged']=request.session.get('notlogged',False)
+    username = request.POST.get('username',False)
+    password = request.POST.get('password',False)
+    if username == False and request.session.get('notlogged',False)!=False and request.session.get('justlogout',False)==False:
+        context['notlogged']= request.session['notlogged']
         del request.session['notlogged']
         template=loader.get_template('login.html')
         response = HttpResponse(template.render(context,request))
-        response['Cache-Control']='no-cache'
+        response['Cache-Control']='no-store'
         return response
+    if request.session.get('justlogout',False)!=False:
+        del request.session['justlogout']
     if request.session.get('username',False) != False:
         return redirect('dashboard1')
-    username = request.POST.get('username',False)
-    password = request.POST.get('password',False)
+    
     if username == False:
         template=loader.get_template('login.html')
         response= HttpResponse(template.render(context,request))
-        response['Cache-Control']='no-cache'
+        response['Cache-Control']='no-store'
         return response
     else:
         logged = 0
@@ -55,7 +58,7 @@ def login(request):
         if logged == 0:
             template=loader.get_template('login.html')
             response= HttpResponse(template.render(context,request))
-            response['Cache-Control']='no-cache'
+            response['Cache-Control']='no-store'
             return response
         else:
             id=2
@@ -80,7 +83,7 @@ def signup(request):
 
         template=loader.get_template('login.html')
         response= HttpResponse(template.render(context,request))
-        response['Cache-Control']='no-cache'
+        response['Cache-Control']='no-store'
         return response
 
 
@@ -127,6 +130,7 @@ def Classification(values,choice=1):
 def logout(request):
     if request.session.get('username',False)!=False:
         del request.session['username']
+    request.session['justlogout']=1
     return redirect('login')
 
 
