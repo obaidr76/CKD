@@ -67,9 +67,9 @@
                             <img src="{%static '/images/img7.jpg'%}" alt="Flowers in Chania">
                         </div>
                     </div>
-                   
+
                     <div class="panel_profile">
-                        
+                        <!--  PROFILE panel -->
                         <div class="profile_card1">
 
                             <h2>PERSONAL DETAILS</h2>
@@ -88,7 +88,7 @@
                                 </table></br></br></br></br></br></br></br></br>
                             </div>
                             <div class="log-form2" id="personal_tab2">
-                               
+
                                 <form action="/webapp1/input/" method="POST">
                                     <button id="personal_button" class="btn" type="submit" style="float: right; padding:10px 10px 10PX 10px;">SAVE CHANGES</button>
                                     <table>
@@ -98,29 +98,83 @@
                                         <tr><td>Mobile: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
                                         <tr><td>Email ID: </td><td><input type="text" name="age" placeholder="AGE" required /></td></tr>
                                         <tr><td>C/O: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
-                                        <tr><td>C/O: </td><td><input type="file" name="age" placeholder="AGE" required /> </td></tr>
+
+                                        <tr><td>Profile Photo:  </td><td><label class="custom-file" l><input type="file" name="age" placeholder="Uplaod" required />Choose File</label></td></tr>
                                     </table>
                                 </form>
-
-                                <!--
-    <div class="log-form2">
-        <form action="/webapp1/input/" method="POST">
-            <input type="text" name="age" placeholder="AGE" required />
-            <input type="text" name="albumin" placeholder="ALBUMIN" required />
-            <input type="text" name="rbc" placeholder="RED BLOOD CELLS" required />
-            <input type="text" name="bgr" placeholder="BLOOD GLUCOSE RANDOM" required />
-            <input type="text" name="urea" placeholder="BLOOD UREA" required />
-            <input type="text" name="creatinine" placeholder="CREATININE" required />
-            <button type="submit" class="btn">SUBMIT DETAILS</button>
-        </form>
-    </div>   -->
-                            </div>                          
+                            </div>
                         </div>
                     </div>
                     <div class="panel_profile">
-                        xxx
+                        <!--  Address panel -->
+                        <div class="profile_card1">
+
+                            <h2>ADDRESS</h2>
+                            </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+                        </div>
+                        <div class="profile_card2">
+                            <div id="address_tab1">
+                                <input id="address_button" class="btn" type="button" style="float: right" value="EDIT" />
+                                <table>
+                                    <tr><td>Address Line 1: </td><td>Name:Name:Name:Name </td></tr>
+                                    <tr><td>Address Line 2: </td><td>Name: </td></tr>
+                                    <tr><td>City: </td><td>Name: </td></tr>
+                                    <tr><td>State: </td><td>Name: </td></tr>
+                                    <tr><td>Postal Code: </td><td>Name: </td></tr>
+                                </table></br></br></br></br></br></br></br></br>
+                            </div>
+                            <div class="log-form2" id="address_tab2">
+
+                                <form action="/webapp1/input/" method="POST">
+                                    <button id="address_button" class="btn" type="submit" style="float: right; padding:10px 10px 10PX 10px;">SAVE CHANGES</button>
+                                    <table>
+                                        <tr><td>Name: </td><td><input type="text" name="age" placeholder="AGE" required /></td></tr>
+                                        <tr><td>Gender: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
+                                        <tr><td>Date Of Birth: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
+                                        <tr><td>Mobile: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
+                                        <tr><td>Email ID: </td><td><input type="text" name="age" placeholder="AGE" required /></td></tr>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+
                     </div>
-                    <div style="height:50px;"class="padding-div">
+                    <div class="panel_profile">
+                        <!--  MEDICAL panel -->
+
+                        <div class="profile_card1">
+
+                            <h2>ADDRESS</h2>
+                            </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+                        </div>
+                        <div class="profile_card2">
+                            <div id="address_tab1">
+                                <input id="address_button" class="btn" type="button" style="float: right" value="EDIT" />
+                                <table>
+                                    <tr><td>Address Line 1: </td><td>Name:Name:Name:Name </td></tr>
+                                    <tr><td>Address Line 2: </td><td>Name: </td></tr>
+                                    <tr><td>City: </td><td>Name: </td></tr>
+                                    <tr><td>State: </td><td>Name: </td></tr>
+                                    <tr><td>Postal Code: </td><td>Name: </td></tr>
+                                </table></br></br></br></br></br></br></br></br>
+                            </div>
+                            <div class="log-form2" id="address_tab2">
+
+                                <form action="/webapp1/input/" method="POST">
+                                    <button id="address_button" class="btn" type="submit" style="float: right; padding:10px 10px 10PX 10px;">SAVE CHANGES</button>
+                                    <table>
+                                        <tr><td>Name: </td><td><input type="text" name="age" placeholder="AGE" required /></td></tr>
+                                        <tr><td>Gender: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
+                                        <tr><td>Date Of Birth: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
+                                        <tr><td>Mobile: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
+                                        <tr><td>Email ID: </td><td><input type="text" name="age" placeholder="AGE" required /></td></tr>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="height:50px;" class="padding-div">
 
                     </div>
 
@@ -166,9 +220,12 @@
                     <p> Some of the effects of low potassium include muscle weakness, cramping and fatigue. When kidneys fail they can no longer remove excess potassium, so the level builds up in the body. High potassium in the blood is called hyperkalemia, which may occur in people with advanced stages of chronic kidney disease (CKD).</p>
 
                 </div>
-            </div>
-                {% endif%}
+                {% elif id == '3' %}
+                        
 
+                {% endif%}
+            </div>
+                
         </div>
     </div>
 </body>
@@ -197,4 +254,20 @@
         }
     }
     document.getElementById('personal_button').addEventListener('click', switchVisible);
+</script>
+
+<script>
+    var div3 = document.getElementById('address_tab1'),
+        div4 = document.getElementById('address_tab2');
+    function switchVisible2() {
+        if (!div3) return;
+        if (getComputedStyle(div3).display == 'block') {
+            div3.style.display = 'none';
+            div4.style.display = 'block';
+        } else {
+            div3.style.display = 'block';
+            div4.style.display = 'none';
+        }
+    }
+    document.getElementById('address_button').addEventListener('click', switchVisible2);
 </script>

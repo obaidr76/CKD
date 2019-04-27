@@ -143,16 +143,14 @@ body {
 
 .panel_profile_icon
 {
-    height:125px;
-    display:block;
-    position: absolute;
+    height:125px;display:block;position: absolute;
     width: 125px;
     float:left;
     margin-top: 38px;
     margin-left: 3.5%;
 }
 .panel_profile {
-    height: 100%;
+    height: auto;
     background-color: transparent;
 }
 
@@ -251,7 +249,7 @@ body {
 .log-form .btn:focus {
   outline: none;
 }
-#personal_button {
+#personal_button,#address_button {
     display: inline-block; background: rgba(32,141,255,0.3);
     border: 1px solid #1ba0a9; padding: 0.5em 2em;
     color: #d8d8d8;
@@ -259,7 +257,7 @@ body {
     box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
 }
 
-#personal_button:hover {
+#personal_button:hover, #address_button:hover  {
     background: rgba(32,141,255,0.6);
 }
 
@@ -267,7 +265,7 @@ body {
 
 .profile_card1, .profile_card2 {
     width: 28%; position: relative; background: transparent;
-    display: inline-block; height: 100%;
+    display: inline-block; height: 100%; height:400px;
     max-height:450px; border: 2px solid rgba(0,0,0,0);
     float: left; padding-top: 140px; color: #bebebe;
     font-family: "Lucida Console"; font-size: 16px; text-align: center;
@@ -279,12 +277,12 @@ body {
     overflow-x:hidden; overflow-y:hidden; 
 }
 
-#personal_tab2
+#personal_tab2,#address_tab2
 {
     display: none;
 }
 
-#personal_tab2, #personal_tab1
+#personal_tab2, #personal_tab1, #address_tab1,#address_tab2
 {
     position: relative; width: 80%;
     margin: 0 10% 0 10%; font-size:20px;
@@ -292,4 +290,14 @@ body {
 
 }
 
+.log-form2 input[type=file]{
+    display:none;
+}
 
+.custom-file
+{
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 6px;
+    cursor: pointer; 
+}
