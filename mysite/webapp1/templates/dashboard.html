@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="{%static '/dashboard.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
-
-    <script type="text/javascript" src="{%static '/login.js'%}"></script>
 </head>
 <style>
     body {
@@ -229,45 +227,10 @@
         </div>
     </div>
 </body>
+
+<head>
+
+</head>
+    <script type="text/javascript" src="{%static '/dashboard.js'%}"></script>
+
 </html>
-
-<script>
-    $(document).ready(function(){
-  $('ul li a').click(function(){
-    $('li a').removeClass("active");
-    $(this).addClass("active");
-});
-});
-</script>
-
-<script>
-    var div1 = document.getElementById('personal_tab1'),
-    div2 = document.getElementById('personal_tab2');
-    function switchVisible() {
-        if(!div1) return;
-            if (getComputedStyle(div1).display == 'block') {
-            div1.style.display = 'none';
-            div2.style.display = 'block';
-        } else {
-             div1.style.display = 'block';
-            div2.style.display = 'none';
-        }
-    }
-    document.getElementById('personal_button').addEventListener('click', switchVisible);
-</script>
-
-<script>
-    var div3 = document.getElementById('address_tab1'),
-        div4 = document.getElementById('address_tab2');
-    function switchVisible2() {
-        if (!div3) return;
-        if (getComputedStyle(div3).display == 'block') {
-            div3.style.display = 'none';
-            div4.style.display = 'block';
-        } else {
-            div3.style.display = 'block';
-            div4.style.display = 'none';
-        }
-    }
-    document.getElementById('address_button').addEventListener('click', switchVisible2);
-</script>
