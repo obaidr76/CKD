@@ -218,7 +218,65 @@
 
                 </div>
                 {% elif id == '3' %}
-                        
+                
+                <div class="panel_4">
+                    <a href=# class="save-button"><i class="icono-bookmark"></i></a>
+                    <div class="panel_4_head">
+                        <h2>
+                            SOME ORGANIZATION<h2>
+                                <h3>
+                                    _____ Bangalore, 562157 _____<h3>
+
+                                        <div class="panel_4_head_table">
+                                            <table class="table_1">
+                                                <tr><td>Patient ID:</td></tr>
+                                                <tr><td>Name:</td></tr>
+                                                <tr><td>Lab Ref. No.:</td></tr>
+                                            </table>
+                                        </div>
+
+                                        <div style="float:right;" class="panel_4_head_table">
+                                            <table class="table_1">
+                                                <tr><td>Date: 666666666</td></tr>
+                                            </table>
+                                        </div>
+
+
+                    </div>
+                    <hr style="margin-top: 130px; width: 80%;">
+                    <div style="width:100%; display: inline-block; position: relative;"><h3 style="float:left; padding-left:10px;">Range</h3></div>
+
+                    <div class="panel_4_body">
+                        <div class="panel_4_body_card">
+                            <img src="{%static '/images/range/albumin1.jpeg'%}" />
+                            <input type="range" min="10" max="60" value="35" class="slider2" id="myRange" disabled>
+                            <img src="{%static '/images/range/albumin2.jpeg'%}" />
+                            <h3>Albumin value: something g/L m<sup>2</sup></h3>
+                        </div>
+                        <div class="panel_4_body_card">
+                            <img src="{%static '/images/range/gfr1.png'%}" />
+                            <input type="range" min="5" max="120" value="45" class="slider" id="myRange" disabled>
+                            <img src="{%static '/images/range/gfr2.png'%}" />
+                            <h3>GFR value: something mL/min/1.73 m<sup>2</sup></h3>
+                        </div>
+
+                    </div>
+                    <div class="panel_4_body">
+
+                        <div class="panel_4_body_card">
+                            <img src="{%static '/images/range/diab1.png'%}" />
+                            <input type="range" min="0" max="500" value="300" class="slider" id="myRange" disabled>
+                            <img src="{%static '/images/range/diab2.png'%}" />
+                            <h3>Diabetes: something mg/dl</h3>
+                        </div>
+                        <div class="panel_4_body_card">
+                            <img src="{%static '/images/range/haem1m.png'%}" />
+                            <input type="range" min="0" max="20" value="10" class="slider3" id="myRange" disabled>
+                            <img src="{%static '/images/range/haem2m.png'%}" />
+                            <h3>Haemoglobin: something g/dL</h3>
+                        </div>
+                    </div>
+                </div>
 
                 {% endif%}
             </div>
