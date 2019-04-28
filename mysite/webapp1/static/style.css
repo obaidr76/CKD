@@ -191,7 +191,7 @@ body {
 
 .log-form2 input{
   display: inline-block; position:relative; font-size: 15px; margin: auto auto; padding:8px 8px; float: left;
-  width: 200px; margin-bottom: none; border: none; background: transparent; color: transparent; border-bottom: 1px solid grey;
+  width: 200px; margin-bottom: 0px; border: none; background: transparent; color: grey; border-bottom: 1px solid grey;
 }
 .log-form input:focus {
     outline: none;
