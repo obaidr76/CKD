@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <link rel="stylesheet" href="{%static '/style.css'%}">
+
     <link rel="stylesheet" href="{%static '/dashboard.css'%}">
+    <link rel="stylesheet" href="{%static '/style.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
 </head>
@@ -283,6 +284,25 @@
                             <img src="{%static '/images/range/haem2m.png'%}" />
                             <h3>Haemoglobin: something g/dL</h3>
                         </div>
+                    </div>
+                    <div style="width:100%; display: inline-block; position: relative;"><h3 style="float:left; padding-left:10px;">Calculations</h3></div>
+                    <div class="panel_4_body">
+                            <table class="table_2">
+                                <tr><td style="border-left-style : hidden!important; border-top-style:hidden!important;"rowspan="7" colspan="4" class="table_2_white">Prognosis of CKD by GFR and Albuminaria Categories</td><td rowspan="2" colspan="3" class="table_2_white">Persistent Albuminuria categories. &nbsp&nbsp&nbsp&nbsp Description and Range.</td></tr>
+                                <tr>                         </tr>
+                                <tr>                                  <td class="table_2_cream">A1</td><td class="table_2_cream">A2</td><td class="table_2_cream">A3</td></tr>
+                                <tr>                                  <td class="table_2_lcream" rowspan="2">Normal to Mildly Increased</td><td class="table_2_lcream" rowspan="2">Moderately Increased.</td><td class="table_2_lcream" rowspan="2">Severely Increased.</td></tr>
+                                <tr>                             </tr>
+                                <tr>                                  <td rowspan="2">&lt30mg/g  &lt3mg/mmol</td><td td rowspan="2">30-300mg/g 3-30mg/mmol</td><td rowspan="2">&gt300mg/g  &gt30mg/mmol</td></tr>
+                                <tr>                               </tr>
+                                <tr><td class="table_2_cream">G1</td><td  class="table_2_lcream" colspan="2">Normal or high</td><td>&gt=90</td>                    <td class="table_2_green" id="g1a1"></td><td class="table_2_yellow" id="g1a2"></td><td class="table_2_orange" id="g1a3"></td></tr>
+                                <tr><td class="table_2_cream">G2</td><td  class="table_2_lcream" colspan="2">Mildly decreased</td><td>60-89</td>                   <td class="table_2_green" id="g2a1"></td><td class="table_2_yellow" id="g2a2"></td><td class="table_2_orange" id="g2a3"></td></tr>
+                                <tr><td class="table_2_cream">G3a</td><td  class="table_2_lcream"  colspan="2">Mildly to moderately  </td><td>45-59</td>   <td class="table_2_yellow" id="g3aa1"></td><td class="table_2_orange" id="g3aa2"></td><td class="table_2_red" id="g3aa3"></td></tr>
+                                <tr><td class="table_2_cream">G3b</td><td  class="table_2_lcream" colspan="2">Moderately to severely  </td><td>30-44</td> <td class="table_2_orange" id="g3ba1"></td><td class="table_2_red" id="g3ba2"></td><td class="table_2_red" id="g3ba3"></td></tr>
+                                <tr><td class="table_2_cream">G4</td><td  class="table_2_lcream" colspan="2">Severely decreased</td><td>15-29</td>                 <td class="table_2_red" id="g4a1"></td><td class="table_2_red" id="g4a2"></td><td class="table_2_red" id="g4a3"></td></tr>
+                                <tr><td class="table_2_cream" >G5</td><td  class="table_2_lcream" colspan="2">kidney Failure</td><td>&lt15</td>                     <td class="table_2_red" id="g5a1"></td><td class="table_2_red" id="g5a2"></td><td class="table_2_red" id="g5a3"></td></tr>
+
+                            </table>
                     </div>
                 </div>
 
