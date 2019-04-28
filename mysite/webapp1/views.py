@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from django.template import loader
 from django.http import HttpResponse
-from .models import Login
+from .models import Login,Profile
+from django.core.files.storage import FileSystemStorage
 import os
 import sklearn
 
@@ -11,12 +12,28 @@ def index(request):
     pass
 
 def dashboard(request,id=1):
-    context={'id':id}
+    context=dict()
+    context['id']=id
     if request.session.get('username',False)!=False:
-        template=loader.get_template('dashboard.html')
-        response  =  HttpResponse(template.render(context,request))
-        response['Cache-Control']='no-store'
-        return response
+        try:
+            ob1 = Login.objects.get(pk=request.session.get('username',False))
+            ob = Profile.objects.get(pk=ob1)
+            context['name']=ob.name
+            context['mobile']=ob.mobile
+            context['gender']=ob.gender
+            context['dob']=ob.dob
+            #print(type(ob.dob))
+            #context['dob1']=str(ob.dob)
+            context['email']=ob.email
+            context['prof']=ob.photo
+            #exists
+        except Profile.DoesNotExist:
+            pass
+        finally:
+            template=loader.get_template('dashboard.html')
+            response  =  HttpResponse(template.render(context,request))
+            response['Cache-Control']='no-store'
+            return response
     else:
         context['notlogged']=1
         request.session['notlogged']=1
@@ -134,3 +151,50 @@ def logout(request):
     return redirect('login')
 
 
+def profile(request):
+    context=dict()
+    if request.POST.get('name',False)!=False:
+        name=request.POST.get('name','')        
+        gender=request.POST.get('gender','')
+        dob=request.POST.get('dob','')
+        print(dob)
+        '''if dob!='':
+            date = dob.split('-')
+            dob = date[2]+'-'+date[1]+'-'+date[0]'''
+        mobile=request.POST.get('mobile','')
+        email=request.POST.get('email','')
+        if request.FILES:
+            photo=request.FILES['photo']
+            fs=FileSystemStorage()
+            pname=fs.save(photo.name,photo)
+            url=fs.url(pname)
+        else:
+            url=''
+            
+        try:
+            ob=Login.objects.get(pk=request.session['username'])
+            ob1 = Profile.objects.get(pk=ob)
+            if dob=='':
+                dob=ob1.dob
+            if url=='':
+                url=ob1.photo    
+                print(url)
+            ob1.name=name
+            ob1.gender=gender
+            ob1.dob=dob
+            ob1.mobile=mobile
+            ob1.photo=url
+            ob1.email=email
+            ob1.save()
+        except Profile.DoesNotExist:
+            prof=Profile(request.session['username'],name,gender,dob,mobile,email,url)
+            prof.save()
+        #finally:
+        context['name']=name
+        context['gender']=gender
+        context['dob']=dob
+        context['email']=email
+        context['mobile']=mobile
+        context['prof'] = url
+        context['id']='1'
+        return render(request,'dashboard.html',context)
