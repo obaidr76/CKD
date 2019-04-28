@@ -192,7 +192,7 @@ def profile(request):
         #finally:
         context['name']=name
         context['gender']=gender
-        context['dob']=ob1.dob
+        context['dob']=dob
         context['email']=email
         context['mobile']=mobile
         context['prof'] = url
