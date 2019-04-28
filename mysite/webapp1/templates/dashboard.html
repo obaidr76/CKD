@@ -30,7 +30,11 @@
                     </ul>
                 </div>
                 <div style="text-align:center" class="nav-pic">
+                    {% if prof %}
+                    <img src="/webapp1{{ prof }} " alt="Flowers in Chania">
+                    {% else %}
                     <img src="{%static '/images/img4.jpg'%}" alt="Flowers in Chania">
+                    {% endif %}
                 </div>
                 <hr style="width: 90%; "></hr>
                 <div class="nav-options table" style="text-align: left;">
@@ -61,7 +65,11 @@
                 <div class="panel_3">
                     <div class="panel_img">
                         <div class="panel_profile_icon">
-                            <img src="{%static '/images/img7.jpg'%}" alt="Flowers in Chania">
+                            {% if prof %}
+                            <img src="/webapp1{{ prof }} " alt="Flowers in Chania" >
+                            {% else %}
+                            <img src="{%static '/images/img4.jpg'%}" alt="Flowers in Chania">
+                            {% endif %}
                         </div>
                     </div>
 
@@ -76,27 +84,27 @@
                             <div id="personal_tab1">
                                 <input id="personal_button" class="btn" type="button" style="float: right" value="EDIT" />
                                 <table>
-                                    <tr><td>Name: </td><td>Name:Name:Name:Name </td></tr>
-                                    <tr><td>Gender: </td><td>Name: </td></tr>
-                                    <tr><td>Date Of Birth: </td><td>Name: </td></tr>
-                                    <tr><td>Mobile: </td><td>Name: </td></tr>
-                                    <tr><td>Email ID: </td><td>Name: </td></tr>
-                                    <tr><td>C/O: </td><td>Name: </td></tr>
+                                    <tr><td>Name: </td><td>{% if name %} {{ name }} {% endif %} </td></tr>
+                                    <tr><td>Gender: </td><td>{% if gender %} {{ gender }} {% endif %}</td></tr>
+                                    <tr><td>Date Of Birth: </td><td>{% if dob %} {{ dob }} {% endif %}</td></tr>
+                                    <tr><td>Mobile: </td><td>{% if mobile %} {{ mobile }} {% endif %}</td></tr>
+                                    <tr><td>Email ID: </td><td>{% if email %} {{ email }} {% endif %} </td></tr>
+                                    <tr><td>C/O: </td><td>name</td></tr>
                                 </table></br></br></br></br></br></br></br></br>
                             </div>
-                            <div class="log-form2" id="personal_tab2">
+                            <div style ="color:white;" class="log-form2" id="personal_tab2">
 
-                                <form action="/webapp1/input/" method="POST">
+                                <form action="/webapp1/profile/" enctype="multipart/form-data" method="POST">
                                     <button id="personal_button" class="btn" type="submit" style="float: right; padding:10px 10px 10PX 10px;">SAVE CHANGES</button>
                                     <table>
-                                        <tr><td>Name: </td><td><input type="text" name="age" placeholder="AGE" required /></td></tr>
-                                        <tr><td>Gender: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
-                                        <tr><td>Date Of Birth: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
-                                        <tr><td>Mobile: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
-                                        <tr><td>Email ID: </td><td><input type="text" name="age" placeholder="AGE" required /></td></tr>
-                                        <tr><td>C/O: </td><td><input type="text" name="age" placeholder="AGE" required /> </td></tr>
+                                        <tr><td>Name: </td><td><input type="text" name="name" placeholder="NAME" value="{% if name %} {{ name }} {% endif %}" /></td></tr>
+                                        <tr><td>Gender: </td><td><input type="text" name="gender" placeholder="GENDER" value="{% if gender %} {{ gender }} {% endif %}" /> </td></tr>
+                                        <tr><td>Date Of Birth: </td><td><input type="date" value="" name="dob" placeholder="DOB" /> </td></tr>
+                                        <tr><td>Mobile: </td><td><input type="text" name="mobile" placeholder="MOBILE" value="{% if mobile %} {{ mobile }} {% endif %}" /> </td></tr>
+                                        <tr><td>Email ID: </td><td><input type="email" name="email" placeholder="EMAIL-ID" value="{% if email %} {{ email }} {% endif %}" /></td></tr>
+                                        <tr><td>C/O: </td><td><input type="text" name="co" placeholder="C/O" /> </td></tr>
 
-                                        <tr><td>Profile Photo:  </td><td><label class="custom-file" l><input type="file" name="age" placeholder="Uplaod" required />Choose File</label></td></tr>
+                                        <tr><td>Profile Photo:  </td><td><label class="custom-file" l><input type="file" name="photo" placeholder="Uplaod" />Choose File</label></td></tr>
                                     </table>
                                 </form>
                             </div>
