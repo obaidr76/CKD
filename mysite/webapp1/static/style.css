@@ -67,9 +67,11 @@ body {
 
 .panel_4_head{text-align: center; font-size: 16px; margin-top:60px;}
 
-.panel_4_body,.panel_4_body_card{display:inline-block; position: relative; width: 95%; text-align: center; margin-right:10px;}
+.panel_4_body,.panel_4_body_card, .panel_4_body_table{display:inline-block; position: relative; width: 95%; text-align: center; margin-right:10px;}
 .panel_4_body_card{width:46%; margin-top:20px;float: right;}
 .panel_4_head h2{ font-size: 28px;}
+
+.panel_4_body_table{width:100%;text-align: center; margin-left:5%; }
 
 .panel_4_body_card img{width:100%;}
 
@@ -263,6 +265,8 @@ body {
 .table_1{ float: left; display:inline-block; position:relative; text-align: left; }
 .table_1 td{ padding:5px;}
 
+
+
 .slider, .slider2, .slider3 {
     -webkit-appearance: none;width: 95.5%;
     height:0px; background: #d3d3d3;
@@ -279,3 +283,13 @@ body {
    margin-top: -10px; background: transparent; cursor: pointer; border-left: 7.5px solid transparent;
    border-right: 7.5px solid transparent; border-top: 15px solid #555;
 }
+
+.panel_4_body table, .panel_4_body td{ border:1px solid grey;}
+.table_2{border-collapse: collapse; border-spacing:0px; width:90%; float: right; margin-right:2.5%;}
+.table_2_cream{ background:#d6d1c7;} .table_2_lcream{background:#ece9e5}
+.table_2_green{background:#0ab75c; opacity:1;}
+.table_2_orange{ background: #f6941f; opacity:1;}
+.table_2_yellow{background:#f4ed5c; opacity:1;}
+.table_2_red{ background:#ec2a2f; opacity:1;}        
+
+#ga{ border:3px solid rgba(84,84,84,1); linear-gradient: rgba(0,0,0,0.7),rgba(0,0,0,0.1);background-blend-mode: overlay; ;}
