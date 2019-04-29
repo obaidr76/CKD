@@ -258,13 +258,13 @@
                     <div class="panel_4_body">
                         <div class="panel_4_body_card">
                             <img src="{%static '/images/range/albumin1.jpeg'%}" />
-                            <input type="range" min="10" max="60" value="35" class="slider2" id="myRange" disabled>
+                            <input type="range" min="10" max="60" value="{{ albumin }}" class="slider2" id="myRange" disabled>
                             <img src="{%static '/images/range/albumin2.jpeg'%}" />
                             <h3>Albumin value: something g/L m<sup>2</sup></h3>
                         </div>
                         <div class="panel_4_body_card">
                             <img src="{%static '/images/range/gfr1.png'%}" />
-                            <input type="range" min="5" max="120" value="45" class="slider" id="myRange" disabled>
+                            <input type="range" min="5" max="120" value="{{ egfr }}" class="slider" id="myRange" disabled>
                             <img src="{%static '/images/range/gfr2.png'%}" />
                             <h3>GFR value: something mL/min/1.73 m<sup>2</sup></h3>
                         </div>
@@ -274,13 +274,13 @@
 
                         <div class="panel_4_body_card">
                             <img src="{%static '/images/range/diab1.png'%}" />
-                            <input type="range" min="0" max="500" value="300" class="slider" id="myRange" disabled>
+                            <input type="range" min="0" max="500" value="{{ diab }}" class="slider" id="myRange" disabled>
                             <img src="{%static '/images/range/diab2.png'%}" />
                             <h3>Diabetes: something mg/dl</h3>
                         </div>
                         <div class="panel_4_body_card">
                             <img src="{%static '/images/range/haem1m.png'%}" />
-                            <input type="range" min="0" max="20" value="10" class="slider3" id="myRange" disabled>
+                            <input type="range" min="0" max="20" value="{{ haem }}" class="slider3" id="myRange" disabled>
                             <img src="{%static '/images/range/haem2m.png'%}" />
                             <h3>Haemoglobin: something g/dL</h3>
                         </div>
@@ -305,6 +305,15 @@
                             </table>
                     </div>
                 </div>
+                <script>
+                    var id = "{{ pred }}";
+                    alert("{{ albumin }}");
+                    alert("{{ egfr }}");
+                    alert("{{ diab }}");
+                    alert("{{ haem }}");
+                    var cell = document.getElementById(id);
+                    cell.setAttribute("id", "ga");
+                </script>
 
                 {% endif%}
             </div>

@@ -26,6 +26,9 @@ def dashboard(request,id=1):
             #context['dob1']=str(ob.dob)
             context['email']=ob.email
             context['prof']=ob.photo
+            
+            
+            
             #exists
         except Profile.DoesNotExist:
             pass
@@ -128,7 +131,45 @@ def input(request):
         #rbc = request.POST.get('rbc', False)
         prediction = Classification([[age,albumin,rbc,bgr,urea,createnine,sodium,potassium,haemoglobin,wbcc,rbcc,hypertension,diabetes]])
         context['prediction'] = prediction
-    return HttpResponse(prediction)
+        gender='f'
+        if gender=='f':
+            cost=0.742
+        else:
+            cost=1
+        age = int(age)**(-0.203)
+        createnine = 186*((float(createnine)*100/6)/88.4)**(-1.154)
+        egfr = age*createnine*cost
+        Acr=albumin/createnine
+        pred=''
+        if egfr>=90:
+            pred+='g1'
+        elif egfr>=60:
+            pred+='g2'
+        elif egfr>=45:
+            pred+='g3a'
+        elif egfr>=30:
+            pred+='g3b'
+        elif egfr>=15:
+            pred+='g4'
+        else:
+            pred+='g5'
+
+        if Acr<30:
+            pred+='a1'
+        elif Acr<=300:
+            pred+='a2'
+        else:
+            pred+='a3'
+
+
+        context =dict()
+        context['pred']=pred
+        context['id']=4
+        context['egfr']=egfr
+        context['albumin']=albumin
+        context['diab']=bgr
+        context['haem']=haemoglobin
+    return render(request,'dashboard.html',context)
 
 import pickle
 def Classification(values,choice=1):
