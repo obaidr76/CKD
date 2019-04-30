@@ -23,8 +23,12 @@
     opacity: 1; /* Firefox */
 }
 .panel_profile::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: grey;
+    color: black;
     opacity: 1; /* Firefox */
+}
+textarea::placeholder {
+    color:rgba(84,84,84,1);
+    opacity:1;
 }
 .img-container
 {
@@ -32,10 +36,8 @@
   height: 100%;
   background-image: url("/images/img1.png");
 }
-html,body
-{
-  margin:0px !important;
-  padding:0px !important;
+html,body{
+  margin:0px !important;padding:0px !important;
 }
 body {
   overflow-x: hidden;
@@ -44,10 +46,8 @@ body {
   position:fixed; z-index:9999; top:0px; width:100%; height:5px; background:#b7d7e8;
 }
 
-.container
-{
-  width: 100%;height: auto;
-  float: left;text-align: center;overflow: hidden;
+.container{
+  width: 100%;height: auto;float: left;text-align: center;overflow: hidden;
 }
 
 .panel_2, .panel_1, .panel_4 {
@@ -65,18 +65,42 @@ body {
     padding:0 40px 40px 40px; font-family: "Lucida Console", Monaco, monospace; overflow:auto;
 }
 
+
+.panel_5, .panel_6{
+    font-family: "Lucida Console", Monaco, monospace;width: 90%; position: absolute; height:75%;
+    overflow:auto; display: inline-block;  background-color:rgba(0,0,0,0.2);
+    background-blend-mode: overlay;background-size: 500px 500px; background-attachment:local;
+    left: 50%;bottom: 0%;transform: translateX(-50%); font-size:20px; margin-bottom:7.5%; border:4px solid black;border-radius:5px; padding:15px;
+}
+.panel_5{ border-bottom-style:none; }
+
+.panel_6{
+    position:absolute; height:11%; overflow: hidden;margin-bottom:1%; padding:11px; border-top-style: none;
+}
+
+
+.review_send, .review_box{ margin-left:0px;position:relative; display:inline-block; width:6%; 
+    height: 100%; float left;border: 1px solid black; border-radius:10px; font-size:20px;background:rgba(255,255,255,0.5); }
+    
+.review_box{ margin-left:0px; width:92.5%; overflow-y:hidden; overflow-x:hidden;background:rgba(255,255,255,0.5);}
+
+.review_send img{background-size: cover; height:100%; width:100%;}
+
+.review_send a:hover{ opacity:0.3; transition: 0.7s;}
+
+
 .panel_4_head{text-align: center; font-size: 16px; margin-top:60px;}
 
-.panel_4_body,.panel_4_body_card, .panel_4_body_table{display:inline-block; position: relative; width: 95%; text-align: center; margin-right:10px;}
-.panel_4_body_card{width:46%; margin-top:20px;float: right;}
+.panel_4_body,.panel_4_body_card, .panel_4_body_table{display:inline-block; margin-top:40px; position: relative; width: 95%; text-align: center; margin-right:10px;}
+.panel_4_body_card{width:46%; float: right;}
 .panel_4_head h2{ font-size: 28px;}
 
 .panel_4_body_table{width:100%;text-align: center; margin-left:5%; }
 
 .panel_4_body_card img{width:100%;}
 
-.panel_1
-{
+textarea{height:200px; width:100%; border:none; background: transparent; padding: 10px; font-size:18px;}
+.panel_1{
     width: 40%;float: left;margin-left: 2.5%;
 }
 @font-face {
@@ -129,39 +153,28 @@ body {
 
 .panel_img {
     background-image: url("images/img6.jpg"), linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.1));
-    background-blend-mode: overlay;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-blend-mode: overlay;background-repeat: no-repeat;background-size: cover;
 }
 
-.panel_profile_icon
-{
-    height:125px;display:block;position: absolute;
-    width: 125px;float:left;margin-top: 38px;
-    margin-left: 3.5%;
+.panel_profile_icon{
+    height:125px;display:block;position: absolute;width: 125px;float:left;margin-top: 38px;margin-left: 3.5%;
 }
+
 .panel_profile {
-    height: auto;
-    background-color: transparent;
+    height: auto;background-color: transparent;
 }
 
-.panel_img img
-{
-   width: 100%;
-}
+.panel_img img{width: 100%;}
 
 @media (max-width: 40em) {
   .log-form {
-    width: 90%; position: relative;
-    margin: 2.5% auto 0 auto; left: 0%;-webkit-transform: translate(0%, 0%);
+    width: 90%; position: relative; margin: 2.5% auto 0 auto; left: 0%;-webkit-transform: translate(0%, 0%);
     -moz-transform: translate(0%, 0%); -o-transform: translate(0%, 0%);-ms-transform: translate(0%, 0%);
     transform: translate(0%, 0%);
   }
 }
 .log-form form {
-  display: block;
-  width: 100%;
-  padding: 1.4em;
+  display: block;width: 100%;padding: 1.4em;
 }
 .log-form h2 {
     font-family: "open sans condensed";    font-size: 1.35em;    display: block;    color: #fff;
@@ -257,10 +270,7 @@ body {
     display:none;
 }
 
-.custom-file
-{
-    border: 1px solid #ccc;display: inline-block;padding: 6px 6px;cursor: pointer; 
-}
+.custom-file{border: 1px solid #ccc;display: inline-block;padding: 6px 6px;cursor: pointer;}
 
 .table_1{ float: left; display:inline-block; position:relative; text-align: left; }
 .table_1 td{ padding:5px;}
@@ -274,9 +284,9 @@ body {
     -webkit-transition: .2s; transition: opacity .2s;
 }
 
-.slider2{ width:94.5%;margin-left:-2px;}
-.slider3{ width:96%;}
-.slider:hover {opacity: 1;}
+.slider2{ width:94.5%;margin-left:-2px; }
+.slider3{ width:96%; }
+.slider:hover {opacity: 1; }
 
 .slider::-webkit-slider-thumb, .slider2::-webkit-slider-thumb, .slider3::-webkit-slider-thumb {
    -webkit-appearance: none;appearance: none; width: 10px; height: 10px;
@@ -288,8 +298,23 @@ body {
 .table_2{border-collapse: collapse; border-spacing:0px; width:90%; float: right; margin-right:2.5%;}
 .table_2_cream{ background:#d6d1c7;} .table_2_lcream{background:#ece9e5}
 .table_2_green{background:#0ab75c; opacity:1;}
+.table_2_green{background:#0ab75c; opacity:1;}
 .table_2_orange{ background: #f6941f; opacity:1;}
 .table_2_yellow{background:#f4ed5c; opacity:1;}
 .table_2_red{ background:#ec2a2f; opacity:1;}        
 
 #ga{ border:3px solid rgba(84,84,84,1); linear-gradient: rgba(0,0,0,0.7),rgba(0,0,0,0.1);background-blend-mode: overlay; ;}
+
+
+
+.dialog_box {height: 75px; border-radius: 5px; margin-top:20px;}
+
+.dialog_box_img, .dialog_box_text{width:8%; padding:8px; display: inline-block; float: left; overflow:hidden; height:100%;}
+.dialog_box_text{ width:80%; border: 0.5px solid grey; border-radius: 15px; background:rgba(255,255,255,0.5); color:black; padding:12px;}
+.dialog_box_img img{background-size: cover; height:65px; width:65px; border-radius:50%; border:1px solid #555;}
+
+.table_3{margin-top: 20px;width:95%; margin-right:2.5%; text-align:center; float:right;}
+.table_3 th,.table_3 td{padding:15px 0 15px 0; width:auto; background-color:#e0e0e0; border-collapse:collapse;}
+.table_3 td{background-color: white;}
+
+title{transition:0.1s;}

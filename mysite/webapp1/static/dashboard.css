@@ -72,38 +72,19 @@ html, body
 }
 
 .sidenav li a:active {
-
-    color: white;
-    background-color: rgb(5,61,165,0.5);
-    transition-duration:0.3s;
+    color: white;background-color: rgb(5,61,165,0.5);transition-duration:0.3s;
 }
 
-.sidenav img
-{
-    margin-top:10px; margin-bottom:10px; width:160px;
-    height:160px; border-radius:50%;z-index:1;
+.sidenav img{
+    margin-top:10px; margin-bottom:10px; width:160px;height:160px; border-radius:50%;z-index:1;
 }
 
-.nav-pic
-{
-    text-align: center;
-    opacity:0.8;
-}
+.nav-pic{text-align: center;opacity:0.8;}
+.table{display: table;margin: 0 auto;}
 
-.table
-{
-    display: table;
-    margin: 0 auto;
-}
+td{padding: 14px;}
 
-td
-{
-    padding: 14px;
-}
-
-#personal_tab2 td {
-    padding: 8px;
-}
+#personal_tab2 td { padding: 8px;}
 
 .content-container
 {
