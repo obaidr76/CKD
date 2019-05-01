@@ -13,7 +13,8 @@ urlpatterns = [
     url(r'dashboard/(?P<id>[0-6])/$',views.dashboard,name='dashboard'),
     url(r'logout/',views.logout,name='logout'),
     url(r'profile/',views.profile,name='profile'),
-    url(r'download/',views.download,name='download')
+    url(r'download/',views.download,name='download'),
+    url(r'review/',views.review,name='review')
 ]
 
 if settings.DEBUG:

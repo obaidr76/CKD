@@ -41,3 +41,11 @@ class Reports(models.Model):
     acr = models.DecimalField(decimal_places = 4,max_digits = 9)
     pred = 	models.BooleanField()
     stage = models.CharField(max_length=5)
+
+
+class Review(models.Model):
+    count=0
+    username = models.CharField(max_length=200)
+    photo = models.CharField(max_length=50)
+    review = models.CharField(max_length=100)
+    rating = models.IntegerField(default=1)

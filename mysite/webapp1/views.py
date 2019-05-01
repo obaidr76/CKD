@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.template import loader
 from django.http import HttpResponse
-from .models import Login,Profile, Reports
+from .models import Login,Profile, Reports, Review
 from django.core.files.storage import FileSystemStorage
 import os
 from datetime import date
@@ -35,6 +35,11 @@ def dashboard(request,id=1):
                 context['prof']=ob.photo
             if id=='3':
                 context['prof']=ob.photo
+            if id=='4':
+                context['prof']=ob.photo
+                rev = Review.objects.all()
+                
+                context['rev']=rev
             if id=='5':
                 print('dsfh')
                 context['prof']=ob.photo
@@ -323,3 +328,18 @@ def download(request):
         return HttpResponse("Not found")
         #return HttpResponse(pdf, content_type='application/pdf')
 
+
+
+
+
+
+
+def review(request):
+    text = request.POST['text']
+    username = request.session['username']
+    prof = request.POST['prof']
+    rating =5 
+    Review.count+=1
+    rev = Review(Review.count,username,prof,text,rating)
+    rev.save()
+    return HttpResponse("<h1>fbjhfjch</h1>")
