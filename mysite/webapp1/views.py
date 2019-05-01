@@ -6,6 +6,7 @@ from django.core.files.storage import FileSystemStorage
 import os
 from datetime import date
 import sklearn
+from .utils import render_to_pdf
 
 # Create your views here.
 
@@ -134,6 +135,9 @@ def signup(request):
 
 def input(request):
     context=dict()
+    prof=''
+    ob1=Profile.objects.get(pk=request.session['username'])
+    prof=ob1.photo
     if request.method =="POST":
         age = request.POST.get('age', False)
         albumin = request.POST.get('albumin', False)
@@ -189,7 +193,9 @@ def input(request):
                 pred+='a2'
             else:
                 pred+='a3'
-            patient_id = Login.objects.get(pk=request.session['username']).patient_id
+            ob = Login.objects.get(pk=request.session['username'])
+            patient_id = ob.patient_id
+            
             print(patient_id)
             Reports.count += 1
             today = str(date.today().day)+str(date.today().month)+str(date.today().year)
@@ -199,7 +205,7 @@ def input(request):
             hyp = True if hypertension=='1' else False
             pre = True if prediction=='CKD' else False
             print('createnihn',createnine)
-            report = Reports(reference_id,patient_id,int(age),float(albumin),Rbc,float(bgr),float(urea),float(createnine),float(sodium),float(potassium),float(haemoglobin),float(wbcc),float(rbcc),hyp,dia,float(egfr),float(Acr),pre)
+            report = Reports(reference_id,patient_id,int(age),float(albumin),Rbc,float(bgr),float(urea),float(createnine),float(sodium),float(potassium),float(haemoglobin),float(wbcc),float(rbcc),hyp,dia,float(egfr),float(Acr),pre,pred)
             report.save()
     else:
         report = Reports.objects.get(reference_id = request.GET['reference_id'])
@@ -218,6 +224,7 @@ def input(request):
     context['diab']=bgr
     context['haem']=haemoglobin
     context['prediction']=prediction
+    context['prof']=prof
     return render(request,'dashboard.html',context)
 
 import pickle
@@ -295,13 +302,24 @@ def profile(request):
 
 def download(request):
     if request.method=="GET":
-        reference_id = request.GET.get('reference_id')
-        report = Reports.objects.get(reference_id = reference_id)
+        report = Reports.objects.get(reference_id = request.GET['reference_id'])
         context=dict()
-        context['pred']=report.pred
+        context['pred']=report.stage
         context['egfr']=report.egfr
         context['albumin']=report.albumin
         context['diab']=report.bgr
         context['haem']=report.haemoglobin
-        return render(request,'download.html',context)
+        #return render(request,'download.html',context)
+        pdf = render_to_pdf('download.html', context)
+        if pdf:
+            response = HttpResponse(pdf, content_type='application/pdf')
+            filename = "report_%s.pdf" %("12341231")
+            #content = "inline; filename='%s'" %(filename)
+            #download = request.GET.get("download")
+            #if download:
+            content = "attachment; filename=%s" %(filename)
+            response['Content-Disposition'] = content
+            return response
+        return HttpResponse("Not found")
+        #return HttpResponse(pdf, content_type='application/pdf')
 

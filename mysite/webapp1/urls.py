@@ -12,7 +12,8 @@ urlpatterns = [
     url(r'dashboard/$',views.dashboard,name='dashboard1'),
     url(r'dashboard/(?P<id>[0-6])/$',views.dashboard,name='dashboard'),
     url(r'logout/',views.logout,name='logout'),
-    url(r'profile/',views.profile,name='profile')
+    url(r'profile/',views.profile,name='profile'),
+    url(r'download/',views.download,name='download')
 ]
 
 if settings.DEBUG:

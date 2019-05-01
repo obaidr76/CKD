@@ -40,4 +40,4 @@ class Reports(models.Model):
     egfr = models.DecimalField(decimal_places = 4,max_digits = 9)
     acr = models.DecimalField(decimal_places = 4,max_digits = 9)
     pred = 	models.BooleanField()
-    stage = models.CharField(max_length=5,default='ff')
+    stage = models.CharField(max_length=5)

@@ -361,7 +361,7 @@
                             
                             {% for report in reports %}
                            
-                            <tr><td>1</td><td>{{ report.reference_id }}</td><td>Report Name</td><td>{{ report.pred }}</td><td>Test Date</td><td style="padding:0px; font-size:20px;"><a href="/webapp1/download/?id=" {{ report.reference_id }} "><i class="fas fa-file-download" title="Download" aria-hidden="true"></i></a>&nbsp&nbsp<a href="/webapp1/dashboard/input/?reference_id = {{ report.reference_id }}" title="View Report"><i class="fas fa-search-plus" aria-hidden="true"></i></a></td></tr>
+                            <tr><td>1</td><td>{{ report.reference_id }}</td><td>Report Name</td><td>{{ report.pred }}</td><td>Test Date</td><td style="padding:0px; font-size:20px;"><a href="http://127.0.0.1:8000/webapp1/download/?reference_id={{ report.reference_id }}"><i class="fas fa-file-download" title="Download" aria-hidden="true"></i></a>&nbsp&nbsp<a href="http://127.0.0.1:8000/webapp1/input/?reference_id={{ report.reference_id }}" title="View Report"><i class="fas fa-search-plus" aria-hidden="true"></i></a></td></tr>
                             {% endfor %}
                             <!--<tr><td>Serial #</td><td>Lab Ref. No.</td><td>Report Name</td><td>Result</td><td>Test Date</td><td>Download</td></td>-->
 

@@ -4,14 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <link rel="stylesheet" href="{%static '/dashboard.css'%}">
+    {% load staticfiles %}
+    <!--<link rel="stylesheet" href="{%static '/dashboard.css'%}">
     <link rel="stylesheet" href="{%static '/style.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">-->
+    
 </head>
-<body onload="window.print()">
+<body>
     <div class="panel_4">
         <a href=# class="save-button"><i class="icono-bookmark"></i></a>
         <div class="panel_4_head">
@@ -84,13 +85,13 @@
             </table>
         </div>
     </div>
-
+<!--
     <script>
                     var id = "{{ pred }}";
 
                     var cell = document.getElementById(id);
                     cell.setAttribute("id", "ga");
     </script>
-
+    -->
 </body>
 </html>
