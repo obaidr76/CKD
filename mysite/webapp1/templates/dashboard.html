@@ -81,9 +81,7 @@
                     <div class="panel_profile">
                         <!--  PROFILE panel -->
                         <div class="profile_card1">
-
                             <h2>PERSONAL DETAILS</h2>
-                            </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
                         </div>
                         <div class="profile_card2">
                             <div id="personal_tab1">
@@ -94,8 +92,8 @@
                                     <tr><td>Date Of Birth: </td><td>{% if dob %} {{ dob }} {% endif %}</td></tr>
                                     <tr><td>Mobile: </td><td>{% if mobile %} {{ mobile }} {% endif %}</td></tr>
                                     <tr><td>Email ID: </td><td>{% if email %} {{ email }} {% endif %} </td></tr>
-                                    <tr><td>C/O: </td><td>name</td></tr>
-                                </table></br></br></br></br></br></br></br></br>
+
+                                </table>
                             </div>
                             <div style="color:white;" class="log-form2" id="personal_tab2">
 
@@ -103,15 +101,24 @@
                                     <button id="personal_button" class="btn" type="submit" style="float: right; padding:10px 10px 10PX 10px;">SAVE CHANGES</button>
                                     <table>
                                         <tr><td>Name: </td><td><input type="text" name="name" placeholder="NAME" value="{% if name %} {{ name }} {% endif %}" /></td></tr>
-                                        <tr><td>Gender: </td><td><input type="text" name="gender" placeholder="GENDER" value="{% if gender %} {{ gender }} {% endif %}" /> </td></tr>
+                                        <tr><td>Gender: </td><td><p><input type="radio" name="gender" id="M" value="M"/>Male</p><p><input type="radio" id="F" name="gender" value="F"/>Female</p></td></tr>
                                         <tr><td>Date Of Birth: </td><td><input type="date" value="" name="dob" placeholder="DOB" /> </td></tr>
                                         <tr><td>Mobile: </td><td><input type="text" name="mobile" placeholder="MOBILE" value="{% if mobile %} {{ mobile }} {% endif %}" /> </td></tr>
                                         <tr><td>Email ID: </td><td><input type="email" name="email" placeholder="EMAIL-ID" value="{% if email %} {{ email }} {% endif %}" /></td></tr>
-                                        <tr><td>C/O: </td><td><input type="text" name="co" placeholder="C/O" /> </td></tr>
+
 
                                         <tr><td>Profile Photo:  </td><td><label class="custom-file" l><input type="file" name="photo" placeholder="Uplaod" />Choose File</label></td></tr>
                                     </table>
                                 </form>
+                                <script>
+                                    var choice = "{{ gender }}";
+                                    if (choice == "M") {
+                                        document.getElementById("M").checked = true;
+                                    }
+                                    else {
+                                        document.getElementById("F").checked = true;
+                                    }
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -147,13 +154,9 @@
                                 </form>
                             </div>
                         </div>
-
                     </div>
-                    <div class="panel_profile">
-                        <!--  MEDICAL panel -->
-
+                    <div class="panel_profile">                                                                                 <!--  MEDICAL panel -->
                         <div class="profile_card1">
-
                             <h2>ADDRESS</h2>
                             </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
                         </div>
@@ -169,7 +172,6 @@
                                 </table></br></br></br></br></br></br></br></br>
                             </div>
                             <div class="log-form2" id="address_tab2">
-
                                 <form action="/webapp1/input/" method="POST">
                                     <button id="address_button" class="btn" type="submit" style="float: right; padding:10px 10px 10PX 10px;">SAVE CHANGES</button>
                                     <table>
@@ -184,9 +186,7 @@
                         </div>
 
                     </div>
-                    <div style="height:50px;" class="padding-div">
-
-                    </div>
+                    <div style="height:50px;" class="padding-div"></div>
 
                 </div>
 
@@ -228,8 +228,8 @@
                     <p> If you're in the early stages of CKD, your doctor and dietitian will monitor your blood pressure. Sodium restriction is recommended if blood pressure is high or if you are retaining fluid. ... Controlling sodium intake will help avoid cramping and blood pressure drops during dialysis.</p>
                     <h2>POTASSIUM LEVEL</h2>
                     <p> Some of the effects of low potassium include muscle weakness, cramping and fatigue. When kidneys fail they can no longer remove excess potassium, so the level builds up in the body. High potassium in the blood is called hyperkalemia, which may occur in people with advanced stages of chronic kidney disease (CKD).</p>
-
                 </div>
+
                 {% elif id == '3' %}
 
                 <div class="panel_4">
@@ -244,7 +244,6 @@
                                 <tr><td>Lab Ref. No.:</td></tr>
                             </table>
                         </div>
-
                         <div style="float:right;" class="panel_4_head_table">
                             <table class="table_1">
                                 <tr><td>Date: 666666666</td></tr>
@@ -267,16 +266,15 @@
                             <img src="{%static '/images/range/gfr2.png'%}" />
                             <h3>GFR value: {{ egfr }} mL/min/1.73 m<sup>2</sup></h3>
                         </div>
-
                     </div>
                     <div class="panel_4_body">
-
                         <div class="panel_4_body_card">
                             <img src="{%static '/images/range/diab1.png'%}" />
                             <input type="range" min="0" max="500" value="{{ diab }}" class="slider" id="myRange" disabled>
                             <img src="{%static '/images/range/diab2.png'%}" />
                             <h3>Diabetes: {{ diab }} mg/dl</h3>
                         </div>
+                        
                         <div class="panel_4_body_card">
                             <img src="{%static '/images/range/haem1m.png'%}" />
                             <input type="range" min="0" max="20" value="{{ haem }}" class="slider3" id="myRange" disabled>
@@ -284,6 +282,7 @@
                             <h3>Haemoglobin: {{ haem }} g/dL</h3>
                         </div>
                     </div>
+
                     <div style="width:100%; display: inline-block; position: relative;"><h3 style="float:left; padding-left:10px;">Calculations</h3></div>
                     <div class="panel_4_body">
                         <table class="table_2">
@@ -307,7 +306,7 @@
 
                 <script>
                     var id = "{{ pred }}";
-                    
+
                     var cell = document.getElementById(id);
                     cell.setAttribute("id", "ga");
                 </script>
@@ -322,18 +321,15 @@
                         <div class="dialog_box_text">{{ review.review }}</div>
                     </div>
                     {% endfor %}
-                    
-
-
                 </div>
+
                 <div class="panel_6">
                     <div class="review_send">
                         <a onclick="show()" href=#><img src="{%static '/images/send.png'%}" /></a>
                     </div>
                     <div class="review_box">
                         <form>
-                            <textarea id ="review" name="message" maxlength="180" placeholder="please keep your message sub 180 characters"></textarea>
-                            <br>
+                            <textarea id="review" name="message" maxlength="180" placeholder="please keep your message sub 180 characters"></textarea><br>
                         </form>
                     </div>
                 </div>
@@ -366,8 +362,8 @@
 
                     }
                 </script>
-                {% elif id == '5' %}
-                
+                {% elif id == '5' %}                                                             <!-- REPORT PAGE -->>
+
                 <div class="panel_4">
                     <div class="panel_4_head">
                         <h2> SOME ORGANIZATION</h2>
@@ -390,9 +386,9 @@
                         <table class="table_3">
 
                             <tr><th>Serial #</th><th>Lab Ref. No.</th><th>Report Name</th><th>Result</th><th>Test Date</th><th>Download</th></tr>
-                            
+
                             {% for report in reports %}
-                           
+
                             <tr><td>1</td><td>{{ report.reference_id }}</td><td>Report Name</td><td>{{ report.pred }}</td><td>Test Date</td><td style="padding:0px; font-size:20px;"><a href="http://127.0.0.1:8000/webapp1/download/?reference_id={{ report.reference_id }}"><i class="fas fa-file-download" title="Download" aria-hidden="true"></i></a>&nbsp&nbsp<a href="http://127.0.0.1:8000/webapp1/input/?reference_id={{ report.reference_id }}" title="View Report"><i class="fas fa-search-plus" aria-hidden="true"></i></a></td></tr>
                             {% endfor %}
                             <!--<tr><td>Serial #</td><td>Lab Ref. No.</td><td>Report Name</td><td>Result</td><td>Test Date</td><td>Download</td></td>-->
@@ -404,11 +400,84 @@
 
                 </div>
 
+
+                {% elif id == '6' %}                                                            <!-- RANGE PAGE -->>
+
+                <div class="panel_4">
+                    <div class="panel_4_body_card_full">
+                        <img src="{%static '/images/range/RANGE_ALBUMIN1.PNG'%}" />
+                        <input type="range" min="10" max="60" value="60" class="slider4" id="output_rangeA" disabled>
+                        <img src="{%static '/images/range/RANGE_ALBUMIN2.PNG'%}" />
+                        <table class="table_4">
+                            <tr>
+                                <td><h3>Albumin value: <input type="text" id="input_rangeA" value="10"> g/L m<sup>2</sup></h3></td>
+                                <td><button onclick='range_check()'>CHECK</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="panel_4_body_card_full">
+                        <img src="{%static '/images/range/RANGE_GFR1.PNG'%}" />
+                        <input type="range" min="5" max="120" value="120" class="slider4" id="output_rangeG" disabled>
+                        <img src="{%static '/images/range/RANGE_GFR2.PNG'%}" />
+                        <table class="table_4">
+                            <tr>
+                                <td><h3>GFR value: <input type="text" id="input_rangeG" value="10">mL/min/1.73 m<sup>2</sup></h3></td>
+                                <td><button onclick='range_check()'>CHECK</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="panel_4_body_card_full">
+                        <img src="{%static '/images/range/RANGE_DIAB1.PNG'%}" />
+                        <input type="range" min="0" max="500" value="0" class="slider4" id="output_rangeD" disabled>
+                        <img src="{%static '/images/range/RANGE_DIAB2.PNG'%}" />
+                        <table class="table_4">
+                            <tr>
+                                <td><h3>Diabetes: <input type="text" id="input_rangeD" value="0"> mg/dl</h3></td>
+                                <td><button onclick='range_check()'>CHECK</button></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    {% if gender == 'M' %}
+                        <div class="panel_4_body_card_full">
+                            <img src="{%static '/images/range/RANGE_HAEMM1.PNG'%}" />
+                            <input type="range" min="0" max="20" value="20" class="slider4" id="output_rangeHM" disabled>
+                            <img src="{%static '/images/range/RANGE_HAEMM2.PNG'%}" />
+                            <table class="table_4">
+                                <tr>
+                                    <td><h3>Haemoglobin: <input type="text" id="input_rangeHM" value="0">g/dl</h3></td>
+                                    <td><button onclick='range_check()'>CHECK</button></td>
+                                </tr>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="panel_4_body_card_full">
+                            <img src="{%static '/images/range/RANGE_HAEMM1.PNG'%}" />
+                            <input type="range" min="0" max="20" value="20" class="slider4" id="output_rangeHM" disabled>
+                            <img src="{%static '/images/range/RANGE_HAEMM2.PNG'%}" />
+                            <table class="table_4">
+                                <tr>
+                                    <td><h3>Haemoglobin: <input type="text" id="input_rangeHM" value="0">g/dl</h3></td>
+                                    <td><button onclick='range_check()'>CHECK</button></td>
+                                </tr>
+                            </table>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                <script>
+                    function range_check() {
+                        document.getElementById('output_rangeA').value = document.getElementById('input_rangeA').value;
+                        document.getElementById('output_rangeG').value = document.getElementById('input_rangeG').value;
+                        document.getElementById('output_rangeD').value = document.getElementById('input_rangeD').value;                        
+                        document.getElementById('output_rangeHM').value = document.getElementById('input_rangeHM').value;
+                        document.getElementById('output_rangeFM').value = document.getElementById('input_rangeFM').value;
+                    }
+                </script>
+
                 {% endif%}
-
-
-            </div>
-                
+            </div>                
         </div>
     </div>
 </body>
