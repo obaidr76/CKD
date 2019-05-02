@@ -18,8 +18,10 @@ def dashboard(request,id=1):
     context['id']=id
     if request.session.get('username',False)!=False:
         try:
+            context['username']=request.session['username']
             ob1 = Login.objects.get(pk=request.session.get('username',False))
             ob = Profile.objects.get(pk=ob1)
+            context['prof']=ob.photo
             if id=='1':
                 
                 context['name']=ob.name
@@ -29,20 +31,21 @@ def dashboard(request,id=1):
                 #print(type(ob.dob))
                 #context['dob1']=str(ob.dob)
                 context['email']=ob.email
-                context['prof']=ob.photo
+                
             if id=='2':
-
-                context['prof']=ob.photo
+                pass
+                
             if id=='3':
-                context['prof']=ob.photo
+                pass
             if id=='4':
                 context['prof']=ob.photo
                 rev = Review.objects.all()
-                
                 context['rev']=rev
+                
+
             if id=='5':
                 print('dsfh')
-                context['prof']=ob.photo
+                
                 patient_id = Login.objects.get(pk=request.session['username']).patient_id
                 reports = list(Reports.objects.filter(patient_id=patient_id))
                 print('reports',reports)
@@ -52,6 +55,9 @@ def dashboard(request,id=1):
                     print(report.pred)
                 context['reports']=reports
                 context['i']='0'
+                context['patient_id']=ob1.patient_id
+            if id == '6':
+                pass
                 
             
             
@@ -221,6 +227,9 @@ def input(request):
         diab = 1 if report.diabetes else 0
         bgr = report.bgr
         haemoglobin = report.haemoglobin
+        date=report.date
+        reference_id=request.GET['reference_id']
+        patient_id=report.patient_id
     context =dict()
     context['pred']=pred
     context['id']='3'
@@ -230,6 +239,10 @@ def input(request):
     context['haem']=haemoglobin
     context['prediction']=prediction
     context['prof']=prof
+    context['date']=date
+    context['reference_id']=reference_id
+    context['username']=request.session['username']
+    context['patient_id']=patient_id
     return render(request,'dashboard.html',context)
 
 import pickle
@@ -314,8 +327,13 @@ def download(request):
         context['albumin']=report.albumin
         context['diab']=report.bgr
         context['haem']=report.haemoglobin
+        context['reference_id'] = request.GET['reference_id']
+        context['date']=report.date
+        context['username']=request.session['username']
+        context['patient_id']=report.patient_id
         #return render(request,'download.html',context)
-        pdf = render_to_pdf('download.html', context)
+        response = render('download.html', context)
+        pdf = render_to_pdf(response)
         if pdf:
             response = HttpResponse(pdf, content_type='application/pdf')
             filename = "report_%s.pdf" %("12341231")

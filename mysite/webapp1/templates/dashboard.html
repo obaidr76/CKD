@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="{%static '/dashboard.css'%}">
     <link rel="stylesheet" href="{%static '/style.css'%}">
+
     <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.6.1.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
@@ -31,7 +32,7 @@
                 <div class="nav-opt" style="text-align:center;">
                     <ul class="navul xx" style="text-align:center;">
                         
-                        <li style="margin-top:0px;"class="nav-item "><a href="#"> &nbsp&nbsp&nbspREPORTS</a></li>
+                        <li style="margin-top:0px;"class="nav-item "><a href="#"> &nbsp&nbsp&nbsp{{ username}}</a></li>
                     </ul>
                 </div>
                 <div style="text-align:center" class="nav-pic">
@@ -44,10 +45,10 @@
                 <hr style="width: 90%; "></hr>
                 <div class="nav-options table" style="text-align: left;">
                     <ul class="navul">
-                        <li class="nav-item active"><a href="#" class="nav-link"><i class="icono-user"></i> &nbsp&nbsp&nbspPROFILE</a></li>
+                        <li class="nav-item active"><a href="/webapp1/dashboard/1/" class="nav-link"><i class="icono-user"></i> &nbsp&nbsp&nbspPROFILE</a></li>
                         <li class="nav-item "><a href="/webapp1/dashboard/2/"><i class="icono-file"></i> &nbsp&nbsp&nbspCKD TEST</a></li>
-                        <li class="nav-item "><a href="#"><i href="#" class="icono-file"></i> &nbsp&nbsp&nbspCHECK RANGE</a></li>
-                        <li class="nav-item "><a href="#"><i href="#" class="icono-barChart"></i> &nbsp&nbsp&nbspREPORTS</a></li>
+                        <li class="nav-item "><a href="/webapp1/dashboard/6/"><i href="#" class="icono-file"></i> &nbsp&nbsp&nbspCHECK RANGE</a></li>
+                        <li class="nav-item "><a href="/webapp1/dashboard/5/"><i href="#" class="icono-barChart"></i> &nbsp&nbsp&nbspREPORTS</a></li>
                     </ul>
                 </div>
             </div>
@@ -239,14 +240,14 @@
                         <h3>_____ Bangalore, 562157 _____</h3>
                         <div class="panel_4_head_table">
                             <table class="table_1">
-                                <tr><td>Patient ID:</td></tr>
-                                <tr><td>Name:</td></tr>
-                                <tr><td>Lab Ref. No.:</td></tr>
+                                <tr><td>Patient ID: {{ patient_id }}</td></tr>
+                                <tr><td>Name: {{ username }}</td></tr>
+                                <tr><td>Lab Ref. No.: {{ reference_id }}</td></tr>
                             </table>
                         </div>
                         <div style="float:right;" class="panel_4_head_table">
                             <table class="table_1">
-                                <tr><td>Date: 666666666</td></tr>
+                                <tr><td>Date: {{ date }}</td></tr>
                             </table>
                         </div>
                     </div>
@@ -370,13 +371,13 @@
                         <h3>_____ Bangalore, 562157 _____</h3>
                         <div class="panel_4_head_table">
                             <table class="table_1">
-                                <tr><td>Patient ID:</td></tr>
+                                <tr><td>Patient ID: {{ patient_id }}</td></tr>
                             </table>
                         </div>
 
                         <div style="float:right;" class="panel_4_head_table">
                             <table class="table_1">
-                                <tr><td>Name:</td></tr>
+                                <tr><td>Name: {{ username }}</td></tr>
                             </table>
                         </div>
                     </div>
@@ -386,10 +387,10 @@
                         <table class="table_3">
 
                             <tr><th>Serial #</th><th>Lab Ref. No.</th><th>Report Name</th><th>Result</th><th>Test Date</th><th>Download</th></tr>
-
+                        
                             {% for report in reports %}
-
-                            <tr><td>1</td><td>{{ report.reference_id }}</td><td>Report Name</td><td>{{ report.pred }}</td><td>Test Date</td><td style="padding:0px; font-size:20px;"><a href="http://127.0.0.1:8000/webapp1/download/?reference_id={{ report.reference_id }}"><i class="fas fa-file-download" title="Download" aria-hidden="true"></i></a>&nbsp&nbsp<a href="http://127.0.0.1:8000/webapp1/input/?reference_id={{ report.reference_id }}" title="View Report"><i class="fas fa-search-plus" aria-hidden="true"></i></a></td></tr>
+                           
+                            <tr><td>{{ forloop.counter }}</td><td>{{ report.reference_id }}</td><td>Report Name</td><td>{{ report.pred }}</td><td>Test Date</td><td style="padding:0px; font-size:20px;"><a href="http://127.0.0.1:8000/webapp1/download/?reference_id={{ report.reference_id }}"><i class="fas fa-file-download" title="Download" aria-hidden="true"></i></a>&nbsp&nbsp<a href="http://127.0.0.1:8000/webapp1/input/?reference_id={{ report.reference_id }}" title="View Report"><i class="fas fa-search-plus" aria-hidden="true"></i></a></td></tr>
                             {% endfor %}
                             <!--<tr><td>Serial #</td><td>Lab Ref. No.</td><td>Report Name</td><td>Result</td><td>Test Date</td><td>Download</td></td>-->
 

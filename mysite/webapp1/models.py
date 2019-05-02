@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 # Create your models here.
 class Login(models.Model):
     count=0
@@ -21,6 +21,7 @@ class Profile(models.Model):
 
 class Reports(models.Model):
     count=0
+    
     reference_id = models.CharField(max_length=12,primary_key=True)
     patient_id =  models.CharField(max_length=30)
     #models.ForeignKey(Login,on_delete = 'CASCADE')
@@ -41,6 +42,7 @@ class Reports(models.Model):
     acr = models.DecimalField(decimal_places = 4,max_digits = 9)
     pred = 	models.BooleanField()
     stage = models.CharField(max_length=5)
+    date= models.DateField(default=timezone.now)
 
 
 class Review(models.Model):
