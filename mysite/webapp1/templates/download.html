@@ -5,464 +5,23 @@
     <meta charset="utf-8" />
     <title></title>
     {% load staticfiles %}
-    <!--<link rel="stylesheet" href="{%static '/dashboard.css'%}">
+    <link rel="stylesheet" href="{%static '/dashboard.css'%}">
     <link rel="stylesheet" href="{%static '/style.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">-->
-    <style>
-        body {
-    background-image: url("images/img1.png");
-    background-attachment: fixed;
-    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
-}
-
-html, body 
-{
-    margin: 0px !important;
-    padding: 0px !important;
-}
-
-.wrapper {
-    background-color: rgba(0,0,0,0.6);width: 90%;height: 90%;
-    position: fixed;z-index: 1;top: 50%;left: 50%;
-    bottom: 20%;overflow-y: hidden; -ms-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translate(-50%,-50%); transform: translate(-50%,-50%);
-    box-shadow: 14px 14px 14px 14px rgba(0,0,0,0.22), 10px 10px 10px rgba(0,0,0,0.22);
-}
-
-
-.content { width: 78%;float: right; z-index: 1;
-    position: relative;display: inline-block;height: 100%;
-}
-
-
-.sidenav ul {
-    list-style-type: none; margin: 0; padding: 0; overflow: hidden;background-color: none; text-align: left;
-}
-
-.sidenav li {
-    display: inline-block;
-    width: 100%;
-    margin-top: 15px;
-
-}
-
-.sidenav li a {
-    display: block; width: 100%;height: 100%;
-    color: white;padding: 10px 10px 10px 10px;text-decoration: none;border-radius:2px;
-
-}
-
-.sidenav li a:hover 
-{
-    color: white;
-    background: linear-gradient(90deg, rgba(201,229,248,0.4) 0%, rgba(133,196,239,0.8) 100%);
-    transition-duration: 0.3s;
-}
-
-.sidenav li a:active {
-    color: white;background-color: rgb(5,61,165,0.5);transition-duration:0.3s;
-}
-
-.sidenav img{
-    margin-top:10px; margin-bottom:10px; width:160px;height:160px; border-radius:50%;z-index:1;
-}
-
-.nav-pic{text-align: center;opacity:0.8;}
-.table{display: table;margin: 0 auto;}
-
-td{padding: 14px;}
-
-#personal_tab2 td { padding: 8px;}
-
-.content-container
-{
-    width: 100%;
-    background: rgba(0,0,0,0.22);
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.sidenav {                                  /* left side navigation */
-    height: 100%;
-    width: 22%;
-    position: relative;
-    display: inline-block;
-    z-index: 1;
-    overflow-x: hidden;
-    background-image: url("images/img3.jpg"), linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1));
-    background-blend-mode: overlay;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: rgba(12,12,12,0.8);
-    text-align: center;
-    padding: 15px;
-}
-
-.navbar-ele {                               /* top bar navigation */
-    padding: 10px 10px 10px 10px;
-    margin: 0 auto;
-}
-
-.navbar {
-    position: relative;
-    height: 50px;
-    font-family: "Proxima Nova", sans-serif;
-    background: rgba(12,12,12,0.5);
-    width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-}
-
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: none;
-}
-
-.navbar li a {
-    display: block;
-    color: #ededed;
-    text-align: center;
-    padding: 4px 14px;
-    border-radius: 3px;
-    text-decoration: none;
-    font-size: 20px;
-}
-
-.navbar li a:hover {
-        background-color: #b9b9b9;
-    }
-
-.nav-opt ul li a{
-    color: white;
-    background: linear-gradient(90deg, rgba(201,229,248,0.4) 0%, rgba(133,196,239,0.8) 100%);
-    transition-duration: 0.3s;
-}
-
-.i{
-    font-size:4px;
-    width: 10px; height: 4px;
-}
-
-
-
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #888;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #fff;
-}
-
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-    }
-
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #c2c2c2;
-    opacity: 1; /* Firefox */
-}
-.panel_profile::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: black;
-    opacity: 1; /* Firefox */
-}
-textarea::placeholder {
-    color:rgba(84,84,84,1);
-    opacity:1;
-}
-.img-container
-{
-  text-align: center;
-  height: 100%;
-  background-image: url("/images/img1.png");
-}
-html,body{
-  margin:0px !important;padding:0px !important;
-}
-body {
-  overflow-x: hidden;
-}
-.top_blue{
-  position:fixed; z-index:9999; top:0px; width:100%; height:5px; background:#b7d7e8;
-}
-
-.container{
-  width: 100%;height: auto;float: left;text-align: center;overflow: hidden;
-}
-
-.panel_2, .panel_1, .panel_4 {
-    margin-top: 40px; margin-right:2.5%;
-    width: 52%; height: auto;float: right;color: #ffffff;
-    background-color: rgba(84,84,84,0.6);position: relative;
-    box-shadow: 14px 14px 14px rgba(0,0,0,0.8), 10px 10px 10px rgba(0,0,0,0.8);
-    margin-bottom: 90px;
-}
-
-.save-button{padding: 5px; float: right; border: 1px solid lightgrey; margin-right:-39px; margin-top:1px;}
-
-.panel_4{
-    width: 90%; margin-right: 5%; background-color: #fff;color:rgba(84,84,84,1);
-    padding:0 40px 40px 40px; font-family: "Lucida Console", Monaco, monospace; overflow:auto;
-}
-
-
-.panel_5, .panel_6{
-    font-family: "Lucida Console", Monaco, monospace;width: 90%; position: absolute; height:75%;
-    overflow:auto; display: inline-block;  background-color:rgba(0,0,0,0.2);
-    background-blend-mode: overlay;background-size: 500px 500px; background-attachment:local;
-    left: 50%;bottom: 0%;transform: translateX(-50%); font-size:20px; margin-bottom:7.5%; border:4px solid black;border-radius:5px; padding:15px;
-}
-.panel_5{ border-bottom-style:none; }
-
-.panel_6{
-    position:absolute; height:11%; overflow: hidden;margin-bottom:1%; padding:11px; border-top-style: none;
-}
-
-
-.review_send, .review_box{ margin-left:0px;position:relative; display:inline-block; width:6%; 
-    height: 100%; float left;border: 1px solid black; border-radius:10px; font-size:20px;background:rgba(255,255,255,0.5); }
-    
-.review_box{ margin-left:0px; width:92.5%; overflow-y:hidden; overflow-x:hidden;background:rgba(255,255,255,0.5);}
-
-.review_send img{background-size: cover; height:100%; width:100%;}
-
-.review_send a:hover{ opacity:0.3; transition: 0.7s;}
-
-
-.panel_4_head{text-align: center; font-size: 16px; margin-top:60px;}
-
-.panel_4_body,.panel_4_body_card, .panel_4_body_table{display:inline-block; margin-top:40px; position: relative; width: 95%; text-align: center; margin-right:10px;}
-.panel_4_body_card{width:46%; float: right;}
-.panel_4_body_card_full{width:100%; float: right; text-align: center; margin-top:20px;}
-.panel_4_head h2{ font-size: 28px;}
-
-.panel_4_body_table{width:100%;text-align: center; margin-left:5%; }
-
-.panel_4_body_card img,.panel_4_body_card_full img{width:100%;}
-
-textarea{height:200px; width:100%; border:none; background: transparent; padding: 10px; font-size:18px;}
-.panel_1{
-    width: 40%;float: left;margin-left: 2.5%;
-}
-@font-face {
-  font-family: 'Open Sans';font-style: normal;
-  font-weight: 300;src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OUuhs.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFVZ0e.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UNirkOUuhs.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Open Sans Condensed';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Open Sans Condensed Light'), local('OpenSansCondensed-Light'), url(https://fonts.gstatic.com/s/opensanscondensed/v13/z7NFdQDnbTkabZAIOl9il_O6KJj73e7Ff1GhDuXMQg.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Open Sans Condensed';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Open Sans Condensed Bold'), local('OpenSansCondensed-Bold'), url(https://fonts.gstatic.com/s/opensanscondensed/v13/z7NFdQDnbTkabZAIOl9il_O6KJj73e7Ff0GmDuXMQg.ttf) format('truetype');
-}
-* {
-  box-sizing: border-box;
-}
-.log-form{
-    width: 100%;background-color: rgba(84,84,84,0.6);
-    position: relative;text-align: center;
-    box-shadow:  10px 10px 10px rgba(0,0,0,0.8);
-}
-
-.panel_3 {
-    width: 85%;margin-left: 7.5%;margin-right: 7.5%;
-    position: relative; height: auto; margin-top: 80px;text-align: right;
-}
-
-.panel_img, .panel_profile, .panel_profile_icon {
-    width: 100%;position: relative;
-    display: inline-block; height: 200px;
-    overflow: hidden;border: 1.5px #c3c3c3 solid;border-radius:10px;
-}
-
-.panel_img {
-    background-image: url("images/img6.jpg"), linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.1));
-    background-blend-mode: overlay;background-repeat: no-repeat;background-size: cover;
-}
-
-.panel_profile_icon{
-    height:125px;display:block;position: absolute;width: 125px;float:left;margin-top: 38px;margin-left: 3.5%;
-}
-
-.panel_profile {
-    height: auto;background-color: transparent;background-image: linear-gradient(to left,rgba(0,0,0,0.7), rgba(0,0,0,0.1));
-}
-
-.panel_img img{width: 100%;}
-
-@media (max-width: 40em) {
-  .log-form {
-    width: 90%; position: relative; margin: 2.5% auto 0 auto; left: 0%;-webkit-transform: translate(0%, 0%);
-    -moz-transform: translate(0%, 0%); -o-transform: translate(0%, 0%);-ms-transform: translate(0%, 0%);
-    transform: translate(0%, 0%);
-  }
-}
-.log-form form {
-  display: block;width: 100%;padding: 1.4em;
-}
-.log-form h2 {
-    font-family: "open sans condensed";    font-size: 1.35em;    display: block;    color: #fff;
-    background-color: rgba(32,141,255,0.4);    width: 100%;
-    text-transform: uppercase;    padding: 0.75em 1em 0.75em 1.5em;
-    box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.5);
-    border: 1px solid #9fceff;    margin: 0;    font-weight: 200;
-}
-
-.panel_2 h2{
-  font-family: "open sans condensed";  font-size: 1.35em;  display: block;
-  background-color: rgba(32,141,255,0.4);  width: 40%;
-  text-transform: uppercase;  padding: 10px 10px 10px 40px;  box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.05);
-  border: 1px solid #9fceff;  margin: 0;  font-weight: 200;
-}
-
-.panel_2 p{
-  font-family: "open sans condensed";
-  font-size: 1.35em;  display: block;  padding: 10px 40px 20px 40px;
-  margin: 0;  font-weight: 200;  text-align: justify;
-}
-.log-form input {
-  display: block; font-size: 15px; margin: auto auto;
-  width: 100%; margin-bottom: 2em; border: none;
-  padding: 0.5em 0; border-bottom: 1px solid #eaeaea;
-  padding-bottom: 1.25em; background: transparent; color: white;
-}
-
-.log-form2 input{
-  display: inline-block; position:relative; font-size: 15px; margin: auto auto; padding:8px 8px; float: left;
-  width: 200px; margin-bottom: 0px; border: none; background: transparent; color: grey; border-bottom: 1px solid grey;
-}
-.log-form input:focus {
-    outline: none;
-}
-.log-form .btn {
-    display: inline-block; background: rgba(32,141,255,0.3);
-    border: 1px solid #1ba0a9; padding: 0.5em 2em;
-    color: #d8d8d8;margin-right: 0.5em;
-    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
-}
-    .log-form .btn:hover {
-        background: rgba(32,141,255,0.6);
-    }
-    .log-form .btn:active {
-        background: rgba(32,141,255,0.6);
-        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.1);
-    }
-.log-form .btn:focus {
-  outline: none;
-}
-#personal_button,#address_button {
-    display: inline-block; background: rgba(32,141,255,0.3);border: 1px solid #1ba0a9; padding: 0.5em 2em;
-    color: #d8d8d8;margin: 10px 20px 0 0;box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
-}
-
-#personal_button:hover, #address_button:hover{
-    background: rgba(32,141,255,0.6);
-}
-
-.profile_card1, .profile_card2 {
-    width: 28%; position: relative; background: transparent;
-    display: inline-block; height: 100%;border: 2px solid rgba(0,0,0,0);float: left; padding-top: 140px; color: #bebebe;
-    font-family: "Lucida Console"; font-size: 16px; text-align: center;
-
-}
-.profile_card2 {
-    width: 72%;padding: 50px 0 60px 0; text-align: left; background:rgba(0,0,0,0.8);overflow-x:hidden; overflow-y:hidden; 
-}
-
-#personal_tab2,#address_tab2{display: none; height: auto;}
-
-#personal_tab2, #personal_tab1, #address_tab1,#address_tab2{ position: relative; width: 80%;margin: 0 10% 0 10%; font-size:20px;background: transparent;
-
-}
-
-.log-form2 input[type=file]{display:none;}
-
-.custom-file{border: 1px solid #ccc;display: inline-block;padding: 6px 6px;cursor: pointer;}
-
-.table_1{ float: left; display:inline-block; position:relative; text-align: left; }
-.table_1 td{ padding:5px;}
-
-.slider, .slider2, .slider3, .slider4 {
-    -webkit-appearance: none;width: 95.5%;
-    height:0px; background: #d3d3d3;
-    outline: none; opacity: 0.7;
-    -webkit-transition: .2s; transition: opacity .2s;
-}
-
-.slider2{ width:94.5%;margin-left:-2px; }
-.slider3{ width:96%; }
-.slider4{ width:97.7%;}
-.slider:hover {opacity: 1; }
-
-.slider::-webkit-slider-thumb, .slider2::-webkit-slider-thumb, .slider3::-webkit-slider-thumb, .slider4::-webkit-slider-thumb {
-   -webkit-appearance: none;appearance: none; width: 10px; height: 10px;
-   margin-top: -10px; background: transparent; cursor: pointer; border-left: 7.5px solid transparent;
-   border-right: 7.5px solid transparent; border-top: 15px solid #555;
-}
-
-input[type=radio]{display: inline-block; padding:8px; width: 30px;}
-.panel_4_body table, .panel_4_body td {
-    border: 1px solid grey;
-}
-.table_2{border-collapse: collapse; border-spacing:0px; width:90%; float: right; margin-right:2.5%;}
-.table_2_cream{ background:#d6d1c7;} .table_2_lcream{background:#ece9e5}
-.table_2_green{background:#0ab75c; opacity:1;}
-.table_2_green{background:#0ab75c; opacity:1;}
-.table_2_orange{ background: #f6941f; opacity:1;}
-.table_2_yellow{background:#f4ed5c; opacity:1;}
-.table_2_red{ background:#ec2a2f; opacity:1;}        
-
-#ga{ border:3px solid rgba(84,84,84,1); linear-gradient: rgba(0,0,0,0.7),rgba(0,0,0,0.1);background-blend-mode: overlay; ;}
-
-.dialog_box {height: 75px; border-radius: 5px; margin-top:20px;}
-
-.dialog_box_img, .dialog_box_text{width:8%; padding:8px; display: inline-block; float: left; overflow:hidden; height:100%;}
-.dialog_box_text{ width:80%; border: 0.5px solid grey; border-radius: 15px; background:rgba(255,255,255,0.5); color:black; padding:12px;}
-.dialog_box_img img{background-size: cover; height:65px; width:65px; border-radius:50%; border:1px solid #555;}
-
-.table_3{margin-top: 20px;width:95%; margin-right:2.5%; text-align:center; float:right;}
-.table_3 th,.table_3 td{padding:15px 0 15px 0; width:auto; background-color:#e0e0e0; border-collapse:collapse;}
-.table_3 td{background-color: white;}
-.table_4{margin: 0 auto;}
-title{transition:0.1s;}
-
-.panel_4_body_card_full button {padding:8px;border:none;border-bottom:1px solid #ccc;box-shadow: 3px 3px 3px rgba(0,0,0,0.3), 3px 3px 3px rgba(0,0,0,0.3); border-radius: 5px; border-bottom: 2px; }
-.panel_4_body_card_full button:hover{box-shadow: 3px 3px 3px rgba(0,0,0,0.5), 3px 3px 3px rgba(0,0,0,0.5); transition: 0.3s;}
-.panel_4_body_card_full input[type=text] {padding:8px;border:none;border-bottom:1px solid #ccc; width:40px; }
-    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+   
 </head>
-<body>
-    <div class="panel_4">
-        <a href=# class="save-button"><i class="icono-bookmark"></i></a>
+<style>
+    body{
+        background-color:white;
+    }
+</style>
+
+<body onload="window.print()">
+    <div style="box-shadow:none; padding:0px;" class="panel_4">
+        <a href="/webapp1/dashboard/5/" style="float:left; margin-left:-39px;" class="save-button"><i class="fas fa-arrow-alt-circle-left"></i></a> <button class="save-button" onclick="window.location.href='http://127.0.0.1:8000/webapp1/download/?reference_id={{ reference_id }}'"><i class="fas fa-file-download"></i></button>
+
         <div class="panel_4_head">
             <h2> SOME ORGANIZATION</h2>
             <h3>_____ Bangalore, 562157 _____</h3>
@@ -483,7 +42,7 @@ title{transition:0.1s;}
         <hr style="margin-top: 130px; width: 80%;">
         <div style="width:100%; display: inline-block; position: relative;"><h3 style="float:left; padding-left:10px;">Range</h3></div>
 
-        <div class="panel_4_body">
+        <div style="margin:-20px; padding:0px;" class="panel_4_body">
             <div class="panel_4_body_card">
                 <img src="{%static '/images/range/albumin1.jpeg'%}" />
                 <input type="range" min="10" max="60" value="{{ albumin }}" class="slider2" id="myRange" disabled>
@@ -498,7 +57,7 @@ title{transition:0.1s;}
             </div>
 
         </div>
-        <div class="panel_4_body">
+        <div style="margin:-20px; padding:0px;" class="panel_4_body">
 
             <div class="panel_4_body_card">
                 <img src="{%static '/images/range/diab1.png'%}" />
@@ -514,7 +73,7 @@ title{transition:0.1s;}
             </div>
         </div>
         <div style="width:100%; display: inline-block; position: relative;"><h3 style="float:left; padding-left:10px;">Calculations</h3></div>
-        <div class="panel_4_body">
+        <div style="margin-top:-20px; padding:0px;" class="panel_4_body">
             <table class="table_2">
                 <tr><td style="border-left-style : hidden!important; border-top-style:hidden!important;" rowspan="7" colspan="4" class="table_2_white">Prognosis of CKD by GFR and Albuminaria Categories</td><td rowspan="2" colspan="3" class="table_2_white">Persistent Albuminuria categories. &nbsp&nbsp&nbsp&nbsp Description and Range.</td></tr>
                 <tr>                         </tr>
@@ -533,13 +92,12 @@ title{transition:0.1s;}
             </table>
         </div>
     </div>
-<!--
     <script>
                     var id = "{{ pred }}";
 
                     var cell = document.getElementById(id);
                     cell.setAttribute("id", "ga");
     </script>
-    -->
+
 </body>
 </html>

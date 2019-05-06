@@ -18,9 +18,6 @@ function switchVisible() {
 document.getElementById('personal_button').addEventListener('click', switchVisible);
 
 
-
-
-
 var div3 = document.getElementById('address_tab1'),
     div4 = document.getElementById('address_tab2');
 function switchVisible2() {
@@ -34,3 +31,19 @@ function switchVisible2() {
     }
 }
 document.getElementById('address_button').addEventListener('click', switchVisible2);
+
+/*
+var div5 = document.getElementById('medical1_tab1'),
+    div6 = document.getElementById('medical1_tab2');
+function switchVisible3() {
+    if (!div5) return;
+    if (getComputedStyle(div5).display == 'block') {
+        div5.style.display = 'none';
+        div6.style.display = 'block';
+    } else {
+        div5.style.display = 'block';
+        div6.style.display = 'none';
+    }
+}
+document.getElementById('medical1_button').addEventListener('click', switchVisible3);
+*/

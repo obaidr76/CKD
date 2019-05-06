@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-# Create your models here.
+                                        # Create your models here.
 class Login(models.Model):
     count=0
     username = models.CharField(max_length=200,primary_key=True)
@@ -19,6 +19,28 @@ class Profile(models.Model):
     email=models.CharField(max_length=50)
     photo=models.CharField(max_length=50)
 
+class Address(models.Model):
+    username=models.OneToOneField(Login,primary_key=True,on_delete=models.CASCADE)
+    addressl1=models.CharField(max_length=60)
+    addressl2=models.CharField(max_length=60)
+    addcity=models.CharField(max_length=15)
+    addstate=models.CharField(max_length=15)
+    addzip=models.CharField(max_length=6)
+
+
+class Medical1(models.Model):
+    username=models.OneToOneField(Login,primary_key=True,on_delete=models.CASCADE)
+    fever=models.CharField(max_length=9)
+    highbp=models.CharField(max_length=9)
+    lowbp=models.CharField(max_length=9)
+    seizures=models.CharField(max_length=9)
+    heart_d=models.CharField(max_length=9)
+    fainting=models.CharField(max_length=9)
+    diabetes=models.CharField(max_length=9)
+    cholestrol=models.CharField(max_length=9)
+    palp=models.CharField(max_length=9)                         
+    otherdetail=models.CharField(max_length=500,default='----')
+  
 class Reports(models.Model):
     count=0
     

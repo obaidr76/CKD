@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.template import loader
 from django.http import HttpResponse
-from .models import Login,Profile, Reports, Review
+from .models import Login,Profile, Reports, Review, Address, Medical1
 from django.core.files.storage import FileSystemStorage
 import os
 from datetime import date
@@ -13,30 +13,80 @@ from .utils import render_to_pdf
 def index(request):
     pass
 
-def dashboard(request,id=1):
+def dashboard(request,id='1'):
     context=dict()
+    
     context['id']=id
     if request.session.get('username',False)!=False:
+        
         try:
             context['username']=request.session['username']
             ob1 = Login.objects.get(pk=request.session.get('username',False))
             ob = Profile.objects.get(pk=ob1)
+            adr = Address.objects.get(pk=ob1)
+            m1 = Medical1.objects.get(pk=ob1)
             context['prof']=ob.photo
             if id=='1':
                 
-                context['name']=ob.name
-                context['mobile']=ob.mobile
+                context['name']=ob.name.strip()
+                context['mobile']=ob.mobile.strip()
                 context['gender']=ob.gender
                 context['dob']=ob.dob
                 #print(type(ob.dob))
                 #context['dob1']=str(ob.dob)
                 context['email']=ob.email
+
                 
+                context['addressl1']=adr.addressl1
+                context['addressl2']=adr.addressl2
+                context['addcity']=adr.addcity
+                context['addstate']=adr.addstate
+                context['addzip']=adr.addzip
+
+                context['fever']=m1.fever
+                context['lowbp']=m1.lowbp
+                context['highbp']=m1.highbp
+                context['seizures']=m1.seizures
+                context['heart_d']=m1.heart_d
+                context['fainting']=m1.fainting
+                context['diabetes']=m1.diabetes
+                context['cholestrol']=m1.cholestrol
+                context['palp']=m1.palp
+                context['otherdetail']=m1.otherdetail
+                
+
             if id=='2':
                 pass
                 
             if id=='3':
-                pass
+                #print(request.GET['reference_id'])
+                report = Reports.objects.get(reference_id = request.GET['reference_id'])
+                pred = report.stage
+                prediction = 'CKD' if report.pred else 'NoCKD'
+                egfr = report.egfr
+                albumin = report.albumin
+                diab = 1 if report.diabetes else 0
+                bgr = report.bgr
+                haemoglobin = report.haemoglobin
+                date1=report.date
+                reference_id=request.GET['reference_id']
+                
+                patient_id=report.patient_id
+                context =dict()
+                context['pred']=pred
+                context['egfr']=egfr
+                context['albumin']=albumin
+                context['id']='3'
+                context['diab']=bgr
+                context['haem']=haemoglobin
+                context['prediction']=prediction
+                context['date']=date1
+                context['reference_id']=reference_id
+                context['username']=request.session['username']
+                context['patient_id']=patient_id
+                print(context)
+
+
             if id=='4':
                 context['prof']=ob.photo
                 rev = Review.objects.all()
@@ -57,7 +107,7 @@ def dashboard(request,id=1):
                 context['i']='0'
                 context['patient_id']=ob1.patient_id
             if id == '6':
-                pass
+                context['gender']=ob.gender
                 
             
             
@@ -218,8 +268,10 @@ def input(request):
             print('createnihn',createnine)
             report = Reports(reference_id,patient_id,int(age),float(albumin),Rbc,float(bgr),float(urea),float(createnine),float(sodium),float(potassium),float(haemoglobin),float(wbcc),float(rbcc),hyp,dia,float(egfr),float(Acr),pre,pred)
             report.save()
+            date1=today
     else:
-        report = Reports.objects.get(reference_id = request.GET['reference_id'])
+        reference_id=request.GET['reference_id']
+        '''report = Reports.objects.get(reference_id = request.GET['reference_id'])
         pred = report.stage
         prediction = 'CKD' if report.pred else 'NoCKD'
         egfr = report.egfr
@@ -227,7 +279,7 @@ def input(request):
         diab = 1 if report.diabetes else 0
         bgr = report.bgr
         haemoglobin = report.haemoglobin
-        date=report.date
+        date1=report.date
         reference_id=request.GET['reference_id']
         patient_id=report.patient_id
     context =dict()
@@ -239,12 +291,12 @@ def input(request):
     context['haem']=haemoglobin
     context['prediction']=prediction
     context['prof']=prof
-    context['date']=date
+    context['date']=date1
     context['reference_id']=reference_id
     context['username']=request.session['username']
-    context['patient_id']=patient_id
-    return render(request,'dashboard.html',context)
-
+    context['patient_id']=patient_id'''
+    
+    return redirect('../dashboard/3/?reference_id='+reference_id,request)
 import pickle
 def Classification(values,choice=1):
     scriptDirectory = os.path.dirname(os.path.realpath(__file__))
@@ -312,7 +364,7 @@ def profile(request):
         context['mobile']=mobile
         context['prof'] = url
         context['id']='1'
-        return render(request,'dashboard.html',context)
+        return redirect('dashboard1')
 
 
 
@@ -332,25 +384,22 @@ def download(request):
         context['username']=request.session['username']
         context['patient_id']=report.patient_id
         #return render(request,'download.html',context)
-        response = render('download.html', context)
-        pdf = render_to_pdf(response)
-        if pdf:
+        try:
+            return render(request,'download.html', context)
+        except:
+            pass
+        #pdf = render_to_pdf(response)
+        '''if pdf:
             response = HttpResponse(pdf, content_type='application/pdf')
-            filename = "report_%s.pdf" %("12341231")
+            #filename = "report_%s.pdf" %("12341231")
             #content = "inline; filename='%s'" %(filename)
-            #download = request.GET.get("download")
+            ##download = request.GET.get("download")
             #if download:
-            content = "attachment; filename=%s" %(filename)
-            response['Content-Disposition'] = content
-            return response
-        return HttpResponse("Not found")
+            #content = "attachment; filename=%s" %(filename)
+            response['Content-Disposition'] = content'''
+        #return response
+        #return HttpResponse("Not found")
         #return HttpResponse(pdf, content_type='application/pdf')
-
-
-
-
-
-
 
 def review(request):
     text = request.POST['text']
@@ -361,3 +410,30 @@ def review(request):
     rev = Review(Review.count,username,prof,text,rating)
     rev.save()
     return HttpResponse("<h1>fbjhfjch</h1>")
+
+def address(request):     
+    username = request.session['username']                                                  #address
+    addressl1 = request.POST.get('addressl1','')
+    addressl2 = request.POST.get('addressl2','')
+    addcity = request.POST.get('addcity','')
+    addstate = request.POST.get('addstate','')
+    addzip = request.POST.get('addzip','')
+    address_save = Address(username,addressl1,addressl2,addcity,addstate,addzip)
+    address_save.save()
+    return redirect('dashboard1')
+
+def medical1(request):
+    username = request.session['username']                                                  #address
+    fever = request.POST.get('fever','unchecked')
+    highbp = request.POST.get('highbp','unchecked')
+    lowbp = request.POST.get('lowbp','unchecked')
+    seizures = request.POST.get('seizures','unchecked')
+    heart_d = request.POST.get('heart_d','unchecked')
+    fainting = request.POST.get('fainting','unchecked')
+    diabetes = request.POST.get('diabetes','unchecked')
+    cholesterol = request.POST.get('cholesterol','unchecked')
+    palp = request.POST.get('palp','unchecked')
+    otherdetail = request.POST.get('otherdetail','fuck')
+    medical1_save = Medical1(username,fever,highbp,lowbp,seizures,heart_d,fainting,diabetes,cholesterol,palp,otherdetail)
+    medical1_save.save()
+    return redirect('dashboard1')
