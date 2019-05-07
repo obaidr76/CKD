@@ -1,0 +1,176 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #888;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #fff;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #c2c2c2;
+    opacity: 1; /* Firefox */
+}
+body{overflow-x:hidden;}
+
+.headerxx {padding:380px; text-align: center;-webkit-transform: translateZ(1100px) scale(1.1);transform: translateZ(1100px) scale(1.3);z-index: 1; overflow-x:hidden;opacity:0.6;
+         background-image: url("images/home/home-top1.jpg"); background-size:100%; background-attachment:fixed; background-repeat: no-repeat; transition-duration:1s;
+}
+
+.headerxx2 {padding:150px; text-align: center;-webkit-transform: translateZ(1100px) scale(1.1);transform: translateZ(1100px) scale(1.1);z-index: 1; overflow-x:hidden;
+         background-image: url("images/home/home-top2.jpg"); background-size:100%; background-attachment:fixed; background-repeat: no-repeat; transition-duration:1s;
+}
+.headerxx3{background-image: url("images/home/home-top3.jpg");}
+.headerxx:hover, .headerxx2:hover{opacity:0.9; transition-duration:0.3s; padding: 400px;}
+.headerxx2:hover{padding:170px;}
+.headerxx img, .headerxx2 img{padding:0px; width:100%; overflow:hidden; height:450px;}
+
+
+.navbar a{opacity:0.9; transition-duration:0.3s;}
+.navbar a:hover{opacity:0.9; transition-duration:0.3s;}
+.navbar-nav ul{width:200px;}
+
+.fluid-container{background: rgb(241,241,241); text-align:center;}
+.fluid-container-x{height:auto; background-color:#3f3f3f;padding:70px;color:white;text-align:center;}
+.fluid-container-x h1{font-weight:500; font-size:70px; }
+
+.card-container:hover{padding:60px 70px 60px 70px;transition-duration:1s;}
+.card-container{width:90%; height:400px !important; text-align:center;margin-left:5%; height:auto !important; padding:80px; overflow:hidden;background:transparent;transition-duration:1s; display:inline-block;}
+.card-container p{font-weight:400; font-size:20px;}
+.card-container-content, .card-container-img{display:inline-block; position:relative;overflow:hidden; padding:0px; margin:0 auto;}
+.ccc1{ width:70%; height:220px; text-align:justify; padding-left:40px;}
+.cci1{width:300px; height:300px;background-image: url("images/home/kidney1.jpg"); background-size:100% 100%; background-repeat: no-repeat; border:1px solid grey; border-radius:10px;}
+
+.ccc2{ width:60%; height:240px; text-align:justify; padding-right:40px;}
+.cci2{width:450px; height:300px;background-image: url("images/home/kidney2.jpg"); background-size:100% 100%; background-repeat: no-repeat; border:1px solid grey; border-radius:10px;}
+
+.ccc3{ width:60%; height:280px; text-align:justify; padding-left:40px;}
+.cci3{width:350px; height:320px;background-image: url("images/home/kidney3.png"); background-size:100% 100%; background-repeat: no-repeat; border:1px solid grey; border-radius:10px;}
+
+
+.card-container2, .card-container3{width:90%;padding:120px 60px 60px 60px;display:inline-block; position:relative; 
+                                   text-align:center;margin:0 auto;
+                                   margin-left:5%; height:auto !important; background:transparent; text-align:center;}
+.card-container3{ padding:0px 60px 60px 60px;}
+.card-container3 p{font-weight:500; font-size:20px; text-align:left; color:grey;}
+.card1{color: black; height:180px; padding-top:140px; padding-left:20px;padding-right:20px ;margin:25px;background-image: url("images/home/world-guide.jpg");
+        background-size:95% 100%; background-repeat: no-repeat;border:1px solid grey;
+       width:400px;display:inline-block; position:relative;box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+}
+.fa-hand-holding-heart, .fa-home{color:darkgrey;}
+.card1:hover {box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);transition-duration:0.5s;}
+.card-container-about{display:inline-block;  padding:80px; transition-duration:0.7s; width:90%;}
+.card-container-about:hover{padding:60px; transition-duration:0.7s;}
+
+figure.snip1142 {
+    position: relative;overflow: hidden; margin: 40px;width: 480px;
+    display:inline-block;
+    color: #333;
+    text-align: left;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+figure.snip1142 * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all 0.35s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+        transition: all 0.35s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+    }
+    
+
+    figure.snip1142 img {
+        height:250px;
+        width: 400px;
+        overflow:hidden;
+    }
+
+    figure.snip1142 figcaption {
+        position: relative;
+        background-color: #ffffff;
+        padding: 35px;
+        height:150px;
+    }
+
+    figure.snip1142 h3 {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        right: 25px;
+        color: #fff;
+        margin: 0;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+        figure.snip1142 h3 span {
+            font-weight: 800;
+        }
+
+    figure.snip1142 p {
+        font-size: 0.8em;
+        font-weight: 500;
+        text-align: left;
+        margin: 0;
+        line-height: 1.6em;
+    }
+
+    figure.snip1142 .icons {
+        margin-top: 20px;
+        text-align: right;
+    }
+
+    figure.snip1142 i {
+        margin-right: 5px;
+        display: inline-block;
+        font-size: 24px;
+        color: #000000;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        background: white;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+        figure.snip1142 i:hover {
+            background-color: #000000;
+            color: white !important;
+        }
+
+    figure.snip1142.navy {
+        background-color: #2b3c4e;
+    }
+
+        figure.snip1142.navy i {
+            color: #222f3d;
+        }
+
+            figure.snip1142.navy i:hover {
+                background-color: #222f3d;
+            }
+
+    figure.snip1142:hover img,
+    figure.snip1142.hover img {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+        opacity: 0.3;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+    }
+
+.table_3{width:95%; float:left; border:1px solid black;}
+.table_3 th,.table_3 td{padding:15px 15px 15px 15px; width:auto; background-color:#e0e0e0; border-collapse:collapse; font-size:20px; font-weight:500;}
+.table_3 td{background-color: #f8f9fa;}
+.aboutus-card{width:40%; height:800px !important; display:inline; position:relative;}
+.care {margin-left:0%;}care ul li{ font-size:25px;}.care p{ font-size:25px;}

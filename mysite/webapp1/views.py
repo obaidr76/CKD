@@ -13,6 +13,13 @@ from .utils import render_to_pdf
 def index(request):
     pass
 
+
+def home(request,id='index'):
+    print('erw',id)
+    context=dict()
+    context['id']=id
+    return render(request,'home.html',context)
+
 def dashboard(request,id='1'):
     context=dict()
     
@@ -163,7 +170,7 @@ def login(request):
             response['Cache-Control']='no-store'
             return response
         else:
-            id=2
+            id=1
             request.session['username']=username
             return redirect('dashboard',id)
 

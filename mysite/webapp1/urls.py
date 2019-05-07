@@ -16,7 +16,9 @@ urlpatterns = [
     url(r'download/',views.download,name='download'),
     url(r'review/',views.review,name='review'),
     url(r'address/',views.address,name='address'),
-    url(r'medical1/',views.medical1,name='medical1')
+    url(r'medical1/',views.medical1,name='medical1'),
+    url(r'home/$',views.home,name='home'),
+    url(r'home/(?P<id>[a-zA-Z]+)/$',views.home,name='home')
 ]
 
 if settings.DEBUG:
