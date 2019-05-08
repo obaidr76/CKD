@@ -10,7 +10,7 @@ html, body
 }
 
 .wrapper {
-    background-color: rgba(0,0,0,0.6);width: 90%;height: 90%;
+    background-color: rgba(0,0,0,0.7);width: 90%;height: 90%;
     position: fixed;z-index: 1;top: 50%;left: 50%;
     bottom: 20%;overflow-y: hidden; -ms-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translate(-50%,-50%); transform: translate(-50%,-50%);
@@ -48,7 +48,7 @@ html, body
 }
 
 .sidenav li a:active {
-    color: white;background-color: rgb(5,61,165,0.5);transition-duration:0.3s;
+    color: white;background-color: rgba(5,61,165,0.5);transition-duration:0.3s;
 }
 
 .sidenav img{
@@ -56,6 +56,7 @@ html, body
 }
 
 .nav-pic{text-align: center;opacity:0.8;}
+.nav-pic img{border:2px solid #b9ddf6;}
 .table{display: table;margin: 0 auto;}
 
 td{padding: 14px;}
@@ -72,99 +73,34 @@ td{padding: 14px;}
 }
 
 .sidenav {                                  /* left side navigation */
-    height: 100%;
-    width: 22%;
-    position: relative;
-    display: inline-block;
-    z-index: 1;
-    overflow-x: hidden;
-    background-image: url("images/img10.jpg"), linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55));
-    background-blend-mode: overlay;
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;
-    padding: 15px;
+    height: 100%; width: 22%; position: relative;display: inline-block; z-index: 1;overflow-x: hidden;
+    background-image: url("images/img10.jpg"), linear-gradient(rgba(0,0,0,0.15),rgba(0,0,0,0.15));
+    background-blend-mode: overlay;background-repeat: no-repeat;background-size: cover;text-align: center;padding: 15px;
 }
 
 .navbar-ele {                               /* top bar navigation */
-    padding: 10px 10px 10px 10px;
-    margin: 0 auto;
+    padding: 10px 10px 10px 10px; margin: 0 auto;
 }
 
 .navbar {
-    position: relative;
-    height: 50px;
-    font-family: "Proxima Nova", sans-serif;
-    background: rgba(12,12,12,0.5);
-    width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
+    position: relative;height: 50px;font-family: "Proxima Nova", sans-serif;background: rgba(12,12,12,0.4);
+    width: 100%;margin: 0 auto;  overflow: hidden;
 }
 
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: none;
-}
+.navbar ul {list-style-type: none;  margin: 0; padding: 0; background-color: none;}
 
 .navbar li a {
-    display: block;
-    color: #ededed;
-    text-align: center;
-    padding: 4px 14px;
-    border-radius: 3px;
-    text-decoration: none;
-    font-size: 20px;
+    display: block; color: #ededed; text-align: center;padding: 4px 14px;
+    border-radius: 3px; text-decoration: none; font-size: 20px;
 }
 
-.navbar li a:hover {
-        background-color: #b9b9b9;
-    }
+.navbar li a:hover {background-color: #b9b9b9;    }
 
-.nav-opt ul li a{
+.nav-opt ul li a {
     color: white;
-    background: linear-gradient(90deg, rgba(201,229,248,0.4) 0%, rgba(133,196,239,0.8) 100%);
+    background: linear-gradient(90deg, rgba(248,249,250,0.5) 0%, rgba(202,229,248,0.5) 100%);
     transition-duration: 0.3s;
 }
 
-.i{
-    font-size:4px;
-    width: 10px; height: 4px;
-}
+.i{ font-size:4px; width: 10px; height: 4px;}
 
-[data-title]:hover:after {
-    opacity: 1;
-    transition: all 0.1s ease 0.5s;
-    visibility: visible;
-}
-
-[data-title]:after {
-    content: attr(data-title);
-    position: absolute;
-    bottom: -1.6em;
-    left: 100%;
-    padding: 4px 4px 4px 8px;
-    color: #222;
-    white-space: nowrap;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    -moz-box-shadow: 0px 0px 4px #222;
-    -webkit-box-shadow: 0px 0px 4px #222;
-    box-shadow: 0px 0px 4px #222;
-    background-image: -moz-linear-gradient(top, #f8f8f8, #cccccc);
-    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f8f8f8),color-stop(1, #cccccc));
-    background-image: -webkit-linear-gradient(top, #f8f8f8, #cccccc);
-    background-image: -moz-linear-gradient(top, #f8f8f8, #cccccc);
-    background-image: -ms-linear-gradient(top, #f8f8f8, #cccccc);
-    background-image: -o-linear-gradient(top, #f8f8f8, #cccccc);
-    opacity: 0;
-    z-index: 99999;
-    visibility: hidden;
-}
-
-[data-title] {
-    position: relative;
-}

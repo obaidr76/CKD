@@ -13,9 +13,6 @@
     <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
-
-
-</head>
 <style>
     body {
         background-image: url("{%static 'images/img1.png'%}");
@@ -24,18 +21,20 @@
         background-size: cover;
     }
 </style>
+
+</head>
+
 {% load staticfiles %}
 <body>
-    <div class="wrapper">                                                            <!--  wrapper class -->
-                                                          <!--  side navigation panel -->
-        <div class="sidenav">
+    <div class="wrapper">                                                          <!--  wrapper class -->                                                         
+        <div class="sidenav">                                       <!--  side navigation panel -->
             <div class="sidenav-container">
                 <div class="nav-opt" style="text-align:center; margin-top:20px;">
 
                 </div>
                 <div style="text-align:center" class="nav-pic">
                     {% if prof %}
-                    <img src="/webapp1{{ prof }} " alt="Flowers in Chania">
+                    <img src="/webapp1{{ prof }} " alt="">
                     {% else %}
                     <img src="{%static '/images/img4.jpg'%}" alt="Flowers in Chania">
                     {% endif %}
@@ -409,7 +408,7 @@
                     {% for review in rev %}
                     <div class="dialog_box">
                         <div class="dialog_box_img"><img src="/webapp1{{ review.photo }}" /></div>
-                        <div class="dialog_box_text">{{ review.review }}</div>
+                        <div class="dialog_box_text"><p style="margin:0px; padding:0px;">{{ review.review }}</p></div>
                     </div>
                     {% endfor %}
                 </div>
@@ -419,10 +418,20 @@
                         <a onclick="show()" href=#><img src="{%static '/images/send.png'%}" /></a>
                     </div>
                     <div class="review_box">
-                        <form>
-                            <textarea id="review" name="message" maxlength="180" placeholder="please keep your message sub 180 characters"></textarea><br>
-                        </form>
+                        <div class="review_text">
+                            <textarea id="review" rows="5" cols="91" name="message" minlength="20" maxlength="180" placeholder="please keep your message sub 180 characters"></textarea><br>
+                        </div>
                     </div>
+                    <div class="review_stars">
+                        <fieldset class="rating">
+                            <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                        </fieldset>
+                    </div>
+
                 </div>
                 <script>
                     function show() {
@@ -453,6 +462,8 @@
 
                     }
                 </script>
+
+
                 {% elif id == '5' %}                                                             <!-- REPORT PAGE -->
 
                 <div class="panel_4">

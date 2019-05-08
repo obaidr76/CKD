@@ -116,10 +116,10 @@
         <div class="card-container">
             <!--  REVIEW BOX -->
             {% for review in rev %}
-            <div class="row">
+            <div style="margin-top:20px;" class="row">
                 <div class="input-group col-md-10">
                     <div class="input-group-prepend">
-                        <p style="width:100px;" class="input-group-text">{{ review.username }}</p>
+                        <p style="width:120px;" class="input-group-text">{{ review.username }}</p>
                     </div>
                     <textarea style="resize:none;   padding:15px; width:500px;" rows="2" cols="40" disabled class="form-control" aria-label="With textarea" placeholder="none">{{ review.review }}</textarea>
                 </div>

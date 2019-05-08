@@ -59,33 +59,26 @@ body {
 
 .save-button{apperance:none; padding: 5px; float: right; margin-right:-39px; margin-top:1px; display:inline-block; border: none; background:transparent;}
 
-.panel_4{
-    width: 90%; margin-left: 5%; background-color: #fff;color:rgba(84,84,84,1);
+.panel_4{    width: 90%; margin-left: 5%; background-color: #fff;color:rgba(84,84,84,1);
     padding:0 40px 40px 40px; font-family: "Lucida Console", Monaco, monospace; overflow:auto;
 }
 
-
-.panel_5, .panel_6{
-    font-family: "Lucida Console", Monaco, monospace;width: 100%; position: absolute; height:79%;
-    overflow:auto; display: inline-block;  background-color:transparent;background-size: 500px 500px; background-attachment:local;
+.panel_6, .panel_5{width: 100%;  height:79%;overflow:auto; display: inline-block;  background-color:transparent;background-size: 500px 500px; background-attachment:local;
     left: 50%;bottom: 0%;transform: translateX(-50%); font-size:20px; margin-bottom:7.5%; padding:15px;
 }
-.panel_5{ border-bottom-style:none; }
+.panel_5{overflow:auto; display: inline-block; padding:20px 0px 20px 50px; height:80%; width:100%; background-color:transparent;position: relative; border-bottom-style:none; }
 
-.panel_6{
-    position:absolute; height:11%; overflow: hidden;margin-bottom:0%; padding:11px; border-top-style: none;
-}
+.panel_6{position:absolute; height:14%; overflow: hidden;margin-bottom:0%; padding:11px; border-top-style: none;}
 
-
-.review_send, .review_box{ margin-left:0px;position:relative; display:inline-block; width:6%; 
-    height: 100%; float left;border: 1px solid black; border-radius:10px; font-size:20px;background:rgba(255,255,255,1); }
+.review_send, .review_box{ margin-left:0px;position:relative; display:inline-block; width:8%; 
+    height: 95%; float left;border: 1px solid black; border-radius:5px; font-size:20px;background:#f8f9fa; }
     
-.review_box{ margin-left:0px; width:92.5%; overflow-y:hidden; overflow-x:hidden;background:rgba(255,255,255,1);}
-
+.review_box{ margin-left:0px; width:72%; overflow-y:hidden; overflow-x:hidden; height:95%;}
+.review_stars{display:inline-block; width:17%; height:auto; padding-bottom:15px; text-align:left;}
+.review_text{display:inline-block;position:relative;}
 .review_send img{background-size: cover; height:100%; width:100%;}
 
 .review_send a:hover{ opacity:0.3; transition: 0.7s;}
-
 
 .panel_4_head{text-align: center; font-size: 16px; margin-top:60px;}
 
@@ -98,15 +91,12 @@ body {
 
 .panel_4_body_card img,.panel_4_body_card_full img{width:100%;}
 
-textarea{height:200px; width:100%; border:none; background: transparent; padding: 10px; font-size:18px;}
+textarea{ width:100%; border:none; background: transparent; padding: 10px; font-size:19px; font-weight:500;}
 
 .medicaltext{height:auto; width:80%; color: #cecece; background:transparent;font-size:18px; overflow:hidden; margin-left:2.4%; margin-top:20px;border-radius:5px; border:2px solid #cecece;}
 .medicaltext textarea{min-height:120px; height: auto; color:white;}
-.medicaltext ::placeholder{color: #cecece};
 
-.panel_1{
-    width: 40%;float: left;margin-left: 2.5%;
-}
+.panel_1{ width: 40%;float: left;margin-left: 2.5%;}
 @font-face {
   font-family: 'Open Sans';font-style: normal;
   font-weight: 300;src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OUuhs.ttf) format('truetype');
@@ -235,18 +225,16 @@ textarea{height:200px; width:100%; border:none; background: transparent; padding
 }
 
 .profile_card1, .profile_card2 {
-    width: 28%; position: relative; background: transparent;
-    display: inline-block; height: 100%;border: 2px solid rgba(0,0,0,0);float: left; padding-top: 140px; color: #bebebe;
-    font-family: "Lucida Console"; font-size: 16px; text-align: center;
-
+    width: 28%; position: relative; background: transparent; font-family: "Lucida Console"; font-size: 16px; text-align: center;
+    display: inline-block; height: 100%;border: 2px solid rgba(0,0,0,0);float: left; padding-top: 140px; color: #d6d6d6; 
 }
 .profile_card2 {
-    width: 72%;padding: 50px 0 60px 0; text-align: left; background:rgba(0,0,0,0.8);overflow-x:hidden; overflow-y:hidden; 
+    width: 72%;padding: 50px 0 60px 0; text-align: left;background-color:rgba(45,45,45,1); overflow-x:hidden; overflow-y:hidden;color:#cccccc;
 }
 
 #personal_tab2,#address_tab2, #medical1_tab2{display: none; height: auto;}
 
-#personal_tab2, #personal_tab1, #address_tab1,#address_tab2,#medical1_tab1,#medical1_tab2{ position: relative; width: 90%;margin: 0 5% 0 5%; font-size:20px;background: transparent; color: 999999;}
+#personal_tab2, #personal_tab1, #address_tab1,#address_tab2,#medical1_tab1,#medical1_tab2{ position: relative; width: 90%;margin: 0 5% 0 5%; font-size:20px;background: transparent;}
 
 .log-form2 input[type=file]{display:none;}
 
@@ -268,7 +256,7 @@ textarea{height:200px; width:100%; border:none; background: transparent; padding
 .slider:hover {opacity: 1; }
 
 .slider::-webkit-slider-thumb, .slider2::-webkit-slider-thumb, .slider3::-webkit-slider-thumb, .slider4::-webkit-slider-thumb {
-   -webkit-appearance: none;appearance: none; width: 10px; height: 10px;
+   -webkit-appearance: none; appearance: none; width: 10px; height: 10px;
    margin-top: -10px; background: transparent; cursor: pointer; border-left: 7.5px solid transparent;
    border-right: 7.5px solid transparent; border-top: 15px solid #555;
 }
@@ -287,10 +275,10 @@ input[type=radio]{display: inline-block; padding:8px; width: 30px;}
 
 #ga{ border:3px solid rgba(84,84,84,1); linear-gradient: rgba(0,0,0,0.7),rgba(0,0,0,0.1);background-blend-mode: overlay;}
 
-.dialog_box {height: 85px; border-radius:5px; margin-top:15px;}
+.dialog_box {border-radius:0px; margin-top:15px; display: inline-block; position:relative; width:1000px; overflow:hidden;}
 
-.dialog_box_img, .dialog_box_text{width:8%; padding:8px; display: inline-block; float: left; overflow:hidden; height:100%;}
-.dialog_box_text{ width:800px; border: 1px solid grey; border-radius: 10px; background:black; color:#bebebe; padding:12px;}
+.dialog_box_img{width:75px; padding-top:4px; display: inline-block; float: left; overflow:hidden; height:100%;}
+.dialog_box_text{display:inline-block; position:relative; float:left;  min-height:100px;width:800px; border: 1px solid grey; border-radius: 5px; background:#f8f9fa; color:#434343; padding:12px; font-weight:500; font-size:20px; height:auto;}
 .dialog_box_img img{background-size: cover; height:65px; width:65px; border-radius:50%; border:1px solid #555;}
 
 .table_3{margin-top: 20px;width:95%; margin-right:2.5%; text-align:center; float:right;}
@@ -354,3 +342,28 @@ title{transition:0.1s;}
 .fa-file-download, .fa-arrow-alt-circle-left {font-size: 30px;}
 
 .fas{color:grey;}
+
+.rating { border: none; float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  font-size: 25px;margin:3px;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > label {color: #ddd; float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
