@@ -59,7 +59,7 @@
             <div class="navbar">
                 <div class="navbar-ele">
                     <ul>
-                        <li style="float: left"><a href="#home">HOME</a></li>
+                        <li style="float: left"><a href="/webapp1/home/">HOME</a></li>
                         <li style="float: right"><a href="/webapp1/logout/">LOG OUT</a></li>
                     </ul>
                 </div>
@@ -90,7 +90,7 @@
                                 <table>
                                     <tr><td>Name: </td><td>{% if name %} {{name}} {% endif %} </td></tr>
                                     <tr><td>Gender: </td><td>{% if gender %} {{ gender }} {% endif %}</td></tr>
-                                    <tr><td>Date Of Birth: </td><td>{% if dob %} {{ dob }} {% endif %}</td></tr>
+                                    <tr><td>Date Of Birth: </td><td>{% if dob and dob.year > 1871 %} {{ dob }} {% endif %}</td></tr>
                                     <tr><td>Mobile: </td><td>{% if mobile %} {{ mobile }} {% endif %}</td></tr>
                                     <tr><td>Email ID: </td><td>{% if email %} {{ email }} {% endif %} </td></tr>
 
@@ -103,7 +103,7 @@
                                     <table>
                                         <tr><td>Name: </td><td><input type="text" id="pname" name="name" pattern="[a-zA-Z]+" title="Name cannot contain number" placeholder="NAME" value="{% if name %}{{ name }}{% endif %}" /></td><td><p style="color:red; font-size:14px;" ; id="pnamealert"></p></td></tr>
                                         <tr><td>Gender: </td><td><p><input type="radio" name="gender" id="M" value="M" />Male</p><p><input type="radio" id="F" name="gender" value="F" />Female</p></td></tr>
-                                        <tr><td>Date Of Birth: </td><td><input type="date" value="" name="dob" placeholder="DOB" /> </td></tr>
+                                        <tr><td>Date Of Birth: </td><td><input type="date" value="" name="dob" placeholder="DOB" required/> </td></tr>
                                         <tr><td>Mobile: </td><td><input type="text" name="mobile" id="pmobile" pattern="[789][0-9]{9}" title="Enter correct Mobile Number" maxlength="10" placeholder="MOBILE" value="{% if mobile %}{{ mobile }}{% endif %}" /> </td><td><p style="color:red; font-size:14px;" ; id="pmobilealert"></p></td></tr>
                                         <tr><td>Email ID: </td><td><input type="email" name="email" placeholder="EMAIL-ID" value="{% if email %} {{ email }} {% endif %}" /></td></tr>
                                         <tr><td>Profile Photo:  </td><td><label class="custom-file" l><input type="file" name="photo" placeholder="Uplaod" />Choose File</label></td></tr>

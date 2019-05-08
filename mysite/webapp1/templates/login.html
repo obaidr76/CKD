@@ -7,6 +7,16 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{%static '/login.css'%}">
+
+    <!--Changes-->
+    <link rel="stylesheet" href="{%static '/bootstrap.css'%}">
+    <script type="text/javascript" src="{%static '/jquery341.js'%}"></script>
+    <script type="text/javascript" src="{%static '/bootstrap431.js'%}"></script>
+    <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!--changes end here-->
     {% load staticfiles %}
     <script type="text/javascript" src="{%static '/login.js'%}"></script>
 
@@ -37,14 +47,43 @@
     </script>
     {%endif%}
 
-    <div class="navbar">
+    <!--<div class="navbar">
         <div class="navbar-ele">
             <ul>
-                <li style="float: left"><a href="#home">HOME</a></li>
-                <li style="float: right"><a href="#home">ABOUT US</a></li>
+                <li style="float: left"><a href="/webapp1/home/">HOME</a></li>
+                <li style="float: right"><a href="/webapp1/home/aboutus/">REACH US OUT</a></li>
             </ul>
         </div>
-    </div>
+    </div>-->
+    <!-- changes -->
+    <nav style="height:100px;" class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li style="padding-left:20px;" class="nav-item active">
+                    <a class="navbar-brand" href="/webapp1/home/"><i class="fas fa-home"></i> HOME</a>
+                </li>
+                <li style="padding-left:20px;"><a class="navbar-brand" href="/webapp1/home/ckdcare/"><i class="fas fa-hand-holding-heart"></i> KIDNEY DISEASE CARE</a></li>
+                <li style="padding-left:20px;"><a class="nav-link" href="/webapp1/home/guidelines/">GUIDELINES</a></li>
+            </ul>
+            <!--style=" margin-right:80px;" removed from here-->
+            <form class="form-inline my-2 my-lg-0">
+                <ul style="text-align:right;float:right" ; class="navbar-nav mr-auto">
+                    <li><a class="navbar-brand" href="/webapp1/home/aboutus/"> REACH US OUT</a></li>
+                </ul>
+                <!--
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                SIGN IN
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="/webapp1/login/">User Log In</a>
+                <a class="dropdown-item" href="#">Doctor Log IN</a>
+            </div>
+        </div>-->
+                <!-- changes end here-->
+            </form>
+        </div>
+    </nav>
 
     <div class="login">
         <div class="wrap">

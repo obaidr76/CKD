@@ -4,7 +4,7 @@ from django.utils import timezone
 class Login(models.Model):
     count=0
     username = models.CharField(max_length=200,primary_key=True)
-    patient_id =   models.CharField(max_length=30)
+    patient_id =   models.CharField(max_length=30,default='00000000')
     password = models.CharField(max_length=32)
     email = models.CharField(max_length=50,default='abc@gmail.com')
     objects = models.Manager()

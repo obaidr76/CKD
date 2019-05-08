@@ -22,7 +22,7 @@ def home(request,id='index'):
 
 def dashboard(request,id='1'):
     context=dict()
-    
+    print(id)
     context['id']=id
     if request.session.get('username',False)!=False:
         
@@ -39,7 +39,7 @@ def dashboard(request,id='1'):
                 context['mobile']=ob.mobile.strip()
                 context['gender']=ob.gender
                 context['dob']=ob.dob
-                #print(type(ob.dob))
+                print(type(ob.dob))
                 #context['dob1']=str(ob.dob)
                 context['email']=ob.email
 
@@ -194,6 +194,14 @@ def signup(request):
             patient_id += add+str(Login.count)
             l = Login(username,patient_id,password,email)
             l.save()
+            p=Profile(username,'','','1871-06-06','','','')
+            p.save()
+
+            a=Address(username,'','','','','')
+            a.save()
+
+            m=Medical1(username,'unchecked','unchecked','unchecked','unchecked','unchecked','unchecked','unchecked','unchecked','unchecked','')
+            m.save()
 
         template=loader.get_template('login.html')
         response= HttpResponse(template.render(context,request))
@@ -322,7 +330,7 @@ def logout(request):
     if request.session.get('username',False)!=False:
         del request.session['username']
     request.session['justlogout']=1
-    return redirect('login')
+    return redirect('home')
 
 
 def profile(request):
