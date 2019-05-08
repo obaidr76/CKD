@@ -107,6 +107,32 @@
             </div>
         </div>
     </div>
+    <div style="width:100%; overflow:hidden !important; ">
+        <div class="headerxx2 headerxx4">
+            <h2> REVIEWS </h2>
+        </div>
+    </div>
+    <div class="fluid-container">
+        <div class="card-container">
+            <!--  REVIEW BOX -->
+            <div class="row">
+            <div class="input-group col-md-10">
+                <div class="input-group-prepend">
+                    <p style="width:100px;" class="input-group-text">NAME</p>
+                </div>
+                <textarea style="resize:none;   padding:15px; width:500px;" rows="2" cols="40" disabled class="form-control" aria-label="With textarea" placeholder="none"></textarea>
+            </div>
+            <div class="col-md-auto">
+                <span class="fa fa-star fa-2x checked"></span>
+                <span class="fa fa-star fa-2x checked"></span>
+                <span class="fa fa-star fa-2x checked"></span>
+                <span class="fa fa-star fa-2x checked"></span>
+                <span class="fa fa-star fa-2x checked"></span>
+            </div>
+            </div>
+
+        </div>
+    </div>
     {% endif %}
 
     {% if id == 'guidelines' %}
@@ -148,8 +174,8 @@
                             A Machine learning enthusiast, Web developer and full time coder. is ready for all challenges thrown across me.
                         </p>
                         <div class="icons">
-                            <a href="#"><i class="ion-social-reddit-outline"></i></a>
-                            <a href="#"> <i class="ion-social-twitter-outline"></i></a>
+                            <a href="#"><i class="ion-android-mail"></i></a>
+                            <a href="#"> <i class="ion-social-facebook"></i></a>
                         </div>
                     </figcaption>
                 </figure>
@@ -161,8 +187,8 @@
                             I think a lot but dont say much. #Web-Dev #infosec #security #IT #yash's roommate
                         </p>
                         <div class="icons">
-                            <a href="#"><i class="ion-social-reddit-outline"></i></a>
-                            <a href="#"> <i class="ion-social-twitter-outline"></i></a>
+                            <a href="#"><i class="ion-social-reddit"></i></a>
+                            <a href="#"> <i class="ion-social-github"></i></a>
                         </div>
                     </figcaption>
                 </figure>
@@ -174,8 +200,8 @@
                             Avid learner and web dev enthusiast. #WEB-dev #love-what-i-do
                         </p>
                         <div class="icons">
-                            <a href="#"><i class="ion-social-reddit-outline"></i></a>
-                            <a href="#"> <i class="ion-social-twitter-outline"></i></a>
+                            <a href="#"><i class="ion-android-mail"></i></a>
+                            <a href="#"> <i class="ion-social-facebook"></i></a>
                         </div>
                     </figcaption>
                 </figure>
@@ -187,11 +213,29 @@
                             Best in my field, ML, AI, IOT, you name it. #coder #machine-learning
                         </p>
                         <div class="icons">
-                            <a href="#"><i class="ion-social-reddit-outline"></i></a>
-                            <a href="#"> <i class="ion-social-twitter-outline"></i></a>
+                            <a href="#"><i class="ion-social-github"></i></a>
+                            <a href="#"> <i class="ion-social-twitter"></i></a>
                         </div>
                     </figcaption>
                 </figure>
+                <div style="width:80%; text-align:left;display:inline-block;">
+                    <form id="form" action="mailto:obaidr76@gmail.com">
+                        <div class="form-group">
+                            <label>NAME</label>
+                            <input type="text" name="name" required pattern="[a-zA-Z.]{1-20}" minlength="5" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                        </div>
+                        <div class="form-group">
+                            <label>Email address</label>
+                            <input type="email" name="email" required pattern="[a-zA-Z.@]{1-20}" minlength="15" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Your Message</label>
+                            <textarea class="form-control" required pattern="[a-zA-Z.-,]{1-20}" minlength="20" name="comment" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <button type="submit" id="send" class="btn btn-primary" value="SUBMIT">SUBMIT</button>
+
+                    </form>
+                </div>
             </div>
         </div>
     </div>

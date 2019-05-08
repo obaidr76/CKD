@@ -174,10 +174,10 @@
                                 <form action="/webapp1/address/" enctype="multipart/form-data" method="POST" onsubmit="return validate_address()">
                                     <button id="address_button" class="btn" type="submit" style="float:right;">SAVE CHANGES</button>
                                     <table>
-                                        <tr><td>Address L1: </td><td><input type="text" pattern="[a-zA-Z0-9.,]+" title="No special characters accept , and ." name="addressl1" placeholder="address 1" value="{% if addressl1 %}{{ addressl1 }}{% endif %}" /></td></tr>
-                                        <tr><td>Address L2: </td><td><input type="text" pattern="[a-zA-Z0-9.,]+" title="No special characters accept , and ." name="addressl2" placeholder="address 2" value="{% if addressl2 %}{{ addressl2 }}{% endif %}" /></td></tr>
-                                        <tr><td>City: </td><td><input type="text" id="acity" pattern="[a-zA-Z.,]+" name="addcity" placeholder="City" value="{% if addcity %}{{ addcity }}{% endif %}" /> </td><td><p style="color:red;  font-size:14px;" ; id="cityalert"></p></td></tr>
-                                        <tr><td>State: </td><td><input type="text" id="astate" pattern="[a-zA-Z.,]+" name="addstate" placeholder="State" value="{% if addstate %}{{ addstate }}{% endif %}" /> </td><td><p style="color:red;  font-size:14px;" ; id="statealert"></p></td></tr>
+                                        <tr><td>Address L1: </td><td><input type="text" pattern="[a-zA-Z0-9.,\s]+" title="No special characters accept , and ." name="addressl1" placeholder="address 1" value="{% if addressl1 %}{{ addressl1 }}{% endif %}" /></td></tr>
+                                        <tr><td>Address L2: </td><td><input type="text" pattern="[a-zA-Z0-9.,\s]+" title="No special characters accept , and ." name="addressl2" placeholder="address 2" value="{% if addressl2 %}{{ addressl2 }}{% endif %}" /></td></tr>
+                                        <tr><td>City: </td><td><input type="text" id="acity" pattern="[a-zA-Z.,\s]+" name="addcity" placeholder="City" value="{% if addcity %}{{ addcity }}{% endif %}" /> </td><td><p style="color:red;  font-size:14px;" ; id="cityalert"></p></td></tr>
+                                        <tr><td>State: </td><td><input type="text" id="astate" pattern="[a-zA-Z.,\s]+" name="addstate" placeholder="State" value="{% if addstate %}{{ addstate }}{% endif %}" /> </td><td><p style="color:red;  font-size:14px;" ; id="statealert"></p></td></tr>
                                         <tr><td>Postal: </td><td><input type="text" id="azip" name="addzip" pattern="[0-9]{6}" title="ZIP CODE" placeholder="Postal Code" value="{% if addzip %}{{ addzip }}{% endif %}" /></td><td><p style="color:red;  font-size:14px;" ; id="zipalert"></p></td></tr>
                                     </table>
                                 </form>

@@ -31,11 +31,13 @@ body{overflow-x:hidden;}
          background-image: url("images/home/home-top2.jpg"); background-size:100%; background-attachment:fixed; background-repeat: no-repeat; transition-duration:1s;
 }
 .headerxx3{background-image: url("images/home/home-top3.jpg");}
+
+
 .headerxx:hover, .headerxx2:hover{opacity:0.9; transition-duration:0.3s; padding: 400px;}
 .headerxx2:hover{padding:170px;}
 .headerxx img, .headerxx2 img{padding:0px; width:100%; overflow:hidden; height:450px;}
 
-
+.headerxx4{background-image: url("images/home/reviews.png");}
 .navbar a{opacity:0.9; transition-duration:0.3s;}
 .navbar a:hover{opacity:0.9; transition-duration:0.3s;}
 .navbar-nav ul{width:200px;}
@@ -174,3 +176,6 @@ figure.snip1142 * {
 .table_3 td{background-color: #f8f9fa;}
 .aboutus-card{width:40%; height:800px !important; display:inline; position:relative;}
 .care {margin-left:0%;}care ul li{ font-size:25px;}.care p{ font-size:25px;}
+.input-group textarea{font-size:25px; font-weight:500;}
+.col-md-auto span{margin-top:30px;}
+.checked{color:orange;}
