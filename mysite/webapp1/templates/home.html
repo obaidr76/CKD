@@ -115,22 +115,25 @@
     <div class="fluid-container">
         <div class="card-container">
             <!--  REVIEW BOX -->
+            {% for review in rev %}
             <div class="row">
-            <div class="input-group col-md-10">
-                <div class="input-group-prepend">
-                    <p style="width:100px;" class="input-group-text">NAME</p>
+                <div class="input-group col-md-10">
+                    <div class="input-group-prepend">
+                        <p style="width:100px;" class="input-group-text">{{ review.username }}</p>
+                    </div>
+                    <textarea style="resize:none;   padding:15px; width:500px;" rows="2" cols="40" disabled class="form-control" aria-label="With textarea" placeholder="none">{{ review.review }}</textarea>
                 </div>
-                <textarea style="resize:none;   padding:15px; width:500px;" rows="2" cols="40" disabled class="form-control" aria-label="With textarea" placeholder="none"></textarea>
+                <div class="col-md-auto">
+                    {% for i in review.rating %}
+                    <span class="fa fa-star fa-2x checked"></span>
+                    <!--<span class="fa fa-star fa-2x checked"></span>
+                    <span class="fa fa-star fa-2x checked"></span>
+                    <span class="fa fa-star fa-2x checked"></span>
+                    <span class="fa fa-star fa-2x checked"></span>-->
+                    {% endfor %}
+                </div>
             </div>
-            <div class="col-md-auto">
-                <span class="fa fa-star fa-2x checked"></span>
-                <span class="fa fa-star fa-2x checked"></span>
-                <span class="fa fa-star fa-2x checked"></span>
-                <span class="fa fa-star fa-2x checked"></span>
-                <span class="fa fa-star fa-2x checked"></span>
-            </div>
-            </div>
-
+            {% endfor %}
         </div>
     </div>
     {% endif %}
@@ -411,22 +414,22 @@
         <br>
         <hr style="height:1.5px; width:90%;background-color: #acacac;">
         <br>
-        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+        <button type="button" onclick ="window.location.href='/webapp1/home/guidelines/'" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
             INTERNATIONAL GUIDELINES
         </button>
-        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+        <button type="button" onclick ="window.location.href='/webapp1/home/'"  class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
             HOME
         </button>
-        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
+        <button type="button" onclick ="window.location.href='/webapp1/home/ckdcare/'"  class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
             CKD CARE
         </button>
-        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+        <button type="button"  onclick ="window.location.href='/webapp1/home/aboutus'" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
             REACH US OUT
         </button>
-        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+        <button type="button"  onclick ="window.location.href='/webapp1/login/'" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
             PATIENT CONNECT
         </button>
-        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+        <button type="button" onclick ="window.location.href='#'"  class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
             PHYSICIAN SIGN-IN
         </button>
     </div>

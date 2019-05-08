@@ -18,6 +18,11 @@ def home(request,id='index'):
     print('erw',id)
     context=dict()
     context['id']=id
+    if id=='index':
+        rev=Review.objects.all()
+        context['rev']=rev
+        for r in rev:
+            r.rating = ['1']*r.rating
     return render(request,'home.html',context)
 
 def dashboard(request,id='1'):
@@ -216,16 +221,16 @@ def input(request):
     prof=ob1.photo
     if request.method =="POST":
         age = request.POST.get('age', False)
-        albumin = request.POST.get('albumin', False)
-        rbc = request.POST.get('rbc', False)
+        albumin = float(request.POST.get('albumin', False))
+        rbc = float(request.POST.get('rbc', False))
         bgr = request.POST.get('bgr', False)
         urea = request.POST.get('urea', False)
-        createnine = request.POST.get('createnine', False)
+        createnine = float(request.POST.get('createnine', False))
         sodium = request.POST.get('sodium', False)
         potassium = request.POST.get('potassium', False)
         haemoglobin = request.POST.get('haemoglobin', False)
-        hypertension = request.POST.get('hypertension', False)
-        diabetes = request.POST.get('diabetes', False)
+        hypertension = float(request.POST.get('hypertension', False))
+        diabetes = float(request.POST.get('diabetes', False))
         wbcc = request.POST.get('wbcc', False)
         rbcc = request.POST.get('rbcc', False)
         if age == False:
@@ -242,12 +247,12 @@ def input(request):
                 cost=0.742
             else:
                 cost=1
-            #age = int(age)**(-0.203)
-            #createnine = 186*((float(createnine)*100/6)/88.4)**(-1.154)
-            #gfr = age*createnine*cost
-            #Acr=albumin/createnine
-            egfr=90
-            Acr=30
+            age = int(age)**(-0.203)
+            createnine = 186*((float(createnine)*100/6)/88.4)**(-1.154)
+            egfr = age*createnine*cost
+            Acr=albumin/createnine
+            #egfr=90
+            #Acr=30
 
             pred=''
             if egfr>=90:

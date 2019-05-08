@@ -267,7 +267,7 @@
                         <form action="/webapp1/input/" method="POST">
                             <input type="text" name="age" pattern="[1-9]{1}[0-9]{1}" title="" placeholder="AGE" required />
                             <input type="text" name="albumin" pattern="[0-9]{1,2}[.]{1}[0-9]{1,2}" title="Enter value upto 100" placeholder="ALBUMIN" required />
-                            <select name="rbc" required />
+                            <select name="rbc" required >
                             <option id="option_style" selected disabled>RED BLOOD CELLS</option>
                             <option id="option_style" value="1">NORMAL</option>
                             <option id="option_style" value="0">ABNORMAL</option>
@@ -278,14 +278,14 @@
                             <input type="text" name="sodium" pattern="[0-9]{1,3}[.]{1}[0-9]{1,3}" title="Enter Numerical value" placeholder="SODIUM LEVEL" required />
                             <input type="text" name="potassium" pattern="[0-9]{1,3}[.]{1}[0-9]{1,3}" title="Enter Numerical value" placeholder="POTASSIUM LEVEL" required />
                             <input type="text" name="haemoglobin" pattern="[0-9]{1,3}[.]{1}[0-9]{1,3}" title="Enter Numerical value" placeholder="HAEMOGLOBIN" required />
-                            <input type="text" name="wbcc" pattern="[0-9]{1,3}[.]{1}[0-9]{1,3}" title="Enter Numerical value" placeholder="WHITE BLOOD CELL COUNT" required />
-                            <input type="text" name="rbcc" pattern="[0-9]{1,3}[.]{1}[0-9]{1,3}" title="Enter Numerical value" placeholder="RED BLOOD CELL COUNT" required />
-                            <select name="hypertension" required />
+                            <input type="text" name="wbcc" pattern="[0-9]{1,4}[.]{1}[0-9]{1,3}" title="Enter Numerical value" placeholder="WHITE BLOOD CELL COUNT" required />
+                            <input type="text" name="rbcc" pattern="[0-9]{1,4}[.]{1}[0-9]{1,3}" title="Enter Numerical value" placeholder="RED BLOOD CELL COUNT" required />
+                            <select name="hypertension" required >
                             <option id="option_style" selected disabled>HYPERTENSION</option>
                             <option id="option_style" value="1">YES</option>
                             <option id="option_style" value="0">NO</option>
                             </select>
-                            <select name="diabetes" required />
+                            <select name="diabetes" required >
                             <option id="option_style" selected disabled>DIABETES MELLITIUS</option>
                             <option id="option_style" value="1">YES</option>
                             <option id="option_style" value="0">NO</option>
