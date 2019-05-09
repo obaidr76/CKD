@@ -61,3 +61,4 @@ function switchVisible4() {
     }
 }
 document.getElementById('dpersonal_button2').addEventListener('click', switchVisible3);
+

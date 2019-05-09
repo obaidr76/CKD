@@ -279,7 +279,7 @@ input[type=radio]{display: inline-block; padding:8px; width: 30px;}
 .dialog_box {border-radius:0px; margin-top:15px; display: inline-block; position:relative; width:1100px; overflow:hidden;}
 
 .dialog_box_img{width:75px; padding-top:4px; display: inline-block; float: left; overflow:hidden; height:100%;}
-.dialog_box_text{display:inline-block; position:relative; float:left;  min-height:100px;width:800px; border: 1px solid grey; border-radius: 5px; background:#f8f9fa; color:#434343; padding:12px;  margin-right:10px;font-weight:500; font-size:20px; height:auto;}
+.dialog_box_text{display:inline-block; position:relative; float:left;  min-height:80px;width:800px; border: 1px solid grey; border-radius: 5px; background:#f8f9fa; color:#434343; padding:12px;  margin-right:10px;font-weight:500; font-size:20px; height:auto;}
 .dialog_box_img img{background-size: cover; height:65px; width:65px; border-radius:50%; border:1px solid #555;}
 
 .table_3{margin-top: 20px;width:95%; margin-right:2.5%; text-align:center; float:right;}
@@ -292,6 +292,8 @@ title{transition:0.1s;}
 .panel_4_body_card_full button:hover, w3-container button:hover {box-shadow: 3px 3px 3px rgba(0,0,0,0.5), 3px 3px 3px rgba(0,0,0,0.5); transition: 0.3s;}
 .panel_4_body_card_full input[type=text] {padding:8px;border:none;border-bottom:1px solid #ccc; width:60px; }
 
+.table_3 img{ width:50px; height:50px; border-radius:50%;}
+.table_5 td{border-top:1px solid #c2c2c2; padding-top:5px; padding-bottom:5px;}
 
 
 .checkbox {
@@ -342,7 +344,7 @@ title{transition:0.1s;}
 
 .fa-file-download, .fa-arrow-alt-circle-left {font-size: 30px;}
 
-.fas{color:grey;}
+.fas, .far{color:grey;}
 
 .rating { border: none; float: left;
 }

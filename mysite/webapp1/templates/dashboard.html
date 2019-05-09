@@ -28,8 +28,10 @@
 
 {% load staticfiles %}
 <body>
-    <div class="wrapper">                                                          <!--  wrapper class -->                                                         
-        <div class="sidenav">                                       <!--  side navigation panel -->
+    <div class="wrapper">
+        <!--  wrapper class -->
+        <div class="sidenav">
+            <!--  side navigation panel -->
             <div class="sidenav-container">
                 <div class="nav-opt" style="text-align:center; margin-top:20px;">
 
@@ -48,6 +50,7 @@
                         <li class="nav-item "><a href="/webapp1/dashboard/2/"><i class="icono-document"></i> &nbsp&nbsp&nbspCKD TEST</a></li>
                         <li class="nav-item "><a href="/webapp1/dashboard/6/"><i href="#" class="icono-sliders"></i> &nbsp&nbsp&nbspCHECK RANGE</a></li>
                         <li class="nav-item "><a href="/webapp1/dashboard/5/"><i href="#" class="icono-barChart"></i> &nbsp&nbsp&nbspREPORTS</a></li>
+                        <li class="nav-item "><a href="/webapp1/dashboard/7/"><i href="#" class="icono-heart"></i> &nbsp&nbsp&nbspCONSULTATION</a></li>
                         <li class="nav-item "><a href="/webapp1/dashboard/4/"><i href="#" class="icono-comment"></i> &nbsp&nbsp&nbspFEEDBACK</a></li>
                     </ul>
                 </div>
@@ -65,7 +68,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="content-container">
 
                 {% if id == '1' %}                                                         <!--  main content for probile ckd test/check/report goes here -->
@@ -642,79 +645,78 @@
 
                 <script>
                     function show() {
-                        var star1 = document.getElementById('star1');
-                        var star2 = document.getElementById('star2');
-                        var star3 = document.getElementById('star3');
-                        var star4 = document.getElementById('star4');
-                        var star5 = document.getElementById('star5');
-                        var rating = 5;
-                        if (star5.checked == true) {
-                            rating = 5;
-                        }
-                        else if (star4.checked == true) {
-                            rating = 4;
-                        }
-                        else if (star3.checked == true) {
-                            rating = 3;
-                        }
-                        else if (star2.checked == true) {
-                            rating = 2;
-                        }else if (star1.checked == true) {
-                            rating = 1;
-                        }
-
-                        star1.checked = false;
-                        star2.checked = false;
-                        star3.checked = false;
-                        star4.checked = false;
-                        star5.checked = false;
-
-                        var star_div = document.createElement('div');
-                        star_div.setAttribute("class","review_stars2");
-
-
-                        var i = 0;
-                        for (i = 0; i < rating; i++) {
-                            var span = document.createElement('span');
-                            span.setAttribute("class", "fa fa-star fa-lg checked");
-                            span.style.marginLeft = "5px";
-                            star_div.appendChild(span);
-                        }
-                        for (i = rating; i < 5; i++) {
-                            var span = document.createElement('span');
-                            span.setAttribute("class", "fa fa-star fa-lg");
-                            span.style.marginLeft = "5px";
-                            star_div.appendChild(span);
-                        }
-
-                        element = document.getElementById('panel');
-                        var text = document.getElementById('review').value;
-                        document.getElementById('review').value = "";
-                        var inner_div = document.createElement("div");
-                        inner_div.setAttribute("class", "dialog_box");
-                        var img_div = document.createElement("div");
-                        img_div.setAttribute("class", "dialog_box_img");
-                        var img = document.createElement("img");
-                        img.setAttribute("src", "/webapp1{{ prof}}");
-                        var text_div = document.createElement("div");
-                        text_div.setAttribute("class", "dialog_box_text");
-                        text_div.innerHTML = text;
-                        img_div.appendChild(img);
-                        inner_div.appendChild(img_div);
-                        inner_div.appendChild(text_div);
-                        inner_div.appendChild(star_div);
-                        element.insertAdjacentElement('afterbegin', inner_div);
-                        var dataString = '&text=' + text + '&prof=' + '{{ prof }}'+'&rating='+rating;
-                        $.ajax({
-                                    type: "POST",
-                                    url: "/webapp1/review/",
-                                    data: dataString,
-                                    success: function() { }
-                              });
-                        return false;
+                    var star1 = document.getElementById('star1');
+                    var star2 = document.getElementById('star2');
+                    var star3 = document.getElementById('star3');
+                    var star4 = document.getElementById('star4');
+                    var star5 = document.getElementById('star5');
+                    var rating = 5;
+                                        if (star5.checked == true) {
+                        rating = 5;
                     }
-                </script>
+                                        else if (star4.checked == true) {
+                        rating = 4;
+                    }
+                                        else if (star3.checked == true) {
+                        rating = 3;
+                    }
+                                        else if (star2.checked == true) {
+                        rating = 2;
+                    }else if (star1.checked == true) {
+                        rating = 1;
+                    }
 
+                    star1.checked = false;
+                    star2.checked = false;
+                    star3.checked = false;
+                    star4.checked = false;
+                    star5.checked = false;
+
+                    var star_div = document.createElement('div');
+                    star_div.setAttribute("class","review_stars2");
+
+
+                    var i = 0;
+                                        for (i = 0; i < rating; i++) {
+                                            var span = document.createElement('span');
+                    span.setAttribute("class", "fa fa-star fa-lg checked");
+                    span.style.marginLeft = "5px";
+                    star_div.appendChild(span);
+                }
+                                        for (i = rating; i < 5; i++) {
+                                            var span = document.createElement('span');
+                    span.setAttribute("class", "fa fa-star fa-lg");
+                    span.style.marginLeft = "5px";
+                    star_div.appendChild(span);
+                }
+
+                element = document.getElementById('panel');
+                var text = document.getElementById('review').value;
+                document.getElementById('review').value = "";
+                var inner_div = document.createElement("div");
+                inner_div.setAttribute("class", "dialog_box");
+                var img_div = document.createElement("div");
+                img_div.setAttribute("class", "dialog_box_img");
+                var img = document.createElement("img");
+                                        img.setAttribute("src", "/webapp1{{ prof }}");
+                    var text_div = document.createElement("div");
+                    text_div.setAttribute("class", "dialog_box_text");
+                    text_div.innerHTML = text;
+                    img_div.appendChild(img);
+                    inner_div.appendChild(img_div);
+                    inner_div.appendChild(text_div);
+                    inner_div.appendChild(star_div);
+                    element.insertAdjacentElement('afterbegin', inner_div);
+                                        var dataString = '&text=' + text + '&prof=' + '{{ prof }}'+'&rating='+rating;
+                                        $.ajax({
+                        type: "POST",
+                    url: "/webapp1/review/",
+                    data: dataString,
+                    success: function() {}
+                    });
+                return false;
+                }
+                </script>
 
                 {% elif id == '5' %}                                                             <!-- REPORT PAGE -->
 
@@ -887,13 +889,125 @@
                     }
                 </script>
 
+                {% elif id == '7' %}
+
+                <div class="panel_4">
+                    <div class="panel_4_head">
+                        <h2> SOME ORGANIZATION</h2>
+                        <h3>_____ Bangalore, 562157 _____</h3>
+                        <br>
+                        <h2 style="float:left;">CONSULTATIONS</h2>
+                    </div>
+                    <br>
+                    <table class="table_3 table_5">
+                        <tr><td>Serial #</td><td><img src="{% static '/images/img4.jpg'%}"></td><td>Patient's Name</td><td>Patient's ID</td><td><a href="#"><i class="far fa-comment-alt fa-2x"></i></a></td></tr>
+                        <tr><td>Serial #</td><td><img src="{% static '/images/img4.jpg'%}"></td><td>Patient's Name</td><td>Patient's ID</td><td><a href="#"><i class="fas fa-comment-alt fa-2x"></i></a></td></tr>
+
+                    </table>
+                </div>
+
+                {% elif id == '8' %}
+
+                <div class="panel_5" id="panel">
+                    {% for review in rev %}
+                    <div class="dialog_box">
+                        <div class="dialog_box_img"><img src="/webapp1{{ review.photo }}" /></div>
+                        <div class="dialog_box_text"><p style="margin:0px; padding:0px;">{{ review.review }}</p></div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div style="height:10%;" class="panel_6">
+                    <div style="height:72px; width:6.5%;" class="review_send">
+                        <a onclick="show()" href=#><img src="{%static '/images/send.png'%}" /></a>
+                    </div>
+                    <div style="height:72px; width:92.5%;" class="review_box">
+                        <div class="review_text">
+                            <textarea id="review" rows="5" cols="120" name="message" minlength="20" maxlength="180" placeholder="please keep your message sub 180 characters"></textarea><br>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function show() {
+                    var star1 = document.getElementById('star1');
+                    var star2 = document.getElementById('star2');
+                    var star3 = document.getElementById('star3');
+                    var star4 = document.getElementById('star4');
+                    var star5 = document.getElementById('star5');
+                    var rating = 5;
+                                        if (star5.checked == true) {
+                        rating = 5;
+                    }
+                                        else if (star4.checked == true) {
+                        rating = 4;
+                    }
+                                        else if (star3.checked == true) {
+                        rating = 3;
+                    }
+                                        else if (star2.checked == true) {
+                        rating = 2;
+                    }else if (star1.checked == true) {
+                        rating = 1;
+                    }
+
+                    star1.checked = false;
+                    star2.checked = false;
+                    star3.checked = false;
+                    star4.checked = false;
+                    star5.checked = false;
+
+                    var star_div = document.createElement('div');
+                    star_div.setAttribute("class","review_stars2");
+
+
+                    var i = 0;
+                                        for (i = 0; i < rating; i++) {
+                                            var span = document.createElement('span');
+                    span.setAttribute("class", "fa fa-star fa-lg checked");
+                    span.style.marginLeft = "5px";
+                    star_div.appendChild(span);
+                }
+                                        for (i = rating; i < 5; i++) {
+                                            var span = document.createElement('span');
+                    span.setAttribute("class", "fa fa-star fa-lg");
+                    span.style.marginLeft = "5px";
+                    star_div.appendChild(span);
+                }
+
+                element = document.getElementById('panel');
+                var text = document.getElementById('review').value;
+                document.getElementById('review').value = "";
+                var inner_div = document.createElement("div");
+                inner_div.setAttribute("class", "dialog_box");
+                var img_div = document.createElement("div");
+                img_div.setAttribute("class", "dialog_box_img");
+                var img = document.createElement("img");
+                                        img.setAttribute("src", "/webapp1{{ prof }}");
+                    var text_div = document.createElement("div");
+                    text_div.setAttribute("class", "dialog_box_text");
+                    text_div.innerHTML = text;
+                    img_div.appendChild(img);
+                    inner_div.appendChild(img_div);
+                    inner_div.appendChild(text_div);
+                    inner_div.appendChild(star_div);
+                    element.insertAdjacentElement('afterbegin', inner_div);
+                                        var dataString = '&text=' + text + '&prof=' + '{{ prof }}'+'&rating='+rating;
+                                        $.ajax({
+                        type: "POST",
+                    url: "/webapp1/review/",
+                    data: dataString,
+                    success: function() {}
+                    });
+                return false;
+                }
+                </script>
+
                 {% endif%}
-            </div>                
+            </div>
         </div>
     </div>
 </body>
-
 <head>
-<script type="text/javascript" src="{%static '/dashboard.js'%}"></script>
-</head> 
+    <script type="text/javascript" src="{%static '/dashboard.js'%}"></script>
+</head>
 </html>
