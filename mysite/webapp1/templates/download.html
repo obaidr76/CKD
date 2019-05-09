@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{%static '/dashboard.css'%}">
+    <link rel="stylesheet" href="{%static '/style.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+   
+</head>
+<style>
+    body{
+        background-color:white;
+    }
+</style>
+
+<body onload="window.print()">
+    <div style="box-shadow:none; padding:0px;" class="panel_4">
+        <a href="/webapp1/dashboard/5/" style="float:left; margin-left:-39px;" class="save-button"><i class="fas fa-arrow-alt-circle-left"></i></a> <button class="save-button" onclick="window.location.href='http://127.0.0.1:8000/webapp1/download/?reference_id={{ reference_id }}'"><i class="fas fa-file-download"></i></button>
+
+        <div class="panel_4_head">
+            <h2> SOME ORGANIZATION</h2>
+            <h3>_____ Bangalore, 562157 _____</h3>
+            <div class="panel_4_head_table">
+                <table class="table_1">
+                    <tr><td>Patient ID:{{ patient_id }}</td></tr>
+                    <tr><td>Name: {{ username }}</td></tr>
+                    <tr><td>Lab Ref. No.: {{ reference_id }}</td></tr>
+                </table>
+            </div>
+
+            <div style="float:right;" class="panel_4_head_table">
+                <table class="table_1">
+                    <tr><td>Date: {{ date }}</td></tr>
+                </table>
+            </div>
+        </div>
+        <hr style="margin-top: 130px; width: 80%;">
+        <div style="width:100%; display: inline-block; position: relative;"><h3 style="float:left; padding-left:10px;">Range</h3></div>
+
+        <div style="margin:-20px; padding:0px;" class="panel_4_body">
+            <div class="panel_4_body_card">
+                <img src="{%static '/images/range/albumin1.jpeg'%}" />
+                <input type="range" min="10" max="60" value="{{ albumin }}" class="slider2" id="myRange" disabled>
+                <img src="{%static '/images/range/albumin2.jpeg'%}" />
+                <h3>Albumin value: {{ albumin }} g/L m<sup>2</sup></h3>
+            </div>
+            <div class="panel_4_body_card">
+                <img src="{%static '/images/range/gfr1.png'%}" />
+                <input type="range" min="5" max="120" value="{{ egfr }}" class="slider" id="myRange" disabled>
+                <img src="{%static '/images/range/gfr2.png'%}" />
+                <h3>GFR value: {{ egfr }} mL/min/1.73 m<sup>2</sup></h3>
+            </div>
+
+        </div>
+        <div style="margin:-20px; padding:0px;" class="panel_4_body">
+
+            <div class="panel_4_body_card">
+                <img src="{%static '/images/range/diab1.png'%}" />
+                <input type="range" min="0" max="500" value="{{ diab }}" class="slider" id="myRange" disabled>
+                <img src="{%static '/images/range/diab2.png'%}" />
+                <h3>Diabetes: {{ diab }} mg/dl</h3>
+            </div>
+            <div class="panel_4_body_card">
+                <img src="{%static '/images/range/haem1m.png'%}" />
+                <input type="range" min="0" max="20" value="{{ haem }}" class="slider3" id="myRange" disabled>
+                <img src="{%static '/images/range/haem2m.png'%}" />
+                <h3>Haemoglobin: {{ haem }} g/dL</h3>
+            </div>
+        </div>
+        <div style="width:100%; display: inline-block; position: relative;"><h3 style="float:left; padding-left:10px;">Calculations</h3></div>
+        <div style="margin-top:-20px; padding:0px;" class="panel_4_body">
+            <table class="table_2">
+                <tr><td style="border-left-style : hidden!important; border-top-style:hidden!important;" rowspan="7" colspan="4" class="table_2_white">Prognosis of CKD by GFR and Albuminaria Categories</td><td rowspan="2" colspan="3" class="table_2_white">Persistent Albuminuria categories. &nbsp&nbsp&nbsp&nbsp Description and Range.</td></tr>
+                <tr>                         </tr>
+                <tr>                                  <td class="table_2_cream">A1</td><td class="table_2_cream">A2</td><td class="table_2_cream">A3</td></tr>
+                <tr>                                  <td class="table_2_lcream" style="padding:10px;" rowspan="2">Normal to Mildly Increased</td><td class="table_2_lcream" rowspan="2">Moderately Increased.</td><td class="table_2_lcream" rowspan="2">Severely Increased.</td></tr>
+                <tr>                             </tr>
+                <tr>                                  <td rowspan="2">&lt30mg/g  &lt3mg/mmol</td><td td rowspan="2">30-300mg/g 3-30mg/mmol</td><td rowspan="2">&gt300mg/g  &gt30mg/mmol</td></tr>
+                <tr>                               </tr>
+                <tr><td class="table_2_cream">G1</td><td class="table_2_lcream" colspan="2">Normal or high</td><td>&gt=90</td>                    <td class="table_2_green" id="g1a1"></td><td class="table_2_yellow" id="g1a2"></td><td class="table_2_orange" id="g1a3"></td></tr>
+                <tr><td class="table_2_cream">G2</td><td class="table_2_lcream" colspan="2">Mildly decreased</td><td>60-89</td>                   <td class="table_2_green" id="g2a1"></td><td class="table_2_yellow" id="g2a2"></td><td class="table_2_orange" id="g2a3"></td></tr>
+                <tr><td class="table_2_cream">G3a</td><td class="table_2_lcream" colspan="2">Mildly to moderately  </td><td>45-59</td>   <td class="table_2_yellow" id="g3aa1"></td><td class="table_2_orange" id="g3aa2"></td><td class="table_2_red" id="g3aa3"></td></tr>
+                <tr><td class="table_2_cream">G3b</td><td class="table_2_lcream" colspan="2">Moderately to severely  </td><td>30-44</td> <td class="table_2_orange" id="g3ba1"></td><td class="table_2_red" id="g3ba2"></td><td class="table_2_red" id="g3ba3"></td></tr>
+                <tr><td class="table_2_cream">G4</td><td class="table_2_lcream" colspan="2">Severely decreased</td><td>15-29</td>                 <td class="table_2_red" id="g4a1"></td><td class="table_2_red" id="g4a2"></td><td class="table_2_red" id="g4a3"></td></tr>
+                <tr><td class="table_2_cream">G5</td><td class="table_2_lcream" colspan="2">kidney Failure</td><td>&lt15</td>                     <td class="table_2_red" id="g5a1"></td><td class="table_2_red" id="g5a2"></td><td class="table_2_red" id="g5a3"></td></tr>
+
+            </table>
+        </div>
+    </div>
+    <script>
+                    var id = "{{ pred }}";
+
+                    var cell = document.getElementById(id);
+                    cell.setAttribute("id", "ga");
+    </script>
+
+</body>
+</html>
