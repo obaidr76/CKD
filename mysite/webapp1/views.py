@@ -23,6 +23,7 @@ def home(request,id='index'):
         context['rev']=rev
         for r in rev:
             r.rating = ['1']*r.rating
+            r.rating.extend(['0']*(5-len(r.rating)))
     return render(request,'home.html',context)
 
 def dashboard(request,id='1'):
@@ -102,6 +103,9 @@ def dashboard(request,id='1'):
             if id=='4':
                 context['prof']=ob.photo
                 rev = Review.objects.all()
+                for r in rev:
+                    r.rating = ['1']*r.rating
+                    r.rating.extend(['0']*(5-len(r.rating)))
                 context['rev']=rev
                 
 
@@ -425,7 +429,8 @@ def review(request):
     text = request.POST['text']
     username = request.session['username']
     prof = request.POST['prof']
-    rating =5 
+    rating =request.POST['rating'] 
+    print(rating)
     Review.count+=1
     rev = Review(Review.count,username,prof,text,rating)
     rev.save()

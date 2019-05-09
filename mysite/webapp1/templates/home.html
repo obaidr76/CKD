@@ -113,28 +113,29 @@
         </div>
     </div>
     <div class="fluid-container">
-        <div class="card-container">
+        <div style="padding-top:10px;" class="card-container">
             <!--  REVIEW BOX -->
             {% for review in rev %}
-            <div style="margin-top:20px;" class="row">
-                <div class="input-group col-md-10">
+            <div style="margin-top:40px;" class="row">
+                <div style="height:120px;" class="input-group col-md-9">
                     <div class="input-group-prepend">
                         <p style="width:120px;" class="input-group-text">{{ review.username }}</p>
                     </div>
-                    <textarea style="resize:none;   padding:15px; width:500px;" rows="2" cols="40" disabled class="form-control" aria-label="With textarea" placeholder="none">{{ review.review }}</textarea>
+                    <textarea style="resize:none;   padding:15px; width:450px;" rows="3" cols="40" disabled class="form-control" aria-label="With textarea" placeholder="none">{{ review.review }}</textarea>
                 </div>
                 <div class="col-md-auto">
                     {% for i in review.rating %}
+                    {% if i == '1'%}
                     <span class="fa fa-star fa-2x checked"></span>
-                    <!--<span class="fa fa-star fa-2x checked"></span>
-                    <span class="fa fa-star fa-2x checked"></span>
-                    <span class="fa fa-star fa-2x checked"></span>
-                    <span class="fa fa-star fa-2x checked"></span>-->
+                    {% else %}
+                    <span class="fa fa-star fa-2x "></span>
+                    {% endif %}
                     {% endfor %}
+                    
                 </div>
             </div>
             {% endfor %}
-        </div>
+        </divstyle="">
     </div>
     {% endif %}
 
