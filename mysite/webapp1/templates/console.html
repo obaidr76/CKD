@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+
+{% load staticfiles %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>DOCTOR DASHBOARD</title>
+    <link rel="icon" href="{%static '/images/favicon.jpg' %}">
+    <link rel="stylesheet" href="{%static '/dashboard.css'%}">
+    <link rel="stylesheet" href="{%static '/style.css'%}">
+
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.6.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-image: url("{%static 'images/img1.png'%}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <!--  wrapper class -->
+        <div class="sidenav">
+            <!--  side navigation panel -->
+            <div class="sidenav-container">
+                <div class="nav-opt" style="text-align:center; margin-top:20px;">
+
+                </div>
+                <div style="text-align:center" class="nav-pic">
+                    {% if prof %}
+                    <img src="/webapp1{{ prof }} " alt="">
+                    {% else %}
+                    <img src="{%static '/images/img4.jpg'%}" alt="Flowers in Chania">
+                    {% endif %}
+                </div>
+                <hr style="width: 90%; margin-top:10px; height: 2px;"></hr>
+                <div class="nav-options table" style="text-align: left;">
+                    <ul class="navul">
+                        <li class="nav-item active"><a href="/webapp1/console/dprofile/" class="nav-link"><i class="icono-user"></i> &nbsp&nbsp&nbspPROFILE</a></li>
+                        <li class="nav-item "><a href="/webapp1/console/dreport/"><i href="#" class="icono-barChart"></i> &nbsp&nbsp&nbspREPORTS</a></li>
+                        <li class="nav-item "><a href="/webapp1/console/dcomms/"><i href="#" class="icono-comment"></i> &nbsp&nbsp&nbspCOMM</a></li>
+                    </ul>
+                </div>
+                <hr style="width: 90%; " />
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="navbar">
+                <div class="navbar-ele">
+                    <ul>
+                        <li style="float: left"><a href="/webapp1/home/">HOME</a></li>
+                        <li style="float: right"><a href="/webapp1/logout/">LOG OUT</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-container">
+
+                {% if id == 'dprofile' %}
+
+                <div class="panel_3">
+                    <div class="panel_img">
+                        <div class="panel_profile_icon">
+                            {% if prof %}
+                            <img src="/webapp1{{ prof }} " alt="Flowers in Chania">
+                            {% else %}
+                            <img src="{%static '/images/img4.jpg'%}" alt="Flowers in Chania">
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="panel_profile">
+                        <!--  PROFILE panel -->
+                        <div class="profile_card1">
+                            <h2>PERSONAL DETAILS</h2>
+                        </div>
+                        <div class="profile_card2">
+                            <div id="personal_tab1">
+                                <button id="personal_button" class="btn" type="submit" style="float:right;">EDIT</button>
+                                <table>
+                                    <tr><td>Name: </td><td>{% if name %} {{name}} {% endif %} </td></tr>
+                                    <tr><td>Gender: </td><td>{% if gender %} {{ gender }} {% endif %}</td></tr>
+                                    <tr><td>Date Of Birth: </td><td>{% if dob and dob.year > 1871 %} {{ dob }} {% endif %}</td></tr>
+                                    <tr><td>Mobile: </td><td>{% if mobile %} {{ mobile }} {% endif %}</td></tr>
+                                    <tr><td>Email ID: </td><td>{% if email %} {{ email }} {% endif %} </td></tr>
+
+                                </table>
+                            </div>
+                            <div class="log-form2" id="personal_tab2">
+
+                                <form action="/webapp1/profile/" enctype="multipart/form-data" method="POST" id="personalform" onsubmit="return validate_profile()">
+                                    <button id="personal_button" class="btn" type="submit" style="float:right;">SAVE CHANGES</button>
+                                    <table>
+                                        <tr><td>Name: </td><td><input type="text" id="pname" name="name" pattern="[a-zA-Z]+" title="Name cannot contain number" placeholder="NAME" value="{% if name %}{{ name }}{% endif %}" /></td><td><p style="color:red; font-size:14px;" ; id="pnamealert"></p></td></tr>
+                                        <tr><td>Gender: </td><td><p><input type="radio" name="gender" id="M" value="M" />Male</p><p><input type="radio" id="F" name="gender" value="F" />Female</p></td></tr>
+                                        <tr><td>Date Of Birth: </td><td><input type="date" value="" name="dob" placeholder="DOB" required /> </td></tr>
+                                        <tr><td>Mobile: </td><td><input type="text" name="mobile" id="pmobile" pattern="[789][0-9]{9}" title="Enter correct Mobile Number" maxlength="10" placeholder="MOBILE" value="{% if mobile %}{{ mobile }}{% endif %}" /> </td><td><p style="color:red; font-size:14px;" ; id="pmobilealert"></p></td></tr>
+                                        <tr><td>Email ID: </td><td><input type="email" name="email" placeholder="EMAIL-ID" value="{% if email %} {{ email }} {% endif %}" /></td></tr>
+                                        <tr><td>Profile Photo:  </td><td><label class="custom-file" l><input type="file" name="photo" placeholder="Uplaod" />Choose File</label></td></tr>
+                                    </table>
+                                </form>
+
+                                <script>
+                                    var choice = "{{ gender }}";
+                                    if (choice == "M") {
+                                        document.getElementById("M").checked = true;
+                                    }
+                                    else {
+                                        document.getElementById("F").checked = true;
+                                </script>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel_profile">
+                        <!--  PROFILE panel -->
+                        <div class="profile_card1">
+                            <h2>ADDRESS</h2>
+                        </div>
+                        <div class="profile_card2">
+                            <div id="address_tab1">
+                                <button id="address_button" class="btn" type="submit" style="float:right;">EDIT</button>
+                                <table>
+                                    <tr><td>Address L1: </td><td>{% if addressl1 %} {{ addressl1 }} {% endif %} </td></tr>
+                                    <tr><td>Address L2:</td><td>{% if addressl2 %} {{ addressl2 }} {% endif %}</td></tr>
+                                    <tr><td>City:</td><td>{% if addcity %} {{ addcity }} {% endif %}</td></tr>
+                                    <tr><td>State:</td><td>{% if addstate %} {{ addstate }} {% endif %}</td></tr>
+                                    <tr><td>Postal:</td><td>{% if addzip %} {{ addzip }} {% endif %} </td></tr>
+                                </table>
+                            </div>
+                            <div class="log-form2" id="address_tab2">
+                                <form action="/webapp1/address/" enctype="multipart/form-data" method="POST" onsubmit="return validate_address()">
+                                    <button id="address_button" class="btn" type="submit" style="float:right;">SAVE CHANGES</button>
+                                    <table>
+                                        <tr><td>Address L1: </td><td><input type="text" pattern="[a-zA-Z0-9.,\s]+" title="No special characters accept , and ." name="addressl1" placeholder="address 1" value="{% if addressl1 %}{{ addressl1 }}{% endif %}" /></td></tr>
+                                        <tr><td>Address L2: </td><td><input type="text" pattern="[a-zA-Z0-9.,\s]+" title="No special characters accept , and ." name="addressl2" placeholder="address 2" value="{% if addressl2 %}{{ addressl2 }}{% endif %}" /></td></tr>
+                                        <tr><td>City: </td><td><input type="text" id="acity" pattern="[a-zA-Z.,\s]+" name="addcity" placeholder="City" value="{% if addcity %}{{ addcity }}{% endif %}" /> </td><td><p style="color:red;  font-size:14px;" ; id="cityalert"></p></td></tr>
+                                        <tr><td>State: </td><td><input type="text" id="astate" pattern="[a-zA-Z.,\s]+" name="addstate" placeholder="State" value="{% if addstate %}{{ addstate }}{% endif %}" /> </td><td><p style="color:red;  font-size:14px;" ; id="statealert"></p></td></tr>
+                                        <tr><td>Postal: </td><td><input type="text" id="azip" name="addzip" pattern="[0-9]{6}" title="ZIP CODE" placeholder="Postal Code" value="{% if addzip %}{{ addzip }}{% endif %}" /></td><td><p style="color:red;  font-size:14px;" ; id="zipalert"></p></td></tr>
+                                    </table>
+                                </form>
+                                <script>
+                                    var choice = "{{ gender }}";
+                                    if (choice == "M") {
+                                        document.getElementById("M").checked = true;
+                                    }
+                                    else {
+                                        document.getElementById("F").checked = true;
+    }
+                                    /*
+                                    function validate_address()
+                                    {
+                                        var acity = document.getElementById('acity').value,
+                                            astate = document.getElementById('astate').value,
+                                            azip = document.getElementById('azip').value;
+                                        var cityalert = document.getElementById('cityalert'),
+                                            statealert = document.getElementById('statealert'),
+                                            zipalert = document.getElementById('zipalert');
+
+                                        ans=true
+                                        if (!isNaN(acity)) {
+                                            ans = false;
+                                            cityalert.innerHTML="No Number Allowed";
+                                        }
+                                        if (!isNaN(astate)) {
+                                            ans = false;
+                                            statealert.innerHTML="No Number Allowed";
+                                        }
+                                        if (isNaN(azip)) {
+                                            ans = false;
+                                           zipalert.innerHTML="Should be a Number";
+                                        }
+                                        return ans;
+                                    }      */
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height:50px;" class="padding-div"></div>
+                </div>
+
+                {% elif id == 'dreport' %}
+
+                <div class="panel_4">
+                    <div class="panel_4_head">
+                        <h2> SOME ORGANIZATION</h2>
+                        <h3>_____ Bangalore, 562157 _____</h3>
+                        <div class="panel_4_head_table">
+                            <table class="table_1">
+                                <tr><td>Patient ID: {{ patient_id }}</td></tr>
+                            </table>
+                        </div>
+                        <div style="float:right;" class="panel_4_head_table">
+                            <table class="table_1">
+                                <tr><td>Name: {{ username }}</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <hr style="margin-top: 80px; width: 80%;">
+                    <div style="margin-top:40px;" class="panel_4_head">
+                        <h3>Consolidated Medical Reports</h3>
+                        <table class="table_3">
+                            <tr><th>Serial #</th><th>Lab Ref. No.</th><th>Report Name</th><th>Result</th><th>Test Date</th><th>Download</th></tr>
+                            {% for report in reports %}
+                            <tr><td>{{ forloop.counter }}</td><td>{{ report.reference_id }}</td><td>Report Name</td><td>{{ report.pred }}</td><td>{{ report.date }}</td><td style="padding:0px; font-size:20px;"><a href="http://127.0.0.1:8000/webapp1/download/?reference_id={{ report.reference_id }}"><i class="fas fa-cloud-download-alt" title="Download" aria-hidden="true"></i></a>&nbsp&nbsp<a href="http://127.0.0.1:8000/webapp1/input/?reference_id={{ report.reference_id }}" title="View Report"><i class="fas fa-search-plus" aria-hidden="true"></i></a></td></tr>
+                            {% endfor %}
+                            <!--<tr><td>Serial #</td><td>Lab Ref. No.</td><td>Report Name</td><td>Result</td><td>Test Date</td><td>Download</td></td>-->
+
+                        </table>
+                    </div>
+                </div>                
+
+                {% endif %}
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

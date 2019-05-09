@@ -12,13 +12,14 @@ urlpatterns = [
     url(r'dashboard/$',views.dashboard,name='dashboard1'),
     url(r'dashboard/(?P<id>[0-6])/$',views.dashboard,name='dashboard'),
     url(r'logout/',views.logout,name='logout'),
-    url(r'profile/',views.profile,name='profile'),
+    url(r'^profile/$',views.profile,name='profile'),
     url(r'download/',views.download,name='download'),
     url(r'review/',views.review,name='review'),
     url(r'address/',views.address,name='address'),
     url(r'medical1/',views.medical1,name='medical1'),
     url(r'home/$',views.home,name='home'),
-    url(r'home/(?P<id>[a-zA-Z]+)/$',views.home,name='home')
+    url(r'home/(?P<id>[a-zA-Z]+)/$',views.home,name='home'),    
+    url(r'console/(?P<id>[a-zA-Z]+)/$',views.console,name='console')
 ]
 
 if settings.DEBUG:

@@ -13,6 +13,10 @@ from .utils import render_to_pdf
 def index(request):
     pass
 
+def console(request,id):    
+    context=dict()
+    context['id']=id
+    return render(request,'console.html',context)
 
 def home(request,id='index'):
     print('erw',id)

@@ -288,8 +288,8 @@ input[type=radio]{display: inline-block; padding:8px; width: 30px;}
 .table_4{margin: 0 auto;}
 title{transition:0.1s;}
 
-.panel_4_body_card_full button, .profile_card2 button {padding:6px;border:none;display:inline-block;border-bottom:1px solid #ccc;box-shadow: 3px 3px 3px rgba(0,0,0,0.3), 3px 3px 3px rgba(0,0,0,0.3); border-radius: 5px; border-bottom: 2px; }
-.panel_4_body_card_full button:hover,{box-shadow: 3px 3px 3px rgba(0,0,0,0.5), 3px 3px 3px rgba(0,0,0,0.5); transition: 0.3s;}
+.panel_4_body_card_full button, .profile_card2 button, #sendtodoc{padding:6px;border:none;display:inline-block;border-bottom:1px solid #ccc;box-shadow: 3px 3px 3px rgba(0,0,0,0.3), 3px 3px 3px rgba(0,0,0,0.3); border-radius: 5px; border-bottom: 2px; }
+.panel_4_body_card_full button:hover, w3-container button:hover {box-shadow: 3px 3px 3px rgba(0,0,0,0.5), 3px 3px 3px rgba(0,0,0,0.5); transition: 0.3s;}
 .panel_4_body_card_full input[type=text] {padding:8px;border:none;border-bottom:1px solid #ccc; width:60px; }
 
 
@@ -374,3 +374,20 @@ title{transition:0.1s;}
 .report{padding:10px 40px 20px 40px;} .report p,.report ul li {font-weight:500; font-size:20px; line-height:1.5;   }
 #stage1_div, #stage2_div, #stage3a_div, #stage3b_div, #stage4_div, #stage5_div{ display:none;}
 #stage_div_show{display:block;}
+
+.w3-modal{z-index:3;display:none;padding-top:300px;position:fixed;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgb(0,0,0);background-color:rgba(0,0,0,0.4)}
+
+.w3-modal-content{margin:auto;background-color:#fff;position:relative;padding:0;outline:0;width:600px;border:2px solid grey; border-radius:8px;}
+.w3-display-topright{position:absolute;right:0;top:0}
+.w3-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+.w3-container,.w3-panel{padding: 30px; text-align:center;}.w3-panel{margin-top:16px;margin-bottom:16px}
+.w3-container:after, .w3-container:before {
+    content: "";display: table; clear: both
+}
+.form-select {background:#f8f9fa; overflow: hidden; border: 1px solid #cbcbcb; border-radius: 3px;width:410px;}
+
+select {
+    position: relative;background: transparent; background-image: none;
+    width: 100%;outline: none;  color: #888888; cursor: pointer;
+    z-index: 2; border: none;  padding: 10px 10px 10px 5px;}
+.colmodal{display:inline-block;position:relative;float:left;}#sendtodoc{margin:3px 5px 0px 35px;}

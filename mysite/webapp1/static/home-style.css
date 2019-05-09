@@ -132,17 +132,8 @@ figure.snip1142 * {
     }
 
     figure.snip1142 i {
-        margin-right: 5px;
-        display: inline-block;
-        font-size: 24px;
-        color: #000000;
-        width: 35px;
-        height: 35px;
-        line-height: 35px;
-        text-align: center;
-        background: white;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-        background-color: rgba(0, 0, 0, 0.05);
+        margin-right: 5px;display: inline-block; font-size: 24px; color: #000000; width: 35px; height: 35px;line-height: 35px; text-align: center;
+        background: white;  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4); background-color: rgba(0, 0, 0, 0.05);
     }
 
         figure.snip1142 i:hover {

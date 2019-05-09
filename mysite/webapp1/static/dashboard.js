@@ -32,9 +32,9 @@ function switchVisible2() {
 }
 document.getElementById('address_button').addEventListener('click', switchVisible2);
 
-/*
-var div5 = document.getElementById('medical1_tab1'),
-    div6 = document.getElementById('medical1_tab2');
+
+var div5 = document.getElementById('dpersonal_tab1'),
+    div6 = document.getElementById('dpersonal_tab2');
 function switchVisible3() {
     if (!div5) return;
     if (getComputedStyle(div5).display == 'block') {
@@ -45,5 +45,19 @@ function switchVisible3() {
         div6.style.display = 'none';
     }
 }
-document.getElementById('medical1_button').addEventListener('click', switchVisible3);
-*/
+document.getElementById('dpersonal_button1').addEventListener('click', switchVisible3);
+
+
+var div7 = document.getElementById('daddress_tab1'),
+    div8 = document.getElementById('daddress_tab2');
+function switchVisible4() {
+    if (!div7) return;
+    if (getComputedStyle(div5).display == 'block') {
+        div7.style.display = 'none';
+        div8.style.display = 'block';
+    } else {
+        div7.style.display = 'block';
+        div8.style.display = 'none';
+    }
+}
+document.getElementById('dpersonal_button2').addEventListener('click', switchVisible3);
