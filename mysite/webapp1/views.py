@@ -7,6 +7,7 @@ import os
 from datetime import date
 import sklearn
 from .utils import render_to_pdf
+import hashlib
 
 # Create your views here.
 
@@ -16,7 +17,7 @@ def index(request):
 def console(request,id='dprofile'):    
     context=dict()
     context['id']=id
-    print('dprofile',id)
+    
     if request.session.get('dusername',False)!=False:
         
         try:
@@ -68,6 +69,35 @@ def console(request,id='dprofile'):
                     context['patient_id']=patient_id
                     Login_ob = Login.objects.get(patient_id=patient_id)
                     context['patient']=Login_ob.username
+
+            if id == 'report_view':
+                print('a')
+                report = Reports.objects.get(reference_id = request.GET['reference_id'])
+                print('aa')
+                pred = report.stage
+                prediction = 'Chronic Kidney Disease - positive' if report.pred else 'Chronic Kidney Disease - Negative'
+                egfr = report.egfr
+                albumin = report.albumin
+                diab = 1 if report.diabetes else 0
+                bgr = report.bgr
+                haemoglobin = report.haemoglobin
+                date1=report.date
+                reference_id=request.GET['reference_id']
+                
+                patient_id=report.patient_id
+                context =dict()
+                context['pred']=pred
+                context['egfr']=egfr
+                context['albumin']=albumin
+                context['id']='report_view'
+                context['diab']=bgr
+                context['haem']=haemoglobin
+                context['prediction']=prediction
+                context['date']=date1
+                context['reference_id']=reference_id
+                context['username']=request.GET['patient']
+                context['patient_id']=patient_id
+                print(context)
 
  
                    
@@ -144,7 +174,7 @@ def dashboard(request,id='1'):
                 #print(request.GET['reference_id'])
                 report = Reports.objects.get(reference_id = request.GET['reference_id'])
                 pred = report.stage
-                prediction = 'CKD' if report.pred else 'NoCKD'
+                prediction = 'Chronic Kidney Disease - positive' if report.pred else 'Chronic Kidney Disease - Negative'
                 egfr = report.egfr
                 albumin = report.albumin
                 diab = 1 if report.diabetes else 0
@@ -256,7 +286,7 @@ def login(request):
         request.session['username']=False
         try:
             pas = Login.objects.get(pk=username)
-            if pas.password == password:
+            if pas.password == hashlib.sha1(password.encode()).hexdigest():
                 logged = 1
                 request.session['username']=False
         except Login.DoesNotExist:
@@ -287,11 +317,12 @@ def signup(request):
             context['exist'] = exist
         except Login.DoesNotExist:
             patient_id = 'PID000'
-            Login.count+=1
-            length = len(str(Login.count))
+            count=len(Login.objects.all())
+            count+=1
+            length = len(str(count))
             add = '0'*(3-length)
-            patient_id += add+str(Login.count)
-            l = Login(username,patient_id,password,email)
+            patient_id += add+str(count)
+            l = Login(username,patient_id,hashlib.sha1(password.encode()).hexdigest(),email)
             l.save()
             p=Profile(username,'','','1871-06-06','','','')
             p.save()
@@ -372,9 +403,10 @@ def input(request):
             patient_id = ob.patient_id
             
             print(patient_id)
-            Reports.count += 1
+            count=len(Reports.objects.all())
+            count+=1
             today = str(date.today().day)+str(date.today().month)+str(date.today().year)
-            reference_id = patient_id[6:]+today+str(Reports.count)
+            reference_id = patient_id[6:]+today+str(count)
             dia = True if diabetes=='1' else False
             Rbc = True if rbc=='1' else False
             hyp = True if hypertension=='1' else False
@@ -648,7 +680,7 @@ def doc_login(request):
         request.session['dusername']=False
         try:
             pas = Doc_login.objects.get(pk=username)
-            if pas.password == password:
+            if pas.password == hashlib.sha1(password.encode()).hexdigest():
                 logged = 1
                 request.session['dusername']=False
         except Doc_login.DoesNotExist:
@@ -682,7 +714,7 @@ def doc_signup(request):
             context['exist'] = exist
         except Doc_login.DoesNotExist:
             
-            l = Doc_login(username,password,email)
+            l = Doc_login(username,hashlib.sha1(password.encode()).hexdigest(),email)
             l.save()
             p=Doc_profile(username,'','','','','','')
             p.save()
@@ -706,11 +738,9 @@ def report_sent(request):
     try:
         ob= Report_sent.objects.get(reference_id=reference_id)
     #print(rating)
-    except Report_sent.DoesnotExist:
-        print(Report_sent.count)
-        Report_sent.count+=1
-        Report_sent.count
-        rev = Report_sent(Report_sent.count,Report_sent.count,doctor,patient,patient_id,reference_id)
+    except Report_sent.DoesNotExist:
+        
+        rev = Report_sent(doctor,patient,patient_id,reference_id)
         rev.save()
     
     return HttpResponse("<h1>fbjhfjch</h1>")
@@ -723,9 +753,11 @@ def consultation(request):
     patient = request.POST['patient']
     patient_id = request.POST['patient_id']
     photo = request.POST['photo']
-    print(Conversation.count)
-    Conversation.count += 1
-    print(Conversation.count)
-    rev = Conversation(Conversation.count,Conversation.count,patient_id,patient,doctor,photo,msg)
+    
+    rev = Conversation(patient_id=patient_id,patient=patient,doctor=doctor,photo=photo,msg=msg)
     rev.save()
     return HttpResponse("<h1>fbjhfjch</h1>")
+
+
+
+
