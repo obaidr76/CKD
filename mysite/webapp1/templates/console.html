@@ -1,0 +1,556 @@
+﻿<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>DOCTOR DASHBOARD</title>
+    <link rel="icon" href="{%static '/images/favicon.jpg' %}">
+    <link rel="stylesheet" href="{%static '/dashboard.css'%}">
+    <link rel="stylesheet" href="{%static '/style.css'%}">
+
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.6.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-image: url("{%static 'images/img1.png'%}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidenav">
+            <div class="sidenav-container">
+                <div class="nav-opt" style="text-align:center; margin-top:20px;">
+                </div>
+                <div style="text-align:center" class="nav-pic">
+                    {% if prof %}
+                    <img src="/webapp1{{ prof }} " alt="">
+                    {% else %}
+                    <img src="{%static '/images/img4.jpg'%}" alt="Flowers in Chania">
+                    {% endif %}
+                </div>
+                <hr style="width: 90%; margin-top:10px; height: 2px;"></hr>
+                <div class="nav-options table" style="text-align: left;">
+                    <ul class="navul">
+                        <li class="nav-item active"><a href="/webapp1/console/dprofile/" class="nav-link"><i class="icono-user"></i> &nbsp&nbsp&nbspPROFILE</a></li>
+                        <li class="nav-item "><a href="/webapp1/console/dreport/"><i href="#" class="icono-barChart"></i> &nbsp&nbsp&nbspREPORTS</a></li>
+                        <li class="nav-item "><a href="/webapp1/console/dcomms/"><i href="#" class="icono-heart"></i> &nbsp&nbsp&nbspCONSULTATION</a></li>
+                    </ul>
+                </div>
+                <hr style="width: 90%; " />
+            </div>
+        </div>
+        <div class="content">
+            <div class="navbar">
+                <div class="navbar-ele">
+                    <ul>
+                        <li style="float: left"><a href="/webapp1/home/">HOME</a></li>
+                        <li style="float: right"><a href="/webapp1/logout/">LOG OUT</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content-container">
+
+                {% if id == 'dprofile' %}
+
+                <div class="panel_3">
+                    <div class="panel_img">
+                        <div class="panel_profile_icon">
+                            {% if prof %}
+                            <img src="/webapp1{{ prof }} " alt="Flowers in Chania">
+                            {% else %}
+                            <img src="{%static '/images/img4.jpg'%}" alt="Flowers in Chania">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="panel_profile">
+                        <div class="profile_card1">
+                            <h2>PERSONAL DETAILS</h2>
+                        </div>
+                        <div class="profile_card2">
+                            <div id="personal_tab1">
+                                <button id="personal_button" class="btn" type="submit" style="float:right;">EDIT</button>
+                                <table>
+                                    <tr><td>Name: </td><td>{% if name %} {{name}} {% endif %} </td></tr>
+                                    <tr><td>Gender: </td><td>{% if gender %} {{ gender }} {% endif %}</td></tr>
+                                    <tr><td>Qualifications: </td><td>{% if  qualification  %} {{ qualification }} {% endif %}</td></tr>
+                                    <tr><td>Mobile: </td><td>{% if mobile %} {{ mobile }} {% endif %}</td></tr>
+                                    <tr><td>Email ID: </td><td>{% if email %} {{ email }} {% endif %} </td></tr>
+                                </table>
+                            </div>
+                            <div class="log-form2" id="personal_tab2">
+                                <form action="/webapp1/doc_profile/" enctype="multipart/form-data" method="POST" id="personalform" onsubmit="return validate_profile()">
+                                    <button id="personal_button" class="btn" type="submit" style="float:right;">SAVE CHANGES</button>
+                                    <table>
+                                        <tr><td>Name: </td><td><input type="text" id="pname" name="name" pattern="[a-zA-Z]+" title="Name cannot contain number" placeholder="NAME" value="{% if name %}{{ name }}{% endif %}" /></td><td><p style="color:red; font-size:14px;" ; id="pnamealert"></p></td></tr>
+                                        <tr><td>Gender: </td><td><p><input type="radio" name="gender" id="M" value="M" />Male</p><p><input type="radio" id="F" name="gender" value="F" />Female</p></td></tr>
+                                        <tr><td>Qualifications: </td><td><input type="text" pattern="[a-z.A-Z\s]+" title="Number and special characters not allowed" value="{{ qualification }}" name="qualification" placeholder="Qualifications" required /> </td></tr>
+                                        <tr><td>Mobile: </td><td><input type="text" name="mobile" id="pmobile" pattern="[789][0-9]{9}" title="Enter correct Mobile Number" maxlength="10" placeholder="MOBILE" value="{% if mobile %}{{ mobile }}{% endif %}" /> </td><td><p style="color:red; font-size:14px;" ; id="pmobilealert"></p></td></tr>
+                                        <tr><td>Email ID: </td><td><input type="email" name="email" placeholder="EMAIL-ID" value="{% if email %} {{ email }} {% endif %}" /></td></tr>
+                                        <tr><td>Profile Photo:  </td><td><label class="custom-file" l><input type="file" name="photo" placeholder="Uplaod" />Choose File</label></td></tr>
+                                    </table>
+                                </form>
+
+                                <script>
+                                    var choice = "{{ gender }}";
+                                    if (choice == "M") {
+                                        document.getElementById("M").checked = true;
+                                    }
+                                    else {
+                                        document.getElementById("F").checked = true;
+                                </script>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel_profile">
+                        <div class="profile_card1">
+                            <h2>ADDRESS</h2>
+                        </div>
+                        <div class="profile_card2">
+                            <div id="address_tab1">
+                                <button id="address_button" class="btn" type="submit" style="float:right;">EDIT</button>
+                                <table>
+                                    <tr><td>Clinic Address L1: </td><td>{% if addressl1 %} {{ addressl1 }} {% endif %} </td></tr>
+                                    <tr><td>Clinic Address L2:</td><td>{% if addressl2 %} {{ addressl2 }} {% endif %}</td></tr>
+                                    <tr><td>City:</td><td>{% if addcity %} {{ addcity }} {% endif %}</td></tr>
+                                    <tr><td>State:</td><td>{% if addstate %} {{ addstate }} {% endif %}</td></tr>
+                                    <tr><td>Postal:</td><td>{% if addzip %} {{ addzip }} {% endif %} </td></tr>
+                                </table>
+                            </div>
+                            <div class="log-form2" id="address_tab2">
+                                <form action="/webapp1/doc_address/" enctype="multipart/form-data" method="POST" onsubmit="return validate_address()">
+                                    <button id="address_button" class="btn" type="submit" style="float:right;">SAVE CHANGES</button>
+                                    <table>
+                                        <tr><td>Clinic Address L1: </td><td><input type="text" pattern="[a-zA-Z0-9.,\s]+" title="No special characters accept , and ." name="addressl1" placeholder="address 1" value="{% if addressl1 %}{{ addressl1 }}{% endif %}" /></td></tr>
+                                        <tr><td>Clinic Address L2: </td><td><input type="text" pattern="[a-zA-Z0-9.,\s]+" title="No special characters accept , and ." name="addressl2" placeholder="address 2" value="{% if addressl2 %}{{ addressl2 }}{% endif %}" /></td></tr>
+                                        <tr><td>City: </td><td><input type="text" id="acity" pattern="[a-zA-Z.,\s]+" name="addcity" placeholder="City" value="{% if addcity %}{{ addcity }}{% endif %}" /> </td><td><p style="color:red;  font-size:14px;" ; id="cityalert"></p></td></tr>
+                                        <tr><td>State: </td><td><input type="text" id="astate" pattern="[a-zA-Z.,\s]+" name="addstate" placeholder="State" value="{% if addstate %}{{ addstate }}{% endif %}" /> </td><td><p style="color:red;  font-size:14px;" ; id="statealert"></p></td></tr>
+                                        <tr><td>Postal: </td><td><input type="text" id="azip" name="addzip" pattern="[0-9]{6}" title="ZIP CODE" placeholder="Postal Code" value="{% if addzip %}{{ addzip }}{% endif %}" /></td><td><p style="color:red;  font-size:14px;" ; id="zipalert"></p></td></tr>
+                                    </table>
+                                </form>
+                                <script>
+                                    var choice = "{{ gender }}";
+                                    if (choice == "M") {
+                                        document.getElementById("M").checked = true;
+                                    }
+                                    else {
+                                        document.getElementById("F").checked = true;
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height:50px;" class="padding-div"></div>
+                </div>
+
+                {% elif id == 'dreport' %}
+
+                <div class="panel_4">
+                    <div class="panel_4_head">
+                        <h2> SOME ORGANIZATION</h2>
+                        <h3>_____ Bangalore, 562157 _____</h3>
+                    </div>
+                    <hr style="margin-top: 80px; width: 80%;">
+                    <div style="margin-top:40px;" class="panel_4_head">
+                        <h3>Consolidated Medical Reports</h3>
+                        <table class="table_3">
+                            <tr><th>Serial #</th><th>Lab Ref. No.</th><th>Patient Name</th><th>Patient_id</th><th>View/Reply</th></tr>
+                            {% for report in reports %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ report.reference_id }}</td>
+                                <td>{{ report.patient }}</td>
+                                <td>{{ report.patient_id }}</td>
+                                <td style="padding:0px; font-size:20px;">
+                                    <a href="http://127.0.0.1:8000/webapp1/console/report_view/?reference_id={{ report.reference_id }}&patient={{ report.patient }}"><i class="fas fa-search-plus" title="View" aria-hidden="true"></i></a>&nbsp&nbsp
+                                    <a href="http://127.0.0.1:8000/webapp1/console/dchat/?patient_id={{ report.patient_id }}" title="Reply to Report"><i class="fas fa-reply" aria-hidden="true"></i></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+
+                {% elif id == 'dcomms' %}
+
+                <div class="panel_4">
+                    <div class="panel_4_head">
+                        <h2> SOME ORGANIZATION</h2>
+                        <h3>_____ Bangalore, 562157 _____</h3>
+                        <br>
+                        <h2 style="float:left;">CONSULTATIONS</h2>
+                    </div>
+                    <br>
+                    <table class="table_3 table_5">
+                        {% for convo in convo_send %}
+                        {% if forloop.counter|divisibleby:"2" %}
+                        <tr><td>{{ forloop.counter }}/td><td><img src="{% if convo.photo %}/webapp1{{ convo.photo }}{% else %}{% static '/images/img4.jpg'%}{% endif %}"></td><td>{{ convo.patient }}</td><td>{{ convo.patient_id }}</td><td><a href="http://127.0.0.1:8000/webapp1/console/dchat/?patient_id={{ convo.patient_id }}"><i class="far fa-comment-alt fa-2x"></i></a></td></tr>
+                        {% else %}
+                        <tr><td>{{ forloop.counter }}</td><td><img src="{% if convo.photo %}/webapp1{{ convo.photo }}{% else %}{% static '/images/img4.jpg'%}{% endif %}"></td><td>{{ convo.patient }}</td><td>{{ convo.patient_id }}</td><td><a href="http://127.0.0.1:8000/webapp1/console/dchat/?patient_id={{ convo.patient_id }}"><i class="fas fa-comment-alt fa-2x"></i></a></td></tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+
+                {% elif id == 'dchat' %}
+
+                <div class="panel_5" id="panel">
+                    {% for convo in convos %}
+                    <div class="dialog_box">
+                        <div class="dialog_box_img"><img src="/webapp1{{ convo.photo }}" /></div>
+                        <div class="dialog_box_text"><p style="margin:0px; padding:0px;">{{ convo.msg }}</p></div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div style="height:10%;" class="panel_6">
+                    <div style="height:72px; width:6.5%;" class="review_send">
+                        <a onclick="return show();" href=#><img src="{%static '/images/send.png'%}" /></a>
+                    </div>
+                    <div style="height:72px; width:92.5%;" class="review_box">
+                        <div class="review_text">
+                            <textarea id="review" rows="5" cols="120" name="message" minlength="20" maxlength="180" placeholder="please keep your message sub 180 characters"></textarea><br>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                function show() {
+                element = document.getElementById('panel');
+                var text = document.getElementById('review').value;
+                document.getElementById('review').value = "";
+                var inner_div = document.createElement("div");
+                inner_div.setAttribute("class", "dialog_box");
+                var img_div = document.createElement("div");
+                img_div.setAttribute("class", "dialog_box_img");
+                var img = document.createElement("img");
+                                        img.setAttribute("src", "/webapp1{{ prof }}");
+                    var text_div = document.createElement("div");
+                    text_div.setAttribute("class", "dialog_box_text");
+                    text_div.innerHTML = text;
+                    img_div.appendChild(img);
+                    inner_div.appendChild(img_div);
+                    inner_div.appendChild(text_div);
+                    element.insertAdjacentElement('beforeend', inner_div);
+                    var dataString = '&msg=' + text + '&photo=' + '{{ prof }}'+'&doctor={{ username }}&patient={{patient}}&patient_id={{patient_id}}';
+                    $.ajax({
+                    type: "POST",
+                    url: "/webapp1/consultation/",
+                    data: dataString,
+                    success: function() {}
+                    });
+                return false;
+                }
+                </script>
+                {% elif id == 'report_view' %}
+                <div class="panel_4" id="download-div">
+                    <a href="/webapp1/dashboard/5/" style="float:left; margin-left:-39px;" class="save-button"><i class="fas fa-arrow-alt-circle-left"></i></a> <button class="save-button" onclick="window.location.href='http://127.0.0.1:8000/webapp1/download/?reference_id={{ reference_id }}'"><i class="fas fa-file-download"></i></button>
+                    <div class="panel_4_head">
+                        <h2> SOME ORGANIZATION</h2>
+                        <h3>_____ Bangalore, 562157 _____</h3>
+                        <div class="panel_4_head_table">
+                            <table class="table_1">
+                                <tr><td>Patient ID: {{ patient_id }}</td></tr>
+                                <tr><td>Name: {{ username }}</td></tr>
+                                <tr><td>Lab Ref. No.: {{ reference_id }}</td></tr>
+                            </table>
+                        </div>
+                        <div style="float:right;" class="panel_4_head_table">
+                            <table class="table_1">
+                                <tr><td>Date: {{ date }}</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <hr style="margin-top: 130px; width: 80%;">
+                    <div style="width:100%; display: inline-block; position: relative;"><h3 style="float:left; padding-left:10px;">Range</h3></div>
+
+                    <div class="panel_4_body">
+                        <div class="panel_4_body_card">
+                            <img src="{%static '/images/range/albumin1.jpeg'%}" />
+                            <input type="range" min="10" max="60" value="{{ albumin }}" class="slider2" id="myRange" disabled>
+                            <img src="{%static '/images/range/albumin2.jpeg'%}" />
+                            <h3>Albumin value: {{ albumin }} g/L m<sup>2</sup></h3>
+                        </div>
+                        <div class="panel_4_body_card">
+                            <img src="{%static '/images/range/gfr1.png'%}" />
+                            <input type="range" min="5" max="120" value="{{ egfr }}" class="slider" id="myRange" disabled>
+                            <img src="{%static '/images/range/gfr2.png'%}" />
+                            <h3>GFR value: {{ egfr }} mL/min/1.73 m<sup>2</sup></h3>
+                        </div>
+                    </div>
+                    <div class="panel_4_body">
+                        <div class="panel_4_body_card">
+                            <img src="{%static '/images/range/diab1.png'%}" />
+                            <input type="range" min="0" max="500" value="{{ diab }}" class="slider" id="myRange" disabled>
+                            <img src="{%static '/images/range/diab2.png'%}" />
+                            <h3>Diabetes: {{ diab }} mg/dl</h3>
+                        </div>
+
+                        <div class="panel_4_body_card">
+                            <img src="{%static '/images/range/haem1m.png'%}" />
+                            <input type="range" min="0" max="20" value="{{ haem }}" class="slider3" id="myRange" disabled>
+                            <img src="{%static '/images/range/haem2m.png'%}" />
+                            <h3>Haemoglobin: {{ haem }} g/dL</h3>
+                        </div>
+                    </div>
+
+                    <div style="width:100%; display: inline-block; position: relative;"><h3 style="float:left; padding-left:10px;">Calculations</h3></div>
+                    <div class="panel_4_body">
+                        <table class="table_2">
+                            <tr><td style="border-left-style : hidden!important; border-top-style:hidden!important;" rowspan="7" colspan="4" class="table_2_white">Prognosis of CKD by GFR and Albuminaria Categories</td><td rowspan="2" colspan="3" class="table_2_white">Persistent Albuminuria categories. &nbsp&nbsp&nbsp&nbsp Description and Range.</td></tr>
+                            <tr>                         </tr>
+                            <tr>                                  <td class="table_2_cream">A1</td><td class="table_2_cream">A2</td><td class="table_2_cream">A3</td></tr>
+                            <tr>                                  <td class="table_2_lcream" style="padding:10px;" rowspan="2">Normal to Mildly Increased</td><td class="table_2_lcream" rowspan="2">Moderately Increased.</td><td class="table_2_lcream" rowspan="2">Severely Increased.</td></tr>
+                            <tr>                             </tr>
+                            <tr>                                  <td rowspan="2">&lt30mg/g  &lt3mg/mmol</td><td td rowspan="2">30-300mg/g 3-30mg/mmol</td><td rowspan="2">&gt300mg/g  &gt30mg/mmol</td></tr>
+                            <tr>                               </tr>
+                            <tr><td class="table_2_cream">G1</td><td class="table_2_lcream" colspan="2">Normal or high</td><td>&gt=90</td>                    <td class="table_2_green" id="g1a1"></td><td class="table_2_yellow" id="g1a2"></td><td class="table_2_orange" id="g1a3"></td></tr>
+                            <tr><td class="table_2_cream">G2</td><td class="table_2_lcream" colspan="2">Mildly decreased</td><td>60-89</td>                   <td class="table_2_green" id="g2a1"></td><td class="table_2_yellow" id="g2a2"></td><td class="table_2_orange" id="g2a3"></td></tr>
+                            <tr><td class="table_2_cream">G3a</td><td class="table_2_lcream" colspan="2">Mildly to moderately  </td><td>45-59</td>   <td class="table_2_yellow" id="g3aa1"></td><td class="table_2_orange" id="g3aa2"></td><td class="table_2_red" id="g3aa3"></td></tr>
+                            <tr><td class="table_2_cream">G3b</td><td class="table_2_lcream" colspan="2">Moderately to severely  </td><td>30-44</td> <td class="table_2_orange" id="g3ba1"></td><td class="table_2_red" id="g3ba2"></td><td class="table_2_red" id="g3ba3"></td></tr>
+                            <tr><td class="table_2_cream">G4</td><td class="table_2_lcream" colspan="2">Severely decreased</td><td>15-29</td>                 <td class="table_2_red" id="g4a1"></td><td class="table_2_red" id="g4a2"></td><td class="table_2_red" id="g4a3"></td></tr>
+                            <tr><td class="table_2_cream">G5</td><td class="table_2_lcream" colspan="2">kidney Failure</td><td>&lt15</td>                     <td class="table_2_red" id="g5a1"></td><td class="table_2_red" id="g5a2"></td><td class="table_2_red" id="g5a3"></td></tr>
+
+                        </table>
+                    </div>
+
+                    <h2 style="margin-top:50px;">STAGES OF KIDNEY</h2>
+                    <div class="fluid-container report">
+                        <div class="row">
+                            <div style="text-align:justify;" class="col-8">
+                                <p>  Glomerular filtration rate (GFR) is the best measure of kidney function. The GFR is the number used to figure out a person’s stage of kidney disease.</p>
+                                <ul>
+                                    <li>Stage 1 with normal or high GFR (GFR > 90 mL/min) </li>
+                                    <li>Stage 2 Mild CKD (GFR = 60-89 mL/min)</li>
+                                    <li>Stage 3A Moderate CKD (GFR = 45-59 mL/min)</li>
+                                    <li>Stage 3B Moderate CKD (GFR = 30-44 mL/min)</li>
+                                    <li>Stage 4 Severe CKD (GFR = 15-29 mL/min)</li>
+                                    <li>Stage 5 End Stage CKD (GFR < 15 mL/min)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fluid-container report" id="stage1_div">
+                        <h2 style="margin-left:-40px; margin-bottom:40px;">PREDICTION : {{ prediction }}, STAGE - {{pred}}</h2>
+                        <div class="row">
+                            <div style="text-align:justify;" class="col-8">
+                                <h2>Stage 1 kidney disease means kidney damage and an eGFR greater than 90.</h2>
+                                <p>In Stage 1 kidney disease there is mild kidney damage, and usually no symptoms. If you have Stage 1 kidney disease, it is important to talk to your doctor about how to prevent your kidney damage from getting worse.</p>
+                                <p>Most of the time an eGFR greater than 90 means the kidneys are healthy and working well. If you have Stage 1 kidney disease, this means you have other signs of kidney damage even though your eGFR is normal. Signs of kidney damage could be protein in your urine or physical damage to the kidneys.</p>
+
+                                <p>Below are ways to slow kidney damage in Stage 1 kidney disease:</p>
+                                <ul>
+                                    <li>Control your blood sugar if you have diabetes.</li>
+                                    <li>Keep a healthy blood pressure.</li>
+                                    <li>Eat a healthy diet.</li>
+                                    <li>Do not smoke or use tobacco.</li>
+                                    <li>Exercise 30 minutes a day, 5 days a week.</li>
+                                    <li>Keep a healthy weight.</li>
+                                    <li>Ask your doctor if there are medicines you can take to protect your kidneys.</li>
+                                    <li>Make an appointment to see a nephrologist, even if you already have a general doctor.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fluid-container report" id="stage2_div">
+                        <h2 style="margin-left:-40px; margin-bottom:40px;">PREDICTION : {{ prediction }}, STAGE - {{pred}}</h2>
+                        <div class="row">
+                            <div style="text-align:justify;" class="col-8">
+
+                                <p>Stage 2 kidney disease means kidney damage and an eGFR between 60 and 89.</p>
+                                <p>In Stage 2 kidney disease there is mild kidney damage, and usually no symptoms. If you have Stage 2 kidney disease, it is important to talk to your doctor about how to prevent your kidney damage from getting worse.
+                                </p>
+                                <p>Most of the time an eGFR between 60 and 89 means the kidneys are healthy and working well. If you have Stage 2 kidney disease, this means you have other signs of kidney damage even though your eGFR is normal. Signs of kidney damage could be protein in your urine or physical damage to the kidneys.
+                                </p>
+                                <p>Below are ways to slow kidney damage in Stage 2 kidney disease:</p>
+                                <ul>
+                                    <li> Control your blood sugar if you have diabetes.</li>
+                                    <li> Keep a healthy blood pressure.</li>
+                                    <li>Eat a healthy diet. </li>
+                                    <li>Do not smoke or use tobacco.</li>
+                                    <li>Exercise 30 minutes a day, 5 days a week.</li>
+                                    <li>Keep a healthy weight.</li>
+                                    <li>Ask your doctor if there are medicines you can take to protect your kidneys.</li>
+                                    <li>Make an appointment to see a nephrologist, even if you already have a general doctor.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fluid-container report" id="stage3a_div">
+                        <h2 style="margin-left:-40px; margin-bottom:40px;">PREDICTION : {{ prediction }}, STAGE - {{pred}}</h2>
+                        <div class="row">
+                            <div style="text-align:justify;" class="col-8">
+
+                                <p> Stage 3 kidney disease is an eGFR between 30 and 59.</p>
+                                <p> Stage 3 kidney disease means the kidneys are moderately damaged and are not working as well as they should. Stage 3 kidney disease is separated into two stages; Stage 3a and Stage 3b. Stage 3a is an eGFR between 45 and 59. Stage 3b is an eGFR between 30 and 44.</p>
+                                <p> Many people with Stage 3 kidney disease do not have any symptoms. But if there are symptoms, some of the more common ones are:</p>
+                                <ul>
+                                    <li>Swelling in the hands and feet </li>
+                                    <li>Back pain</li>
+                                    <li>Urinating more or less than normal</li>
+                                </ul>
+                                <p>To keep your kidney disease from getting worse,things you can do in Stage 3 to keep your kidney disease from getting worse are:</p>
+                                <ul>
+                                    <li>Control your blood sugar if you have diabetes.</li>
+                                    <li> Keep a healthy blood pressure.</li>
+                                    <li>Eat a healthy diet. </li>
+                                    <li>Do not smoke or use tobacco.</li>
+                                    <li>Exercise 30 minutes a day, 5 days a week.</li>
+                                    <li>Keep a healthy weight.</li>
+                                    <li>Ask your doctor if there are medicines you can take to protect your kidneys.</li>
+                                    <li>Make an appointment to see a nephrologist, even if you already have a general doctor.</li>
+                                    <li>Visit a nephrologist to make a treatment plan that is right for you. Your nephrologist will tell you how often you will need to have your kidneys checked.</li>
+                                    <li>Meet with a dietitian, who will help you follow a diet that will keep you healthy.</li>
+                                    <li>If you have diabetes or high blood pressure, ask your doctor about special kinds of blood pressure medicines called ACE inhibitors and ARBs. Sometimes these medicines can help keep kidney disease from getting worse.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fluid-container report" id="stage3b_div">
+                        <h2 style="margin-left:-40px; margin-bottom:40px;">PREDICTION : {{ prediction }}, STAGE - {{pred}}</h2>
+                        <div class="row">
+                            <div style="text-align:justify;" class="col-8">
+                                <p> Stage 3 kidney disease is an eGFR between 30 and 59.</p>
+                                <p> Stage 3 kidney disease means the kidneys are moderately damaged and are not working as well as they should. Stage 3 kidney disease is separated into two stages; Stage 3a and Stage 3b. Stage 3a is an eGFR between 45 and 59. Stage 3b is an eGFR between 30 and 44.
+                                </p>
+                                <p> Many people with Stage 3 kidney disease do not have any symptoms. But if there are symptoms, some of the more common ones are: </p>
+                                <ul>
+                                    <li>Swelling in the hands and feet</li>
+                                    <li>Back pain</li>
+                                    <li>Urinating more or less than normal</li>
+                                </ul>
+                                <p>
+                                    To keep your kidney disease from getting worse,things you can do in Stage 3 to keep your kidney disease from getting worse are:
+                                </p>
+                                <ul>
+                                    <li>Control your blood sugar if you have diabetes. </li>
+                                    <li> Keep a healthy blood pressure.</li>
+                                    <li>Eat a healthy diet. </li>
+                                    <li>Do not smoke or use tobacco.</li>
+                                    <li>Exercise 30 minutes a day, 5 days a week.</li>
+                                    <li>Keep a healthy weight.</li>
+                                    <li>Ask your doctor if there are medicines you can take to protect your kidneys.</li>
+                                    <li>Make an appointment to see a nephrologist, even if you already have a general doctor.</li>
+                                    <li>Visit a nephrologist to make a treatment plan that is right for you. Your nephrologist will tell you how often you will need to have your kidneys checked.</li>
+                                    <li>Meet with a dietitian, who will help you follow a diet that will keep you healthy.</li>
+                                    <li>If you have diabetes or high blood pressure, ask your doctor about special kinds of blood pressure medicines called ACE inhibitors and ARBs. Sometimes these medicines can help keep kidney disease from getting worse.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fluid-container report" id="stage4_div">
+                        <h2 style="margin-left:-40px; margin-bottom:40px;">PREDICTION : {{ prediction }}, STAGE - {{pred}}</h2>
+                        <div class="row">
+                            <div style="text-align:justify;" class="col-8">
+
+                                <p>Stage 4 kidney disease is an eGFR between 15 and 30.</p>
+                                <p> Stage 4 kidney disease means your kidneys are moderately or severely damaged and are not working nearly as well as they should. Stage 4 kidney disease should be taken very seriously. It is the last stage of kidney disease before kidney failure.
+                                </p>
+                                <p> By Stage 4 kidney disease, it becomes more common to have symptoms. Some of the more common symptoms are:
+                                </p>
+                                <ul>
+                                    <li>Swelling in the hands and feet </li>
+                                    <li>Back pain</li>
+                                    <li>Urinating more or less than normal</li>
+                                </ul>
+                                <p> To keep kidney disease from getting worse at this stage, there are steps that must be taken: </p>
+                                <ul>
+                                    <li> Have regular appointments with a nephrologist, to make a treatment plan that is best for you. Your nephrologist will tell you how often you will need to have your kidneys checked.
+                                    </li>
+                                    <li>Meet with a dietitian, who will help you follow a diet that will keep you healthy. </li>
+                                    <li> If you have diabetes or high blood pressure, ask your doctor about special kinds of blood pressure medicines called ACE inhibitors and ARBs. Sometimes these medicines can help keep kidney disease from getting worse.
+                                    </li>
+                                </ul>
+                                <p>this is the time to start talking with your nephrologist about how to prepare for kidney failure. Once your kidneys have failed, you will need to start dialysis or have a kidney transplant to live. You can start planning for dialysis or kidney transplant before you reach kidney failure.
+                                </p>
+                                <ul>
+                                    <li><strong>Preparing for dialysis:</strong> There are several things you should consider when getting ready for dialysis. You will need to choose a type of dialysis, your vascular access type, and consider your finances and employment.
+                                    </li>
+                                    <li><strong>Preparing for transplant:</strong> If you are able to find a living kidney donor, you may not need to start dialysis at all. It is possible to have a transplant when your kidneys are getting close to failure. There are many things to consider as you prepare for transplant.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fluid-container report" id="stage5_div">
+                        <h2 style="margin-left:-40px; margin-bottom:40px;">PREDICTION : {{ prediction }}, STAGE - {{pred}}</h2>
+                        <div class="row">
+                            <div style="text-align:justify;" class="col-8">
+                                <p> Stage 5 kidney disease is an eGFR less than 15.</p>
+                                <p>Stage 5 kidney disease means the kidneys are getting very close to failure or have completely failed.</p>
+                                <p> Stage 5 kidney disease has severe symptoms because the kidneys have usually stopped working. If your kidneys fail, toxins and wastes build up in your blood which makes you very sick.
+                                </p>
+                                <p>Some of the symptoms of kidney failure are:</p>
+                                <ul>
+                                    <li> Itching </li>
+                                    <li>Muscle cramps</li>
+                                    <li>Nausea and vomiting</li>
+                                    <li>Not feeling hungry</li>
+                                    <li>Swelling in the hands and feet</li>
+                                    <li>Back pain</li>
+                                    <li>Urinating more or less than normal</li>
+                                    <li>Trouble breathing</li>
+                                    <li>Trouble sleeping</li>
+                                </ul>
+                                <p>Once your kidneys have failed, you will need to start dialysis or have a kidney transplant to live.</p>
+                                <ul>
+                                    <li><strong>Preparing for dialysis:</strong> There are several things you should consider when getting ready for dialysis. You will need to choose a type of dialysis, your vascular access type, and consider your finances and employment.
+                                    </li>
+                                    <li><strong>Preparing for transplant:</strong> If you are able to find a living kidney donor, you may not need to start dialysis at all. It is possible to have a transplant when your kidneys are getting close to failure. There are many things to consider as you prepare for transplant.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="editor"></div>
+                <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+                <script>
+                    var id = "{{ pred }}";
+                    var cell = document.getElementById(id);
+                    cell.setAttribute("id", "ga");
+                    var vis_div_id = "stage1_div";
+                    var id_stage = id.substring(0,id.length-2);
+                    if (id_stage == "g2")
+                        vis_div_id="stage2_div";
+                    if (id_stage == "g3a")
+                        vis_div_id = "stage3a_div";
+                    if (id_stage == "g3b")
+                        vis_div_id = "stage3b_div";
+                    if (id_stage == "g4")
+                        vis_div_id = "stage4_div";
+                    if (id_stage == "g5")
+                        vis_div_id="stage5_div";
+                    element = document.getElementById(vis_div_id);
+                    element.setAttribute("id","stage_div_show");
+                     $('#cmd-download').on('click', function(){
+                    $('<a />').attr({
+                        download: 'export.html',
+                                href: "data:text/html," + $('#download-div').html()
+                         })[0].click()
+                     });
+                </script>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+
+<head>
+    <script type="text/javascript" src="{%static '/dashboard.js'%}"></script>
+</head>
+</html>

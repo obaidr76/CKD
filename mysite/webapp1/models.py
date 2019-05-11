@@ -2,10 +2,9 @@ from django.db import models
 from django.utils import timezone
                                         # Create your models here.
 class Login(models.Model):
-    count=0
     username = models.CharField(max_length=200,primary_key=True)
     patient_id =   models.CharField(max_length=30,default='00000000')
-    password = models.CharField(max_length=32)
+    password = models.CharField(max_length=40)
     email = models.CharField(max_length=50,default='abc@gmail.com')
     objects = models.Manager()
     DoesNotExist = models.ObjectDoesNotExist
@@ -42,8 +41,6 @@ class Medical1(models.Model):
     otherdetail=models.CharField(max_length=500,default='----')
   
 class Reports(models.Model):
-    count=0
-    
     reference_id = models.CharField(max_length=12,primary_key=True)
     patient_id =  models.CharField(max_length=30)
     #models.ForeignKey(Login,on_delete = 'CASCADE')
@@ -68,8 +65,52 @@ class Reports(models.Model):
 
 
 class Review(models.Model):
-    count=0
     username = models.CharField(max_length=200)
     photo = models.CharField(max_length=50)
     review = models.CharField(max_length=100)
     rating = models.IntegerField(default=1)
+
+
+class Doc_login(models.Model):
+    username = models.CharField(max_length=200,primary_key=True)
+    password = models.CharField(max_length=40)
+    email = models.CharField(max_length=50,default='abc@gmail.com')
+
+class Doc_profile(models.Model):
+    username = models.OneToOneField(Doc_login,primary_key=True,on_delete=models.CASCADE)
+    name=models.CharField(max_length=200)
+    gender=models.CharField(max_length=1)
+    qualifications=models.CharField(max_length=200)
+    mobile=models.CharField(max_length=10)
+    email=models.CharField(max_length=50)
+    photo=models.CharField(max_length=50)
+
+
+class Doc_address(models.Model):
+    username=models.OneToOneField(Doc_login,primary_key=True,on_delete=models.CASCADE)
+    addressl1=models.CharField(max_length=60)
+    addressl2=models.CharField(max_length=60)
+    addcity=models.CharField(max_length=15)
+    addstate=models.CharField(max_length=15)
+    addzip=models.CharField(max_length=6)
+
+
+class Report_sent(models.Model):
+
+    doctor = models.CharField(max_length=200)
+    patient = models.CharField(max_length=200)
+    patient_id = models.CharField(max_length=30,default='00000000')
+    reference_id = models.CharField(max_length=12,primary_key=True)
+
+
+
+class Conversation(models.Model):
+
+    patient_id = models.CharField(max_length=30,default='00000000')
+    patient = models.CharField(max_length=200)
+    doctor = models.CharField(max_length=200)
+    photo=models.CharField(max_length=50)
+    msg = models.CharField(max_length=500)
+
+
+
