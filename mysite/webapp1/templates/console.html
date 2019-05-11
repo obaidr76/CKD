@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 {% load staticfiles %}
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -24,14 +23,10 @@
     </style>
 </head>
 <body>
-
     <div class="wrapper">
-        <!--  wrapper class -->
         <div class="sidenav">
-            <!--  side navigation panel -->
             <div class="sidenav-container">
                 <div class="nav-opt" style="text-align:center; margin-top:20px;">
-
                 </div>
                 <div style="text-align:center" class="nav-pic">
                     {% if prof %}
@@ -51,7 +46,6 @@
                 <hr style="width: 90%; " />
             </div>
         </div>
-
         <div class="content">
             <div class="navbar">
                 <div class="navbar-ele">
@@ -61,7 +55,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="content-container">
 
                 {% if id == 'dprofile' %}
@@ -76,9 +69,7 @@
                             {% endif %}
                         </div>
                     </div>
-
                     <div class="panel_profile">
-                        <!--  PROFILE panel -->
                         <div class="profile_card1">
                             <h2>PERSONAL DETAILS</h2>
                         </div>
@@ -91,11 +82,9 @@
                                     <tr><td>Qualifications: </td><td>{% if  qualification  %} {{ qualification }} {% endif %}</td></tr>
                                     <tr><td>Mobile: </td><td>{% if mobile %} {{ mobile }} {% endif %}</td></tr>
                                     <tr><td>Email ID: </td><td>{% if email %} {{ email }} {% endif %} </td></tr>
-
                                 </table>
                             </div>
                             <div class="log-form2" id="personal_tab2">
-
                                 <form action="/webapp1/doc_profile/" enctype="multipart/form-data" method="POST" id="personalform" onsubmit="return validate_profile()">
                                     <button id="personal_button" class="btn" type="submit" style="float:right;">SAVE CHANGES</button>
                                     <table>
@@ -122,7 +111,6 @@
                     </div>
 
                     <div class="panel_profile">
-                        <!--  PROFILE panel -->
                         <div class="profile_card1">
                             <h2>ADDRESS</h2>
                         </div>
@@ -155,32 +143,6 @@
                                     }
                                     else {
                                         document.getElementById("F").checked = true;
-    }
-                                    /*
-                                    function validate_address()
-                                    {
-                                        var acity = document.getElementById('acity').value,
-                                            astate = document.getElementById('astate').value,
-                                            azip = document.getElementById('azip').value;
-                                        var cityalert = document.getElementById('cityalert'),
-                                            statealert = document.getElementById('statealert'),
-                                            zipalert = document.getElementById('zipalert');
-
-                                        ans=true
-                                        if (!isNaN(acity)) {
-                                            ans = false;
-                                            cityalert.innerHTML="No Number Allowed";
-                                        }
-                                        if (!isNaN(astate)) {
-                                            ans = false;
-                                            statealert.innerHTML="No Number Allowed";
-                                        }
-                                        if (isNaN(azip)) {
-                                            ans = false;
-                                           zipalert.innerHTML="Should be a Number";
-                                        }
-                                        return ans;
-                                    }      */
                                 </script>
                             </div>
                         </div>
@@ -194,12 +156,6 @@
                     <div class="panel_4_head">
                         <h2> SOME ORGANIZATION</h2>
                         <h3>_____ Bangalore, 562157 _____</h3>
-                        <!--<div class="panel_4_head_table">
-                <table class="table_1">
-                    <tr><td>Patient ID: {{ patient_id }}</td><td><select><option>00000000001</option><option>1</option><option>1</option><option>1</option><option>1</option></select></td></tr>
-                </table>
-            </div>-->
-
                     </div>
                     <hr style="margin-top: 80px; width: 80%;">
                     <div style="margin-top:40px;" class="panel_4_head">
@@ -218,8 +174,6 @@
                                 </td>
                             </tr>
                             {% endfor %}
-                            <!--<tr><td>Serial #</td><td>Lab Ref. No.</td><td>Report Name</td><td>Result</td><td>Test Date</td><td>Download</td></td>-->
-
                         </table>
                     </div>
                 </div>
@@ -242,7 +196,6 @@
                         <tr><td>{{ forloop.counter }}</td><td><img src="{% if convo.photo %}/webapp1{{ convo.photo }}{% else %}{% static '/images/img4.jpg'%}{% endif %}"></td><td>{{ convo.patient }}</td><td>{{ convo.patient_id }}</td><td><a href="http://127.0.0.1:8000/webapp1/console/dchat/?patient_id={{ convo.patient_id }}"><i class="fas fa-comment-alt fa-2x"></i></a></td></tr>
                         {% endif %}
                         {% endfor %}
-
                     </table>
                 </div>
 
@@ -384,8 +337,6 @@
                         </div>
                     </div>
 
-                    <!-- Stages start-->
-
                     <div class="fluid-container report" id="stage1_div">
                         <h2 style="margin-left:-40px; margin-bottom:40px;">PREDICTION : {{ prediction }}, STAGE - {{pred}}</h2>
                         <div class="row">
@@ -415,11 +366,9 @@
                             <div style="text-align:justify;" class="col-8">
 
                                 <p>Stage 2 kidney disease means kidney damage and an eGFR between 60 and 89.</p>
-                                <p>
-                                    In Stage 2 kidney disease there is mild kidney damage, and usually no symptoms. If you have Stage 2 kidney disease, it is important to talk to your doctor about how to prevent your kidney damage from getting worse.
+                                <p>In Stage 2 kidney disease there is mild kidney damage, and usually no symptoms. If you have Stage 2 kidney disease, it is important to talk to your doctor about how to prevent your kidney damage from getting worse.
                                 </p>
-                                <p>
-                                    Most of the time an eGFR between 60 and 89 means the kidneys are healthy and working well. If you have Stage 2 kidney disease, this means you have other signs of kidney damage even though your eGFR is normal. Signs of kidney damage could be protein in your urine or physical damage to the kidneys.
+                                <p>Most of the time an eGFR between 60 and 89 means the kidneys are healthy and working well. If you have Stage 2 kidney disease, this means you have other signs of kidney damage even though your eGFR is normal. Signs of kidney damage could be protein in your urine or physical damage to the kidneys.
                                 </p>
                                 <p>Below are ways to slow kidney damage in Stage 2 kidney disease:</p>
                                 <ul>
@@ -472,8 +421,7 @@
                         <div class="row">
                             <div style="text-align:justify;" class="col-8">
                                 <p> Stage 3 kidney disease is an eGFR between 30 and 59.</p>
-                                <p>
-                                    Stage 3 kidney disease means the kidneys are moderately damaged and are not working as well as they should. Stage 3 kidney disease is separated into two stages; Stage 3a and Stage 3b. Stage 3a is an eGFR between 45 and 59. Stage 3b is an eGFR between 30 and 44.
+                                <p> Stage 3 kidney disease means the kidneys are moderately damaged and are not working as well as they should. Stage 3 kidney disease is separated into two stages; Stage 3a and Stage 3b. Stage 3a is an eGFR between 45 and 59. Stage 3b is an eGFR between 30 and 44.
                                 </p>
                                 <p> Many people with Stage 3 kidney disease do not have any symptoms. But if there are symptoms, some of the more common ones are: </p>
                                 <ul>
@@ -506,51 +454,33 @@
                         <div class="row">
                             <div style="text-align:justify;" class="col-8">
 
-                                <p>
-                                    Stage 4 kidney disease is an eGFR between 15 and 30.
+                                <p>Stage 4 kidney disease is an eGFR between 15 and 30.</p>
+                                <p> Stage 4 kidney disease means your kidneys are moderately or severely damaged and are not working nearly as well as they should. Stage 4 kidney disease should be taken very seriously. It is the last stage of kidney disease before kidney failure.
                                 </p>
-                                <p>
-                                    Stage 4 kidney disease means your kidneys are moderately or severely damaged and are not working nearly as well as they should. Stage 4 kidney disease should be taken very seriously. It is the last stage of kidney disease before kidney failure.
+                                <p> By Stage 4 kidney disease, it becomes more common to have symptoms. Some of the more common symptoms are:
                                 </p>
-                                <p>
-                                    By Stage 4 kidney disease, it becomes more common to have symptoms. Some of the more common symptoms are:
-                                </p>
-
                                 <ul>
-                                    <li>
-                                        Swelling in the hands and feet
-                                    </li>
+                                    <li>Swelling in the hands and feet </li>
                                     <li>Back pain</li>
                                     <li>Urinating more or less than normal</li>
-
                                 </ul>
-                                <p>
-                                    To keep kidney disease from getting worse at this stage, there are steps that must be taken:
-                                </p>
+                                <p> To keep kidney disease from getting worse at this stage, there are steps that must be taken: </p>
                                 <ul>
-                                    <li>
-                                        Have regular appointments with a nephrologist, to make a treatment plan that is best for you. Your nephrologist will tell you how often you will need to have your kidneys checked.
+                                    <li> Have regular appointments with a nephrologist, to make a treatment plan that is best for you. Your nephrologist will tell you how often you will need to have your kidneys checked.
                                     </li>
-                                    <li>
-                                        Meet with a dietitian, who will help you follow a diet that will keep you healthy.
-                                    </li>
-                                    <li>
-                                        If you have diabetes or high blood pressure, ask your doctor about special kinds of blood pressure medicines called ACE inhibitors and ARBs. Sometimes these medicines can help keep kidney disease from getting worse.
+                                    <li>Meet with a dietitian, who will help you follow a diet that will keep you healthy. </li>
+                                    <li> If you have diabetes or high blood pressure, ask your doctor about special kinds of blood pressure medicines called ACE inhibitors and ARBs. Sometimes these medicines can help keep kidney disease from getting worse.
                                     </li>
                                 </ul>
-                                <p>
-                                    this is the time to start talking with your nephrologist about how to prepare for kidney failure. Once your kidneys have failed, you will need to start dialysis or have a kidney transplant to live. You can start planning for dialysis or kidney transplant before you reach kidney failure.
+                                <p>this is the time to start talking with your nephrologist about how to prepare for kidney failure. Once your kidneys have failed, you will need to start dialysis or have a kidney transplant to live. You can start planning for dialysis or kidney transplant before you reach kidney failure.
                                 </p>
                                 <ul>
-                                    <li>
-                                        <strong>Preparing for dialysis:</strong> There are several things you should consider when getting ready for dialysis. You will need to choose a type of dialysis, your vascular access type, and consider your finances and employment.
+                                    <li><strong>Preparing for dialysis:</strong> There are several things you should consider when getting ready for dialysis. You will need to choose a type of dialysis, your vascular access type, and consider your finances and employment.
                                     </li>
-                                    <li>
-                                        <strong>Preparing for transplant:</strong> If you are able to find a living kidney donor, you may not need to start dialysis at all. It is possible to have a transplant when your kidneys are getting close to failure. There are many things to consider as you prepare for transplant.
+                                    <li><strong>Preparing for transplant:</strong> If you are able to find a living kidney donor, you may not need to start dialysis at all. It is possible to have a transplant when your kidneys are getting close to failure. There are many things to consider as you prepare for transplant.
                                     </li>
                                 </ul>
                             </div>
-
                         </div>
                     </div>
 
@@ -560,8 +490,7 @@
                             <div style="text-align:justify;" class="col-8">
                                 <p> Stage 5 kidney disease is an eGFR less than 15.</p>
                                 <p>Stage 5 kidney disease means the kidneys are getting very close to failure or have completely failed.</p>
-                                <p>
-                                    Stage 5 kidney disease has severe symptoms because the kidneys have usually stopped working. If your kidneys fail, toxins and wastes build up in your blood which makes you very sick.
+                                <p> Stage 5 kidney disease has severe symptoms because the kidneys have usually stopped working. If your kidneys fail, toxins and wastes build up in your blood which makes you very sick.
                                 </p>
                                 <p>Some of the symptoms of kidney failure are:</p>
                                 <ul>
@@ -577,11 +506,9 @@
                                 </ul>
                                 <p>Once your kidneys have failed, you will need to start dialysis or have a kidney transplant to live.</p>
                                 <ul>
-                                    <li>
-                                        <strong>Preparing for dialysis:</strong> There are several things you should consider when getting ready for dialysis. You will need to choose a type of dialysis, your vascular access type, and consider your finances and employment.
+                                    <li><strong>Preparing for dialysis:</strong> There are several things you should consider when getting ready for dialysis. You will need to choose a type of dialysis, your vascular access type, and consider your finances and employment.
                                     </li>
-                                    <li>
-                                        <strong>Preparing for transplant:</strong> If you are able to find a living kidney donor, you may not need to start dialysis at all. It is possible to have a transplant when your kidneys are getting close to failure. There are many things to consider as you prepare for transplant.
+                                    <li><strong>Preparing for transplant:</strong> If you are able to find a living kidney donor, you may not need to start dialysis at all. It is possible to have a transplant when your kidneys are getting close to failure. There are many things to consider as you prepare for transplant.
                                     </li>
                                 </ul>
                             </div>
@@ -618,11 +545,11 @@
                 </script>
 
                 {% endif %}
-
             </div>
         </div>
     </div>
 </body>
+
 <head>
     <script type="text/javascript" src="{%static '/dashboard.js'%}"></script>
 </head>

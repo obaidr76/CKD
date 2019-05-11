@@ -65,7 +65,6 @@ class Reports(models.Model):
 
 
 class Review(models.Model):
-    count=0
     username = models.CharField(max_length=200)
     photo = models.CharField(max_length=50)
     review = models.CharField(max_length=100)

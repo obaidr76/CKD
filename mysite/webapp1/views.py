@@ -10,7 +10,6 @@ from .utils import render_to_pdf
 import hashlib
 
 # Create your views here.
-
 def index(request):
     pass
 
@@ -32,11 +31,7 @@ def console(request,id='dprofile'):
                 context['mobile']=ob.mobile.strip()
                 context['gender']=ob.gender
                 context['qualification']=ob.qualifications
-                #print(type(ob.dob))
-                #context['dob1']=str(ob.dob)
-                context['email']=ob.email
-
-                
+                context['email']=ob.email                
                 context['addressl1']=adr.addressl1
                 context['addressl2']=adr.addressl2
                 context['addcity']=adr.addcity
@@ -71,6 +66,7 @@ def console(request,id='dprofile'):
                     context['patient']=Login_ob.username
 
             if id == 'report_view':
+                context['prof']=ob.photo
                 print('a')
                 report = Reports.objects.get(reference_id = request.GET['reference_id'])
                 print('aa')
@@ -97,11 +93,7 @@ def console(request,id='dprofile'):
                 context['reference_id']=reference_id
                 context['username']=request.GET['patient']
                 context['patient_id']=patient_id
-                print(context)
-
- 
-                   
-
+                print(context)                
                 
         except Doc_profile.DoesNotExist:
             pass
@@ -197,7 +189,7 @@ def dashboard(request,id='1'):
                 context['username']=request.session['username']
                 context['patient_id']=patient_id
                 print(context)
-
+                context['prof']=ob.photo
 
             if id=='4':
                 context['prof']=ob.photo
@@ -417,30 +409,6 @@ def input(request):
             date1=today
     else:
         reference_id=request.GET['reference_id']
-        '''report = Reports.objects.get(reference_id = request.GET['reference_id'])
-        pred = report.stage
-        prediction = 'CKD' if report.pred else 'NoCKD'
-        egfr = report.egfr
-        albumin = report.albumin
-        diab = 1 if report.diabetes else 0
-        bgr = report.bgr
-        haemoglobin = report.haemoglobin
-        date1=report.date
-        reference_id=request.GET['reference_id']
-        patient_id=report.patient_id
-    context =dict()
-    context['pred']=pred
-    context['id']='3'
-    context['egfr']=egfr
-    context['albumin']=albumin
-    context['diab']=bgr
-    context['haem']=haemoglobin
-    context['prediction']=prediction
-    context['prof']=prof
-    context['date']=date1
-    context['reference_id']=reference_id
-    context['username']=request.session['username']
-    context['patient_id']=patient_id'''
     
     return redirect('../dashboard/3/?reference_id='+reference_id,request)
 import pickle
@@ -459,7 +427,6 @@ def Classification(values,choice=1):
         return 'NoCKD'
     else:
         return 'CKD'
-
 
 def logout(request):
     if request.session.get('username',False)!=False:
@@ -518,10 +485,6 @@ def profile(request):
         context['id']='1'
         return redirect('dashboard1')
 
-
-
-
-
 def download(request):
     if request.method=="GET":
         report = Reports.objects.get(reference_id = request.GET['reference_id'])
@@ -535,23 +498,10 @@ def download(request):
         context['date']=report.date
         context['username']=request.session['username']
         context['patient_id']=report.patient_id
-        #return render(request,'download.html',context)
         try:
             return render(request,'download.html', context)
         except:
             pass
-        #pdf = render_to_pdf(response)
-        '''if pdf:
-            response = HttpResponse(pdf, content_type='application/pdf')
-            #filename = "report_%s.pdf" %("12341231")
-            #content = "inline; filename='%s'" %(filename)
-            ##download = request.GET.get("download")
-            #if download:
-            #content = "attachment; filename=%s" %(filename)
-            response['Content-Disposition'] = content'''
-        #return response
-        #return HttpResponse("Not found")
-        #return HttpResponse(pdf, content_type='application/pdf')
 
 def review(request):
     text = request.POST['text']
@@ -559,8 +509,8 @@ def review(request):
     prof = request.POST['prof']
     rating =request.POST['rating'] 
     print(rating)
-    Review.count+=1
-    rev = Review(Review.count,username,prof,text,rating)
+    
+    rev = Review(username=username,photo=prof,review=text,rating=rating)
     rev.save()
     return HttpResponse("<h1>fbjhfjch</h1>")
 
@@ -590,7 +540,6 @@ def medical1(request):
     medical1_save = Medical1(username,fever,highbp,lowbp,seizures,heart_d,fainting,diabetes,cholesterol,palp,otherdetail)
     medical1_save.save()
     return redirect('dashboard1')
-
 
 def doc_profile(request):
     context=dict()
@@ -641,7 +590,6 @@ def doc_profile(request):
         id='dprofile'
         return redirect('console',id)
 
-
 def doc_address(request):
     username = request.session['dusername']                                                  #address
     addressl1 = request.POST.get('addressl1','')
@@ -652,7 +600,6 @@ def doc_address(request):
     address_save = Doc_address(username,addressl1,addressl2,addcity,addstate,addzip)
     address_save.save()
     return redirect('console')
-
 
 def doc_login(request):
     context=dict()
@@ -697,9 +644,6 @@ def doc_login(request):
             request.session['dusername']=username
             return redirect('console',id)
 
-
-
-
 def doc_signup(request):
     username = request.POST.get('username', False)
     password = request.POST.get('password', False)
@@ -720,16 +664,13 @@ def doc_signup(request):
             p.save()
 
             a=Doc_address(username,'','','','','')
-            a.save()
-
-           
+            a.save()           
 
         template=loader.get_template('doc_login.html')
         response= HttpResponse(template.render(context,request))
         response['Cache-Control']='no-store'
         return response
-
-
+    
 def report_sent(request):
     patient = request.POST['username']
     doctor = request.POST['doctor']
@@ -744,7 +685,6 @@ def report_sent(request):
         rev.save()
     
     return HttpResponse("<h1>fbjhfjch</h1>")
-
 
 def consultation(request):
     
