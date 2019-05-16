@@ -35,7 +35,7 @@
                     {% if prof %}
                     <img src="/webapp1{{ prof }} " alt="">
                     {% else %}
-                    <img src="{%static '/images/img4.jpg'%}" alt="Flowers in Chania"/>
+                    <img src="{%static '/images/default_pat.jpg'%}" alt="Flowers in Chania"/>
                     {% endif %}
                 </div>
                 <hr style="width: 90%; margin-top:10px; height: 2px;">
@@ -73,7 +73,7 @@
                             {% if prof %}
                             <img src="/webapp1{{ prof }} " alt="Flowers in Chania">
                             {% else %}
-                            <img src="{%static '/images/img4.jpg'%}" alt="Flowers in Chania">
+                            <img src="{%static '/images/default_pat.jpg'%}" alt="Flowers in Chania">
                             {% endif %}
                         </div>
                     </div>
@@ -556,7 +556,7 @@
                 <div class="panel_5" id="panel">
                     {% for review in rev %}
                     <div class="dialog_box">
-                        <div class="dialog_box_img"><img src="/webapp1{{ review.photo }}" /></div>
+                        <div class="dialog_box_img">{% if review.photo %} <img src="/webapp1{{ review.photo }}" /> {% else %} <img src="{%static '/images/default_pat.jpg'%}" /> {% endif %}</div>
                         <div class="dialog_box_text"><p style="margin:0px; padding:0px;">{{ review.review }}</p></div>
                         <div class="review_stars2">
                             {% for i in review.rating %}
@@ -645,7 +645,11 @@
                 var img_div = document.createElement("div");
                 img_div.setAttribute("class", "dialog_box_img");
                 var img = document.createElement("img");
-                                        img.setAttribute("src", "/webapp1{{ prof }}");
+                                         x = "{{ prof }}";
+                    if (x=="")
+                        img.setAttribute("src", "{%static '/images/default_pat.jpg'%}");
+                    else
+                        img.setAttribute("src", "/webapp1{{ prof }}");
                     var text_div = document.createElement("div");
                     text_div.setAttribute("class", "dialog_box_text");
                     text_div.innerHTML = text;
@@ -867,9 +871,9 @@
                     <table class="table_3 table_5">
                         {% for conv in conversation %}
                         {% if forloop.counter|divisibleby:"2" %}                        
-                        <tr><td>{{ forloop.counter }}<td><img src="{% if conv.photo %}/webapp1{{ conv.photo }}{% else %}{% static '/images/img4.jpg'%}{% endif %}"></td><td>{{ conv.doctor }}</td><td><a href="http://127.0.0.1:8000/webapp1/dashboard/8/?patient_id={{ conv.patient_id }}&doctor={{ conv.doctor }}"><i class="far fa-comment-alt fa-2x"></i></a></td></tr>
+                        <tr><td>{{ forloop.counter }}<td><img src="{% if conv.photo %}/webapp1{{ conv.photo }}{% else %}{% static '/images/default_pat.jpg'%}{% endif %}"></td><td>{{ conv.doctor }}</td><td><a href="http://127.0.0.1:8000/webapp1/dashboard/8/?patient_id={{ conv.patient_id }}&doctor={{ conv.doctor }}"><i class="far fa-comment-alt fa-2x"></i></a></td></tr>
                         {% else %}
-                        <tr><td>{{ forloop.counter }}</td><td><img src="{% if conv.photo %}/webapp1{{ conv.photo }}{% else %}{% static '/images/img4.jpg'%}{% endif %}"></td><td>{{ conv.doctor }}</td><td><a href="http://127.0.0.1:8000/webapp1/dashboard/8/?patient_id={{ conv.patient_id }}&doctor={{ conv.doctor }}"><i class="fas fa-comment-alt fa-2x"></i></a></td></tr>
+                        <tr><td>{{ forloop.counter }}</td><td><img src="{% if conv.photo %}/webapp1{{ conv.photo }}{% else %}{% static '/images/default_pat.jpg'%}{% endif %}"></td><td>{{ conv.doctor }}</td><td><a href="http://127.0.0.1:8000/webapp1/dashboard/8/?patient_id={{ conv.patient_id }}&doctor={{ conv.doctor }}"><i class="fas fa-comment-alt fa-2x"></i></a></td></tr>
                         {% endif %}
                         {% endfor %}
                     </table>
@@ -880,7 +884,7 @@
                 <div class="panel_5" id="panel">
                     {% for conv in convos %}
                     <div class="dialog_box">
-                        <div class="dialog_box_img"><img src="/webapp1{{ conv.photo }}" /></div>
+                        <div class="dialog_box_img">{% if conv.photo %} <img src="/webapp1{{ conv.photo }}" /> {% else %} <img src="{%static '/images/default_pat.jpg'%}" /> {% endif %}</div>
                         <div class="dialog_box_text"><p style="margin:0px; padding:0px;">{{ conv.msg }}</p></div>
                     </div>
                     {% endfor %}
@@ -907,7 +911,11 @@
                 var img_div = document.createElement("div");
                 img_div.setAttribute("class", "dialog_box_img");
                 var img = document.createElement("img");
-                                        img.setAttribute("src", "/webapp1{{ prof }}");
+                                         x = "{{ prof }}";
+                    if (x=="")
+                        img.setAttribute("src", "{%static '/images/default_pat.jpg'%}");
+                    else
+                        img.setAttribute("src", "/webapp1{{ prof }}");
                     var text_div = document.createElement("div");
                     text_div.setAttribute("class", "dialog_box_text");
                     text_div.innerHTML = text;

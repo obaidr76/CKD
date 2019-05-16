@@ -32,7 +32,7 @@
                     {% if prof %}
                     <img src="/webapp1{{ prof }} " alt="">
                     {% else %}
-                    <img src="{%static '/images/img4.jpg'%}" alt="Flowers in Chania">
+                    <img src="{%static '/images/default_doc.jpg'%}" alt="Flowers in Chania">
                     {% endif %}
                 </div>
                 <hr style="width: 90%; margin-top:10px; height: 2px;"></hr>
@@ -65,7 +65,7 @@
                             {% if prof %}
                             <img src="/webapp1{{ prof }} " alt="Flowers in Chania">
                             {% else %}
-                            <img src="{%static '/images/img4.jpg'%}" alt="Flowers in Chania">
+                            <img src="{%static '/images/default_doc.jpg'%}" alt="Flowers in Chania">
                             {% endif %}
                         </div>
                     </div>
@@ -191,9 +191,9 @@
                     <table class="table_3 table_5">
                         {% for convo in convo_send %}
                         {% if forloop.counter|divisibleby:"2" %}
-                        <tr><td>{{ forloop.counter }}/td><td><img src="{% if convo.photo %}/webapp1{{ convo.photo }}{% else %}{% static '/images/img4.jpg'%}{% endif %}"></td><td>{{ convo.patient }}</td><td>{{ convo.patient_id }}</td><td><a href="http://127.0.0.1:8000/webapp1/console/dchat/?patient_id={{ convo.patient_id }}"><i class="far fa-comment-alt fa-2x"></i></a></td></tr>
+                        <tr><td>{{ forloop.counter }}/td><td><img src="{% if convo.photo %}/webapp1{{ convo.photo }}{% else %}{% static '/images/default_doc.jpg'%}{% endif %}"></td><td>{{ convo.patient }}</td><td>{{ convo.patient_id }}</td><td><a href="http://127.0.0.1:8000/webapp1/console/dchat/?patient_id={{ convo.patient_id }}"><i class="far fa-comment-alt fa-2x"></i></a></td></tr>
                         {% else %}
-                        <tr><td>{{ forloop.counter }}</td><td><img src="{% if convo.photo %}/webapp1{{ convo.photo }}{% else %}{% static '/images/img4.jpg'%}{% endif %}"></td><td>{{ convo.patient }}</td><td>{{ convo.patient_id }}</td><td><a href="http://127.0.0.1:8000/webapp1/console/dchat/?patient_id={{ convo.patient_id }}"><i class="fas fa-comment-alt fa-2x"></i></a></td></tr>
+                        <tr><td>{{ forloop.counter }}</td><td><img src="{% if convo.photo %}/webapp1{{ convo.photo }}{% else %}{% static '/images/default_doc.jpg'%}{% endif %}"></td><td>{{ convo.patient }}</td><td>{{ convo.patient_id }}</td><td><a href="http://127.0.0.1:8000/webapp1/console/dchat/?patient_id={{ convo.patient_id }}"><i class="fas fa-comment-alt fa-2x"></i></a></td></tr>
                         {% endif %}
                         {% endfor %}
                     </table>
@@ -204,7 +204,7 @@
                 <div class="panel_5" id="panel">
                     {% for convo in convos %}
                     <div class="dialog_box">
-                        <div class="dialog_box_img"><img src="/webapp1{{ convo.photo }}" /></div>
+                        <div class="dialog_box_img">{% if convo.photo %} <img src="/webapp1{{ convo.photo }}" /> {% else %} <img src="{%static '/images/default_doc.jpg'%}" /> {% endif %}</div>
                         <div class="dialog_box_text"><p style="margin:0px; padding:0px;">{{ convo.msg }}</p></div>
                     </div>
                     {% endfor %}
@@ -229,8 +229,12 @@
                 inner_div.setAttribute("class", "dialog_box");
                 var img_div = document.createElement("div");
                 img_div.setAttribute("class", "dialog_box_img");
-                var img = document.createElement("img");
-                                        img.setAttribute("src", "/webapp1{{ prof }}");
+                    var img = document.createElement("img");
+                    x = "{{ prof }}";
+                    if (x=="")
+                        img.setAttribute("src", "{%static '/images/default_doc.jpg'%}");
+                    else
+                        img.setAttribute("src", "/webapp1{{ prof }}");
                     var text_div = document.createElement("div");
                     text_div.setAttribute("class", "dialog_box_text");
                     text_div.innerHTML = text;
@@ -250,7 +254,7 @@
                 </script>
                 {% elif id == 'report_view' %}
                 <div class="panel_4" id="download-div">
-                    <a href="/webapp1/dashboard/5/" style="float:left; margin-left:-39px;" class="save-button"><i class="fas fa-arrow-alt-circle-left"></i></a> <button class="save-button" onclick="window.location.href='http://127.0.0.1:8000/webapp1/download/?reference_id={{ reference_id }}'"><i class="fas fa-file-download"></i></button>
+                    <a href="/webapp1/console/dreport/" style="float:left; margin-left:-39px;" class="save-button"><i class="fas fa-arrow-alt-circle-left"></i></a> <button class="save-button" onclick="window.location.href='http://127.0.0.1:8000/webapp1/download/?reference_id={{ reference_id }}'"><i class="fas fa-file-download"></i></button>
                     <div class="panel_4_head">
                         <h2> SOME ORGANIZATION</h2>
                         <h3>_____ Bangalore, 562157 _____</h3>

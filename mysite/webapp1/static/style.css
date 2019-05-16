@@ -114,7 +114,7 @@ textarea{ width:100%; border:none; background: transparent; padding: 10px; font-
 }
 
 .panel_profile_icon{
-    height:125px;display:block;position: absolute;width: 125px;float:left;margin-top: 38px;margin-left: 3.5%; opacity:0.7;
+    height:125px;display:block;position: absolute;width: 125px;float:left;margin-top: 38px;margin-left: 3.5%; opacity:0.9;
 }
 
 .panel_profile {
@@ -163,7 +163,7 @@ textarea{ width:100%; border:none; background: transparent; padding: 10px; font-
 
 .log-form2 input{
   display: inline-block; position:relative; font-size: 15px; margin: auto auto; padding:8px 8px; float: left;
-  width: 200px; margin-bottom: 0px; border: none; background: transparent; color: grey; border-bottom: 1px solid grey;
+  width: 200px; margin-bottom: 0px; border: none; background: transparent; color: #fff; border-bottom: 1px solid grey;
 }
 .log-form input:focus {outline: none;}
 .log-form .btn {

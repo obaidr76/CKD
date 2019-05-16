@@ -197,6 +197,9 @@ def dashboard(request,id='1'):
                 for r in rev:
                     r.rating = ['1']*r.rating
                     r.rating.extend(['0']*(5-len(r.rating)))
+                    user = r.username
+                    ob = Profile.objects.get(pk=user)
+                    r.photo = ob.photo
                 context['rev']=rev
                 
 

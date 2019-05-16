@@ -46,7 +46,7 @@ html, body
 .sidenav img{
     margin-top:10px; margin-bottom:10px; width:160px;height:160px; border-radius:50%;z-index:1;
 }
-.nav-pic{text-align: center;opacity:0.8;}
+.nav-pic{text-align: center;opacity:0.9;}
 .nav-pic img{border:2px solid #b9ddf6;}
 .table{display: table;margin: 0 auto;}
 td{padding: 14px;}
